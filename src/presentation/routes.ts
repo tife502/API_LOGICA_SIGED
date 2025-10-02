@@ -1,8 +1,6 @@
 import { Router } from 'express';
 import { ModuloRoutes } from '../modulo/modulo.routes';
 
-//import { PrismaRoutes } from '../prisma/prisma.routes';
-
 export class AppRoutes {
   static get routes(): Router {
     const router = Router();
@@ -11,7 +9,6 @@ export class AppRoutes {
     */
   
     router.use(`/api/modulo`,ModuloRoutes.routes)
-  //  router.use(`/api/prisma`, PrismaRoutes.routes);
     // aqui colocare la nueva ruta para el manejo del email
  
 

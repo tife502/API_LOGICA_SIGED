@@ -2,7 +2,6 @@ import { envs } from './config/envs';
 import { AppRoutes } from './presentation/routes';
 import { Server } from './presentation/server';
 import { createServer } from 'http';
-//import { WSService } from './notifications/wss.serviceImprove';
 
 (async () => {
   main();
@@ -13,9 +12,6 @@ function main() {
     port: envs.PORT,
   });
   const httpServer = createServer(server.app);
-
-  //ws conection
- // WSService.getInstance(httpServer as any, '/wsImproved');
 
 
   server.setRoutes(AppRoutes.routes);

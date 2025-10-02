@@ -1,4 +1,4 @@
-import { createLogger, format, transports } from 'winston';
+import winston, { createLogger, format, transports } from 'winston';
 
 // Definir el formato de log
 const logFormat = format.printf(({ timestamp, level, message, stack }) => {
@@ -6,7 +6,7 @@ const logFormat = format.printf(({ timestamp, level, message, stack }) => {
 });
 
 // Crear el logger
-const logger = createLogger({
+export const logger = winston.createLogger({
   level: 'info', // Nivel de log mínimo a registrar (puede ser 'info', 'warn', 'error', etc.)
   format: format.combine(
     format.timestamp(),
@@ -22,4 +22,4 @@ const logger = createLogger({
   ],
 });
 
-export default logger;
+

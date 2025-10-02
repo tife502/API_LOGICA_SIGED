@@ -7,9 +7,383 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model something {
-  id            String                 @id
-  message       String                 @db.VarChar(4096)
- 
+model actos_administrativos {
+  id                               Int                                @id @default(autoincrement())
+  fecha_creacion                   DateTime                           @default(dbgenerated("(curdate())")) @db.Date
+  nombre                           String                             @db.VarChar(100)
+  descripcion                      String?                            @db.Text
+  created_at                       DateTime?                          @default(now()) @db.Timestamp(0)
+  documentos_actos_administrativos documentos_actos_administrativos[]
+
+  @@index([fecha_creacion], map: "idx_fecha_creacion")
+  @@index([nombre], map: "idx_nombre_acto")
 }
 
+model asignacion_empleado {
+  id               String                     @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  empleado_id      String                     @db.Char(36)
+  sede_id          String                     @db.Char(36)
+  fecha_asignacion DateTime                   @default(dbgenerated("(curdate())")) @db.Date
+  fecha_fin        DateTime?                  @db.Date
+  estado           asignacion_empleado_estado @default(activa)
+  created_at       DateTime?                  @default(now()) @db.Timestamp(0)
+  empleado         empleado                   @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "asignacion_empleado_ibfk_1")
+  sede             sede                       @relation(fields: [sede_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "asignacion_empleado_ibfk_2")
+
+  @@unique([empleado_id, sede_id, estado], map: "unique_empleado_sede_activa")
+  @@index([empleado_id], map: "idx_empleado_asignacion")
+  @@index([estado], map: "idx_estado_asignacion")
+  @@index([fecha_asignacion], map: "idx_fecha_asignacion")
+  @@index([sede_id], map: "idx_sede_asignacion")
+}
+
+model comentario_empleado {
+  id          String    @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  observacion String    @db.Text
+  empleado_id String    @db.Char(36)
+  usuario_id  String    @db.Char(36)
+  created_at  DateTime? @default(now()) @db.Timestamp(0)
+  empleado    empleado  @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "comentario_empleado_ibfk_1")
+  usuario     usuario   @relation(fields: [usuario_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "comentario_empleado_ibfk_2")
+
+  @@index([empleado_id], map: "idx_empleado_comentario")
+  @@index([created_at], map: "idx_fecha_comentario_emp")
+  @@index([usuario_id], map: "idx_usuario_comentario_emp")
+}
+
+model comentario_sede {
+  id          String    @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  observacion String    @db.Text
+  sede_id     String    @db.Char(36)
+  usuario_id  String    @db.Char(36)
+  created_at  DateTime? @default(now()) @db.Timestamp(0)
+  sede        sede      @relation(fields: [sede_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "comentario_sede_ibfk_1")
+  usuario     usuario   @relation(fields: [usuario_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "comentario_sede_ibfk_2")
+
+  @@index([created_at], map: "idx_fecha_comentario_sede")
+  @@index([sede_id], map: "idx_sede_comentario")
+  @@index([usuario_id], map: "idx_usuario_comentario")
+}
+
+model documentos_actos_administrativos {
+  id                     String                @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  acto_administrativo_id Int
+  ruta_relativa          String                @db.VarChar(500)
+  nombre                 String                @db.VarChar(255)
+  created_at             DateTime?             @default(now()) @db.Timestamp(0)
+  actos_administrativos  actos_administrativos @relation(fields: [acto_administrativo_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "documentos_actos_administrativos_ibfk_1")
+
+  @@index([acto_administrativo_id], map: "idx_acto_documento")
+  @@index([nombre], map: "idx_nombre_doc_acto")
+  @@index([ruta_relativa], map: "idx_ruta_relativa")
+}
+
+model documentos_empleado {
+  id             String                             @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  empleado_id    String                             @db.Char(36)
+  tipo_documento documentos_empleado_tipo_documento
+  nombre         String                             @db.VarChar(255)
+  ruta_relativa  String                             @db.VarChar(500)
+  descripcion    String?                            @db.Text
+  created_at     DateTime?                          @default(now()) @db.Timestamp(0)
+  empleado       empleado                           @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "documentos_empleado_ibfk_1")
+
+  @@index([empleado_id], map: "idx_empleado_documentos")
+  @@index([nombre], map: "idx_nombre_documento")
+  @@index([ruta_relativa], map: "idx_ruta_relativa")
+  @@index([tipo_documento], map: "idx_tipo_documento")
+}
+
+model documentos_horas_extra {
+  id             String      @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  horas_extra_id String      @db.Char(36)
+  ruta_relativa  String      @db.VarChar(500)
+  nombre         String      @db.VarChar(255)
+  created_at     DateTime?   @default(now()) @db.Timestamp(0)
+  horas_extra    horas_extra @relation(fields: [horas_extra_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "documentos_horas_extra_ibfk_1")
+
+  @@index([horas_extra_id], map: "idx_horas_extra_doc")
+  @@index([nombre], map: "idx_nombre_doc_horas")
+  @@index([ruta_relativa], map: "idx_ruta_relativa")
+}
+
+model documentos_suplencia {
+  id            String     @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  suplencia_id  String     @db.Char(36)
+  ruta_relativa String     @db.VarChar(500)
+  nombre        String     @db.VarChar(255)
+  created_at    DateTime?  @default(now()) @db.Timestamp(0)
+  suplencias    suplencias @relation(fields: [suplencia_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "documentos_suplencia_ibfk_1")
+
+  @@index([nombre], map: "idx_nombre_doc_suplencia")
+  @@index([ruta_relativa], map: "idx_ruta_relativa")
+  @@index([suplencia_id], map: "idx_suplencia_doc")
+}
+
+model empleado {
+  id                                                   String                  @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  tipo_documento                                       String                  @db.VarChar(20)
+  documento                                            String                  @unique(map: "documento") @db.VarChar(20)
+  nombre                                               String                  @db.VarChar(100)
+  apellido                                             String                  @db.VarChar(100)
+  email                                                String                  @unique(map: "email") @db.VarChar(150)
+  direccion                                            String?                 @db.Text
+  cargo                                                empleado_cargo
+  estado                                               empleado_estado         @default(activo)
+  created_at                                           DateTime?               @default(now()) @db.Timestamp(0)
+  updated_at                                           DateTime?               @default(now()) @db.Timestamp(0)
+  asignacion_empleado                                  asignacion_empleado[]
+  comentario_empleado                                  comentario_empleado[]
+  documentos_empleado                                  documentos_empleado[]
+  horas_extra                                          horas_extra[]
+  informacion_academica                                informacion_academica[]
+  institucion_educativa                                institucion_educativa[]
+  suplencias_suplencias_docente_ausente_idToempleado   suplencias[]            @relation("suplencias_docente_ausente_idToempleado")
+  suplencias_suplencias_docente_reemplazo_idToempleado suplencias[]            @relation("suplencias_docente_reemplazo_idToempleado")
+
+  @@index([cargo], map: "idx_cargo")
+  @@index([documento], map: "idx_documento_emp")
+  @@index([email], map: "idx_email_emp")
+  @@index([estado], map: "idx_estado_emp")
+  @@index([nombre, apellido], map: "idx_nombre_apellido")
+}
+
+model horas_extra {
+  id                     String                   @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  empleado_id            String                   @db.Char(36)
+  sede_id                String                   @db.Char(36)
+  cantidad_horas         Decimal                  @db.Decimal(4, 2)
+  fecha_realizacion      DateTime                 @db.Date
+  jornada                horas_extra_jornada
+  observacion            String?                  @db.Text
+  estado                 horas_extra_estado       @default(pendiente)
+  created_at             DateTime?                @default(now()) @db.Timestamp(0)
+  documentos_horas_extra documentos_horas_extra[]
+  empleado               empleado                 @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "horas_extra_ibfk_1")
+  sede                   sede                     @relation(fields: [sede_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "horas_extra_ibfk_2")
+
+  @@index([empleado_id], map: "idx_empleado_horas")
+  @@index([estado], map: "idx_estado_horas")
+  @@index([fecha_realizacion], map: "idx_fecha_realizacion")
+  @@index([jornada], map: "idx_jornada_horas")
+  @@index([sede_id], map: "idx_sede_horas")
+}
+
+model informacion_academica {
+  id               String                                @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  empleado_id      String                                @db.Char(36)
+  nivel_academico  informacion_academica_nivel_academico
+  anos_experiencia Int?                                  @default(0)
+  institucion      String?                               @db.VarChar(200)
+  titulo           String?                               @db.VarChar(200)
+  created_at       DateTime?                             @default(now()) @db.Timestamp(0)
+  updated_at       DateTime?                             @default(now()) @db.Timestamp(0)
+  empleado         empleado                              @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "informacion_academica_ibfk_1")
+
+  @@index([anos_experiencia], map: "idx_anos_experiencia")
+  @@index([empleado_id], map: "idx_empleado_academica")
+  @@index([nivel_academico], map: "idx_nivel_academico")
+}
+
+model institucion_educativa {
+  id                  String    @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  nombre              String    @db.VarChar(200)
+  rector_encargado_id String?   @db.Char(36)
+  created_at          DateTime? @default(now()) @db.Timestamp(0)
+  updated_at          DateTime? @default(now()) @db.Timestamp(0)
+  empleado            empleado? @relation(fields: [rector_encargado_id], references: [id], onUpdate: NoAction, map: "institucion_educativa_ibfk_1")
+  sede_ie             sede_ie[]
+
+  @@index([nombre], map: "idx_nombre_ie")
+  @@index([rector_encargado_id], map: "idx_rector_encargado")
+}
+
+model jornada {
+  id           Int            @id @default(autoincrement())
+  nombre       String         @unique(map: "nombre") @db.VarChar(50)
+  created_at   DateTime?      @default(now()) @db.Timestamp(0)
+  sede_jornada sede_jornada[]
+
+  @@index([nombre], map: "idx_nombre_jornada")
+}
+
+model sede {
+  id                  String                @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  nombre              String                @db.VarChar(150)
+  estado              sede_estado           @default(activa)
+  zona                sede_zona
+  direccion           String                @db.Text
+  codigo_DANE         String?               @unique(map: "codigo_DANE") @db.VarChar(20)
+  created_at          DateTime?             @default(now()) @db.Timestamp(0)
+  updated_at          DateTime?             @default(now()) @db.Timestamp(0)
+  asignacion_empleado asignacion_empleado[]
+  comentario_sede     comentario_sede[]
+  horas_extra         horas_extra[]
+  sede_ie             sede_ie[]
+  sede_jornada        sede_jornada[]
+  suplencias          suplencias[]
+
+  @@index([codigo_DANE], map: "idx_codigo_dane")
+  @@index([estado], map: "idx_estado_sede")
+  @@index([nombre], map: "idx_nombre_sede")
+  @@index([zona], map: "idx_zona")
+}
+
+model sede_ie {
+  id                       String                @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  sede_id                  String                @db.Char(36)
+  institucion_educativa_id String                @db.Char(36)
+  created_at               DateTime?             @default(now()) @db.Timestamp(0)
+  sede                     sede                  @relation(fields: [sede_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "sede_ie_ibfk_1")
+  institucion_educativa    institucion_educativa @relation(fields: [institucion_educativa_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "sede_ie_ibfk_2")
+
+  @@unique([sede_id, institucion_educativa_id], map: "unique_sede_ie")
+  @@index([institucion_educativa_id], map: "idx_ie_sede")
+  @@index([sede_id], map: "idx_sede_ie")
+}
+
+model sede_jornada {
+  id         String    @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  sede_id    String    @db.Char(36)
+  jornada_id Int
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  sede       sede      @relation(fields: [sede_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "sede_jornada_ibfk_1")
+  jornada    jornada   @relation(fields: [jornada_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "sede_jornada_ibfk_2")
+
+  @@unique([sede_id, jornada_id], map: "unique_sede_jornada")
+  @@index([jornada_id], map: "idx_jornada_sede")
+  @@index([sede_id], map: "idx_sede_jornada")
+}
+
+model suplencias {
+  id                                                 String                 @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  docente_ausente_id                                 String                 @db.Char(36)
+  causa_ausencia                                     String                 @db.VarChar(200)
+  fecha_inicio_ausencia                              DateTime               @db.Date
+  fecha_fin_ausencia                                 DateTime               @db.Date
+  sede_id                                            String                 @db.Char(36)
+  docente_reemplazo_id                               String                 @db.Char(36)
+  fecha_inicio_reemplazo                             DateTime               @db.Date
+  fecha_fin_reemplazo                                DateTime               @db.Date
+  horas_cubiertas                                    Decimal                @db.Decimal(4, 2)
+  jornada                                            suplencias_jornada
+  observacion                                        String?                @db.Text
+  estado                                             suplencias_estado      @default(activa)
+  created_at                                         DateTime?              @default(now()) @db.Timestamp(0)
+  documentos_suplencia                               documentos_suplencia[]
+  empleado_suplencias_docente_ausente_idToempleado   empleado               @relation("suplencias_docente_ausente_idToempleado", fields: [docente_ausente_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "suplencias_ibfk_1")
+  empleado_suplencias_docente_reemplazo_idToempleado empleado               @relation("suplencias_docente_reemplazo_idToempleado", fields: [docente_reemplazo_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "suplencias_ibfk_2")
+  sede                                               sede                   @relation(fields: [sede_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "suplencias_ibfk_3")
+
+  @@index([docente_ausente_id], map: "idx_docente_ausente")
+  @@index([docente_reemplazo_id], map: "idx_docente_reemplazo")
+  @@index([estado], map: "idx_estado_suplencia")
+  @@index([fecha_inicio_ausencia, fecha_fin_ausencia], map: "idx_fecha_ausencia")
+  @@index([fecha_inicio_reemplazo, fecha_fin_reemplazo], map: "idx_fecha_reemplazo")
+  @@index([jornada], map: "idx_jornada_suplencia")
+  @@index([sede_id], map: "idx_sede_suplencia")
+}
+
+model usuario {
+  id                  String                @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  tipo_documento      String                @db.VarChar(20)
+  documento           String                @unique(map: "documento") @db.VarChar(20)
+  nombre              String                @db.VarChar(100)
+  apellido            String                @db.VarChar(100)
+  email               String                @unique(map: "email") @db.VarChar(150)
+  celular             String?               @db.VarChar(15)
+  contrasena          String                @db.VarChar(255)
+  rol                 usuario_rol           @default(gestor)
+  estado              usuario_estado        @default(activo)
+  created_at          DateTime?             @default(now()) @db.Timestamp(0)
+  updated_at          DateTime?             @default(now()) @db.Timestamp(0)
+  comentario_empleado comentario_empleado[]
+  comentario_sede     comentario_sede[]
+
+  @@index([documento], map: "idx_documento")
+  @@index([email], map: "idx_email")
+  @@index([estado], map: "idx_estado")
+  @@index([rol], map: "idx_rol")
+  @@index([tipo_documento], map: "idx_tipo_documento")
+}
+
+enum documentos_empleado_tipo_documento {
+  HV
+  LICENCIAS
+  CONTRATO
+  SOPORTE_MEDICO
+}
+
+enum informacion_academica_nivel_academico {
+  estudios_basicos
+  bachiller
+  profesional
+  tecnologo
+  licenciado
+  especializacion
+  magister
+  doctorado
+}
+
+enum sede_estado {
+  activa
+  inactiva
+}
+
+enum sede_zona {
+  urbana
+  rural
+}
+
+enum asignacion_empleado_estado {
+  activa
+  finalizada
+}
+
+enum horas_extra_jornada {
+  ma_ana   @map("mañana")
+  tarde
+  sabatina
+  nocturna
+}
+
+enum empleado_cargo {
+  Docente
+  Rector
+}
+
+enum horas_extra_estado {
+  pendiente
+  aprobada
+  rechazada
+}
+
+enum empleado_estado {
+  activo
+  inactivo
+  suspendido
+}
+
+enum usuario_rol {
+  super_admin
+  admin
+  gestor
+}
+
+enum usuario_estado {
+  activo
+  inactivo
+  suspendido
+}
+
+enum suplencias_jornada {
+  ma_ana   @map("mañana")
+  tarde
+  sabatina
+}
+
+enum suplencias_estado {
+  activa
+  finalizada
+  cancelada
+}
