@@ -1,7 +1,6 @@
 import { Router } from 'express';
-import { ModuloRoutes } from '../modulo/modulo.routes';
-import { EmpleadoRoutes } from '../empleado/empleado.routes';
-import { UsuarioRoutes } from '../usuario/usuario.routes';
+import { EmpleadoRoutes } from '../modulos/empleado/empleado.routes';
+import { UsuarioRoutes } from '../modulos/usuario/usuario.routes';
 import AuthRoutes from '../auth/auth.routes';
 
 /**
@@ -16,9 +15,6 @@ export class AppRoutes {
     aqui iran el nombre de los modulos que usaremos y la importacion de sus rutas por defecto esta prsima como ORMs
     */
     
-    //Ruta para el modulo de ejemplo
-    router.use(`/api/modulo`, ModuloRoutes.routes);
-
     //Ruta para el modulo de empleados
     router.use(`/api/empleado`, EmpleadoRoutes.routes);
 

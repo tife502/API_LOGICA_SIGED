@@ -90,9 +90,9 @@ src/
 ├── prisma/                 # Configuración de Prisma
 ├── services/               # Servicios de negocio
 │   └── jwt.service.ts      # Servicio JWT
-├── usuario/                # Módulo de usuarios
-├── empleado/               # Módulo de empleados
-├── modulo/                 # Módulo de ejemplo
+├── modulo/                 # Contenedor de modulos
+|   ├── usuario/            # Módulo de usuarios
+|   ├── empleado/           # Módulo de empleados
 └── presentation/           # Capa de presentación
     ├── routes.ts           # Rutas principales
     └── server.ts           # Configuración del servidor

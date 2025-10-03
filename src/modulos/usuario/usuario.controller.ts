@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-import PrismaService from '../prisma/prisma.service';
-import { logger } from '../config';
-import { PrismaInterfaces } from '../domain';
-import { validateEmail } from '../domain/utils';
+import PrismaService from '../../prisma/prisma.service';
+import { logger } from '../../config';
+import { PrismaInterfaces } from '../../domain';
+import { validateEmail } from '../../domain/utils';
 
 /**
  * Controlador para gestión de usuarios

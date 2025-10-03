@@ -9,3 +9,5 @@ coverage/
 *.log
 !error.log
 !combined.log
+README.md
+JWT_AUTH_GUIDE.md

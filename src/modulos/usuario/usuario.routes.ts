@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { UsuarioController } from './usuario.controller';
-import { authMiddleware, roleMiddleware, canModifyUserMiddleware } from '../middlewares/auth.middleware';
-import { validateCreateUser, validateUpdateUser } from '../middlewares/validation.middleware';
+import { authMiddleware, roleMiddleware, canModifyUserMiddleware } from '../../middlewares/auth.middleware';
+import { validateCreateUser, validateUpdateUser } from '../../middlewares/validation.middleware';
 
 /**
  * Rutas para la gestión de usuarios

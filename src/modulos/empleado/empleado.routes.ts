@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { EmpleadoController } from "./empleado.controller";
-import { authMiddleware, roleMiddleware } from "../middlewares/auth.middleware";
+import { authMiddleware, roleMiddleware } from "../../middlewares/auth.middleware";
 
 /**
  * Rutas para la gestión de empleados (docentes/rectores)
