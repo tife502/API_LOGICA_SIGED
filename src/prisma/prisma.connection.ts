@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client';
 import { envs } from '../config/envs';
 
 
-
 class PrismaConnection extends PrismaClient {
   private static instance: PrismaConnection;
 

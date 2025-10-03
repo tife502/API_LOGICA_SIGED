@@ -11,16 +11,16 @@ export class EmpleadoRoutes {
     const empleadoController = new EmpleadoController();
 
     // Rutas CRUD para empleados
-    router.post('/empleados', empleadoController.createEmpleado);
-    router.get('/empleados', empleadoController.getEmpleados);
-    router.get('/empleados/inactivos', empleadoController.getEmpleadosInactivos);
-    router.get('/empleados/:id', empleadoController.getEmpleadoById);
-    router.put('/empleados/:id', empleadoController.updateEmpleado);
-    router.delete('/empleados/:id', empleadoController.deleteEmpleado);
-    router.patch('/empleados/:id/reactivar', empleadoController.reactivarEmpleado);
+    router.post('/create-empleados', empleadoController.createEmpleado);
+    router.get('/get-empleados', empleadoController.getEmpleados);
+    router.get('/get-empleados/inactivos', empleadoController.getEmpleadosInactivos);
+    router.get('/get-empleados/:id', empleadoController.getEmpleadoById);
+    router.put('/update-empleados/:id', empleadoController.updateEmpleado);
+    router.delete('/delete-empleados/:id', empleadoController.deleteEmpleado);
+    router.patch('/reactivar-empleados/:id', empleadoController.reactivarEmpleado);
 
     // Rutas específicas
-    router.get('/empleados/:empleadoId/horas-extra', empleadoController.getHorasExtraEmpleado);
+    router.get('/get-empleados/:empleadoId/horas-extra', empleadoController.getHorasExtraEmpleado);
 
     return router;
   }

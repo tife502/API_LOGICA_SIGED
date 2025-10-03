@@ -1,10 +1,11 @@
 import PrismaConnection from './prisma.connection';
 import { logger } from '../config';
 import { PrismaInterfaces} from '../domain';
+import { PrismaClient } from '@prisma/client';
 
 class PrismaService {
   private static instance: PrismaService;
-  private prisma: PrismaConnection;
+  private prisma: PrismaClient; // ✅ Usar PrismaClient como tipo
 
   private constructor() {
     this.prisma = PrismaConnection.getInstance();
@@ -82,11 +83,11 @@ class PrismaService {
           take: limit,
           orderBy: { [orderBy]: orderDirection },
           include: {
-            asignaciones: {
+            asignacion_empleado: {
               where: { estado: 'activa' },
               include: { sede: true }
             },
-            documentos: true
+            documentos_empleado: true
           }
         }),
         this.prisma.empleado.count({ where })
@@ -172,7 +173,7 @@ class PrismaService {
         where: { id },
         data: { estado: PrismaInterfaces.EmpleadoEstado.activo },
         include: {
-          asignaciones: {
+          asignacion_empleado: {
             where: { estado: 'activa' },
             include: { sede: true }
           }
@@ -378,10 +379,7 @@ class PrismaService {
     try {
       logger.info('Creando registro de horas extra', { data });
       return await this.prisma.horas_extra.create({
-        data: {
-          ...data,
-          cantidad_horas: data.cantidad_horas
-        }
+        data
       });
     } catch (error) {
       logger.error('Error creando horas extra', error);
@@ -413,10 +411,7 @@ class PrismaService {
     try {
       logger.info('Creando suplencia', { data });
       return await this.prisma.suplencias.create({
-        data: {
-          ...data,
-          horas_cubiertas: data.horas_cubiertas
-        }
+        data
       });
     } catch (error) {
       logger.error('Error creando suplencia', error);
@@ -512,7 +507,7 @@ class PrismaService {
 
   // ============= MÉTODO GENÉRICO PARA TRANSACCIONES =============
 
-  async executeTransaction<T>(operations: (prisma: PrismaConnection) => Promise<T>): Promise<T> {
+  async executeTransaction<T>(operations: (prisma: Omit<PrismaClient, '$on' | '$connect' | '$disconnect' | '$transaction' | '$extends'>) => Promise<T>): Promise<T> {
     try {
       logger.info('Ejecutando transacción');
       return await this.prisma.$transaction(operations);

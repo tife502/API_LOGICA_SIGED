@@ -175,9 +175,9 @@ export interface ICreateHorasExtra {
   sede_id: string;
   cantidad_horas: number;
   fecha_realizacion: Date;
-  jornada: HorasExtraJornada;
+  jornada: 'ma_ana' | 'tarde' | 'sabatina' | 'nocturna';
   observacion?: string;
-  estado?: HorasExtraEstado;
+  estado?: 'pendiente' | 'aprobada' | 'rechazada';
 }
 
 // Interface para actualizar horas extra
@@ -202,9 +202,9 @@ export interface ICreateSuplencia {
   fecha_inicio_reemplazo: Date;
   fecha_fin_reemplazo: Date;
   horas_cubiertas: number;
-  jornada: SuplenciasJornada;
+  jornada: 'ma_ana' | 'tarde' | 'sabatina';
   observacion?: string;
-  estado?: SuplenciasEstado;
+  estado?: 'activa' | 'finalizada' | 'cancelada';
 }
 
 // Interface para actualizar suplencia
