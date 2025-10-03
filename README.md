@@ -39,16 +39,16 @@ npm install
 
 3. **Configurar variables de entorno:**
 ```bash
-cp .env.example .env
+cp .env.template .env
 ```
 Editar el archivo `.env` con tu configuración:
 ```env
 PORT=3000
 DATABASE_URL="mysql://usuario:contraseña@localhost:3306/siged"
 JWT_SECRET=your-super-secret-jwt-key-change-in-production
-JWT_EXPIRES_IN=24h
+JWT_EXPIRES_IN=2h
 JWT_REFRESH_SECRET=your-super-secret-refresh-key-change-in-production
-JWT_REFRESH_EXPIRES_IN=7d
+JWT_REFRESH_EXPIRES_IN=8h
 ```
 
 4. **Ejecutar migraciones de base de datos:**

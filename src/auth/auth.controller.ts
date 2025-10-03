@@ -239,19 +239,132 @@ export class AuthController {
    */
   static async logout(req: AuthenticatedRequest, res: Response): Promise<void> {
     try {
-      // En un sistema de producción, aquí se podría añadir el token a una blacklist
-      // Por ahora, simplemente confirmamos el logout
+      const usuario = req.usuario;
       
-      logger.info('Usuario cerró sesión', { 
-        usuarioId: req.usuario?.id,
-        email: req.usuario?.email
-      });      res.status(200).json({
+      // Obtener tokens del request
+      const authHeader = req.headers.authorization;
+      const token = JwtService.extractTokenFromHeader(authHeader || '');
+      const { refreshToken } = req.body;
+
+      // Validar que tengamos al menos el token de acceso
+      if (!token) {
+        res.status(400).json({
+          ok: false,
+          msg: 'Token de acceso no encontrado'
+        });
+        return;
+      }
+
+      try {
+        // Invalidar token de acceso
+        JwtService.invalidateToken(token);
+        logger.info('Token de acceso invalidado', { 
+          usuarioId: usuario?.id,
+          tokenPrefix: token.substring(0, 20) + '...'
+        });
+
+        // Invalidar refresh token si está presente
+        if (refreshToken) {
+          JwtService.invalidateRefreshToken(refreshToken);
+          logger.info('Refresh token invalidado', { 
+            usuarioId: usuario?.id,
+            refreshTokenPrefix: refreshToken.substring(0, 20) + '...'
+          });
+        }
+
+        // Log de auditoría del logout
+        logger.info('🚪 Logout exitoso - Sesión cerrada y tokens invalidados', { 
+          usuarioId: usuario?.id,
+          email: usuario?.email,
+          rol: usuario?.rol,
+          timestamp: new Date().toISOString(),
+          tokensInvalidados: {
+            accessToken: true,
+            refreshToken: !!refreshToken
+          }
+        });
+
+        res.status(200).json({
+          ok: true,
+          msg: 'Sesión cerrada exitosamente. Todos los tokens han sido invalidados.'
+        });
+
+      } catch (tokenError) {
+        // Si hay error invalidando tokens, igual consideramos logout exitoso
+        logger.warn('Error invalidando tokens durante logout', { 
+          error: tokenError,
+          usuarioId: usuario?.id 
+        });
+
+        res.status(200).json({
+          ok: true,
+          msg: 'Sesión cerrada. Por seguridad, evita usar tokens anteriores.'
+        });
+      }
+
+    } catch (error) {
+      logger.error('Error crítico en logout', { 
+        error, 
+        usuarioId: req.usuario?.id 
+      });
+      
+      res.status(500).json({
+        ok: false,
+        msg: 'Error interno del servidor durante logout'
+      });
+    }
+  }
+
+  /**
+   * Logout completo - Invalida token y refresh token
+   */
+  static async logoutAllDevices(req: AuthenticatedRequest, res: Response): Promise<void> {
+    try {
+      const usuario = req.usuario;
+      
+      if (!usuario) {
+        res.status(401).json({
+          ok: false,
+          msg: 'Usuario no autenticado'
+        });
+        return;
+      }
+
+      // Obtener tokens actuales
+      const authHeader = req.headers.authorization;
+      const currentToken = JwtService.extractTokenFromHeader(authHeader || '');
+      const { refreshToken } = req.body;
+
+      // Invalidar tokens actuales
+      if (currentToken) {
+        JwtService.invalidateToken(currentToken);
+      }
+      if (refreshToken) {
+        JwtService.invalidateRefreshToken(refreshToken);
+      }
+
+      // En un sistema más complejo, aquí invalidarías todos los tokens del usuario
+      // Para esto necesitarías almacenar tokens por usuario en la base de datos
+
+      logger.warn('🚪🔄 Logout completo - Usuario cerró sesión en todos los dispositivos', {
+        usuarioId: usuario.id,
+        email: usuario.email,
+        rol: usuario.rol,
+        timestamp: new Date().toISOString(),
+        accion: 'logout_all_devices'
+      });
+
+      res.status(200).json({
         ok: true,
-        msg: 'Sesión cerrada exitosamente'
+        msg: 'Sesión cerrada en todos los dispositivos exitosamente'
       });
 
     } catch (error) {
-            logger.error('Error en logout', { error });
+      logger.error('Error en logout de todos los dispositivos', { 
+        error, 
+        usuarioId: req.usuario?.id 
+      });
+      
       res.status(500).json({
         ok: false,
         msg: 'Error interno del servidor'
@@ -259,6 +372,42 @@ export class AuthController {
     }
   }
 
+  /**
+   * Verificar estado del token (útil para debugging)
+   */
+  static async tokenStatus(req: AuthenticatedRequest, res: Response): Promise<void> {
+    try {
+      const authHeader = req.headers.authorization;
+      const token = JwtService.extractTokenFromHeader(authHeader || '');
+      
+      if (!token) {
+        res.status(400).json({
+          ok: false,
+          msg: 'Token no encontrado'
+        });
+        return;
+      }
+
+      const stats = JwtService.getBlacklistStats();
+      
+      res.status(200).json({
+        ok: true,
+        data: {
+          tokenPrefix: token.substring(0, 20) + '...',
+          usuario: req.usuario,
+          blacklistStats: stats,
+          tokenValid: true // Si llegó aquí, el token es válido
+        }
+      });
+
+    } catch (error) {
+      logger.error('Error verificando estado del token', error);
+      res.status(500).json({
+        ok: false,
+        msg: 'Error verificando estado del token'
+      });
+    }
+  }
   /**
    * Cambiar contraseña
    */

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { logger } from '../config';
 import { JwtService } from '../services/jwt.service';
+import { logger } from '../config/adapters/winstonAdapter';
 
 // Extender la interfaz Request para incluir el usuario
 declare global {
@@ -16,7 +16,7 @@ declare global {
 }
 
 /**
- * Middleware de autenticación JWT
+ * Middleware de autenticación JWT con verificación de blacklist
  */
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -35,11 +35,11 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     if (!token) {
       return res.status(401).json({
         ok: false,
-        msg: 'Token de autorización inválido'
+        msg: 'Formato de token inválido'
       });
     }
 
-    // Verificar y decodificar token
+    // Verificar y decodificar token (incluye verificación de blacklist)
     const payload = JwtService.verifyToken(token);
     
     // Añadir usuario al request
@@ -51,10 +51,22 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
 
     next();
   } catch (error: any) {
-    logger.error('Error en middleware de autenticación', { error: error.message });
+    logger.warn('Error en middleware de autenticación', { 
+      error: error.message,
+      authHeader: req.headers.authorization?.substring(0, 30) + '...'
+    });
+    
+    let message = 'Token inválido o expirado';
+    
+    if (error.message === 'Token invalidado') {
+      message = 'Token invalidado. Por favor, inicia sesión nuevamente.';
+    } else if (error.message === 'Token expirado') {
+      message = 'Token expirado. Por favor, renueva tu token o inicia sesión.';
+    }
+    
     return res.status(401).json({
       ok: false,
-      msg: 'Token inválido o expirado'
+      msg: message
     });
   }
 };

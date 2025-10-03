@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { EmpleadoRoutes } from '../modulos/empleado/empleado.routes';
 import { UsuarioRoutes } from '../modulos/usuario/usuario.routes';
+import { InformacionAcademicaRoutes } from '../modulos/informacion.academica/informacion.academica.routes';
 import AuthRoutes from '../auth/auth.routes';
 
 /**
@@ -20,6 +21,9 @@ export class AppRoutes {
 
     //Ruta para el modulo de usuarios
     router.use(`/api/usuario`, UsuarioRoutes.routes);
+
+    //Ruta para información académica de empleados
+    router.use(`/api/informacion-academica`, InformacionAcademicaRoutes.routes);
 
     //Ruta para autenticación
     router.use(`/api/auth`, AuthRoutes);

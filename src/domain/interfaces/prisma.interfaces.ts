@@ -79,6 +79,48 @@ export enum NivelAcademico {
   doctorado = 'doctorado'
 }
 
+// ============= INTERFACES PARA INFORMACIÓN ACADÉMICA =============
+
+// Interface para crear información académica
+export interface ICreateInformacionAcademica {
+  empleado_id: string;
+  nivel_academico: NivelAcademico;
+  anos_experiencia?: number;
+  institucion?: string;
+  titulo?: string;
+}
+
+// Interface para actualizar información académica
+export interface IUpdateInformacionAcademica {
+  empleado_id?: string;
+  nivel_academico?: NivelAcademico;
+  anos_experiencia?: number;
+  institucion?: string;
+  titulo?: string;
+}
+
+// Interface para información académica completa
+export interface IInformacionAcademica {
+  id: string;
+  empleado_id: string;
+  nivel_academico: NivelAcademico;
+  anos_experiencia: number | null;
+  institucion: string | null;
+  titulo: string | null;
+  created_at: Date | null;
+  updated_at: Date | null;
+}
+
+// Interface para filtros de información académica
+export interface IInformacionAcademicaFilters {
+  empleado_id?: string;
+  nivel_academico?: NivelAcademico;
+  anos_experiencia_min?: number;
+  anos_experiencia_max?: number;
+  institucion?: string;
+  titulo?: string;
+}
+
 // Interface para crear un empleado
 export interface ICreateEmpleado {
   tipo_documento: string;

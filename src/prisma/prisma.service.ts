@@ -485,16 +485,225 @@ class PrismaService {
     }
   }
 
+  async getInformacionAcademica(
+    filters?: PrismaInterfaces.IInformacionAcademicaFilters, 
+    pagination?: PrismaInterfaces.IPaginationOptions
+  ): Promise<PrismaInterfaces.IPaginatedResponse<any>> {
+    try {
+      const page = pagination?.page || 1;
+      const limit = pagination?.limit || 10;
+      const skip = (page - 1) * limit;
+      const orderBy = pagination?.orderBy || 'created_at';
+      const orderDirection = pagination?.orderDirection || 'desc';
+
+      // Construir el where con filtros
+      const where: any = {};
+
+      if (filters) {
+        if (filters.empleado_id) where.empleado_id = filters.empleado_id;
+        if (filters.nivel_academico) where.nivel_academico = filters.nivel_academico;
+        if (filters.institucion) where.institucion = { contains: filters.institucion };
+        if (filters.titulo) where.titulo = { contains: filters.titulo };
+        
+        // Filtros por años de experiencia
+        if (filters.anos_experiencia_min || filters.anos_experiencia_max) {
+          where.anos_experiencia = {};
+          if (filters.anos_experiencia_min) where.anos_experiencia.gte = filters.anos_experiencia_min;
+          if (filters.anos_experiencia_max) where.anos_experiencia.lte = filters.anos_experiencia_max;
+        }
+      }
+
+      const [informacionAcademica, total] = await Promise.all([
+        this.prisma.informacion_academica.findMany({
+          where,
+          skip,
+          take: limit,
+          orderBy: { [orderBy]: orderDirection },
+          include: {
+            empleado: {
+              select: {
+                id: true,
+                documento: true,
+                nombre: true,
+                apellido: true,
+                email: true,
+                cargo: true,
+                estado: true
+              }
+            }
+          }
+        }),
+        this.prisma.informacion_academica.count({ where })
+      ]);
+
+      const totalPages = Math.ceil(total / limit);
+
+      logger.info(`Información académica obtenida: ${informacionAcademica.length} de ${total}`, {
+        filters,
+        pagination
+      });
+
+      return {
+        data: informacionAcademica,
+        pagination: {
+          page: page,
+          limit: limit,
+          total: total,
+          totalPages,
+          hasNextPage: page < totalPages,
+          hasPrevPage: page > 1
+        }
+      };
+    } catch (error) {
+      logger.error('Error obteniendo información académica', error);
+      throw error;
+    }
+  }
+
   async getInformacionAcademicaByEmpleado(empleado_id: string) {
     try {
       logger.info('Obteniendo información académica por empleado', { empleado_id });
       return await this.prisma.informacion_academica.findMany({
         where: { empleado_id },
-        include: { empleado: true },
+        include: { 
+          empleado: {
+            select: {
+              id: true,
+              documento: true,
+              nombre: true,
+              apellido: true,
+              email: true,
+              cargo: true,
+              estado: true
+            }
+          }
+        },
         orderBy: { created_at: 'desc' }
       });
     } catch (error) {
       logger.error('Error obteniendo información académica por empleado', error);
+      throw error;
+    }
+  }
+
+  async getInformacionAcademicaById(id: string) {
+    try {
+      logger.info('Obteniendo información académica por ID', { id });
+      return await this.prisma.informacion_academica.findUnique({
+        where: { id },
+        include: {
+          empleado: {
+            select: {
+              id: true,
+              documento: true,
+              nombre: true,
+              apellido: true,
+              email: true,
+              cargo: true,
+              estado: true
+            }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error obteniendo información académica por ID', error);
+      throw error;
+    }
+  }
+
+  async updateInformacionAcademica(id: string, data: PrismaInterfaces.IUpdateInformacionAcademica) {
+    try {
+      logger.info('Actualizando información académica', { id, data });
+      return await this.prisma.informacion_academica.update({
+        where: { id },
+        data,
+        include: {
+          empleado: {
+            select: {
+              id: true,
+              documento: true,
+              nombre: true,
+              apellido: true,
+              email: true,
+              cargo: true,
+              estado: true
+            }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error actualizando información académica', error);
+      throw error;
+    }
+  }
+
+  async deleteInformacionAcademica(id: string) {
+    try {
+      logger.info('Eliminando información académica', { id });
+      return await this.prisma.informacion_academica.delete({
+        where: { id },
+        include: {
+          empleado: {
+            select: {
+              id: true,
+              documento: true,
+              nombre: true,
+              apellido: true,
+              email: true,
+              cargo: true,
+              estado: true
+            }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error eliminando información académica', error);
+      throw error;
+    }
+  }
+
+  async getEstadisticasNivelesAcademicos() {
+    try {
+      logger.info('Obteniendo estadísticas de niveles académicos');
+      
+      const [estadisticas, empleadosConInfo, totalEmpleadosActivos] = await Promise.all([
+        this.prisma.informacion_academica.groupBy({
+          by: ['nivel_academico'],
+          _count: {
+            nivel_academico: true
+          },
+          orderBy: {
+            _count: {
+              nivel_academico: 'desc'
+            }
+          }
+        }),
+        this.prisma.empleado.count({
+          where: {
+            estado: 'activo',
+            informacion_academica: {
+              some: {}
+            }
+          }
+        }),
+        this.prisma.empleado.count({
+          where: { estado: 'activo' }
+        })
+      ]);
+
+      return {
+        estadisticas_por_nivel: estadisticas,
+        resumen: {
+          total_empleados_activos: totalEmpleadosActivos,
+          empleados_con_informacion_academica: empleadosConInfo,
+          empleados_sin_informacion_academica: totalEmpleadosActivos - empleadosConInfo,
+          porcentaje_completitud: totalEmpleadosActivos > 0 
+            ? Math.round((empleadosConInfo / totalEmpleadosActivos) * 100) 
+            : 0
+        }
+      };
+    } catch (error) {
+      logger.error('Error obteniendo estadísticas de niveles académicos', error);
       throw error;
     }
   }

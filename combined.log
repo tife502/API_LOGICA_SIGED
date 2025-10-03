@@ -84,3 +84,108 @@ Invalid value for argument `rol`. Expected usuario_rol.
 2025-10-03T17:25:51.851Z info: Usuarios obtenidos: 2
 2025-10-03T17:40:38.838Z info: Obteniendo usuario por email
 2025-10-03T17:40:39.050Z info: Login exitoso
+2025-10-03T18:50:58.969Z info: Obteniendo usuario por email
+2025-10-03T18:50:59.389Z info: Login exitoso
+2025-10-03T18:52:00.278Z info: Creando nuevo empleado
+2025-10-03T18:52:00.426Z error: PrismaClientValidationError: 
+Invalid `this.prisma.empleado.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:26:41
+
+  23 async createEmpleado(data: PrismaInterfaces.ICreateEmpleado) {
+  24   try {
+  25     logger.info('Creando nuevo empleado', { data });
+→ 26     return await this.prisma.empleado.create({
+           data: {
+             tipo_documento: "CC",
+             documento: "12345678901",
+             nombre: "María Elena",
+             apellido: "García Rodríguez",
+             email: "maria.garcia@colegio.edu.co",
+             direccion: "Calle 123 #45-67, Bogotá",
+             cargo: "docente",
+                    ~~~~~~~~~
+             estado: "activo"
+           }
+         })
+
+Invalid value for argument `cargo`. Expected empleado_cargo.
+    at throwValidationException (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-03T18:52:00.427Z error: PrismaClientValidationError: 
+Invalid `this.prisma.empleado.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:26:41
+
+  23 async createEmpleado(data: PrismaInterfaces.ICreateEmpleado) {
+  24   try {
+  25     logger.info('Creando nuevo empleado', { data });
+→ 26     return await this.prisma.empleado.create({
+           data: {
+             tipo_documento: "CC",
+             documento: "12345678901",
+             nombre: "María Elena",
+             apellido: "García Rodríguez",
+             email: "maria.garcia@colegio.edu.co",
+             direccion: "Calle 123 #45-67, Bogotá",
+             cargo: "docente",
+                    ~~~~~~~~~
+             estado: "activo"
+           }
+         })
+
+Invalid value for argument `cargo`. Expected empleado_cargo.
+    at throwValidationException (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-03T18:53:13.244Z info: Creando nuevo empleado
+2025-10-03T18:53:13.271Z info: Empleado digitalizado por jean.duran@superadmin.com (super_admin)
+2025-10-03T18:57:37.796Z info: Creando nuevo empleado
+2025-10-03T18:57:37.948Z error: PrismaClientKnownRequestError: 
+Invalid `this.prisma.empleado.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:26:41
+
+  23 async createEmpleado(data: PrismaInterfaces.ICreateEmpleado) {
+  24   try {
+  25     logger.info('Creando nuevo empleado', { data });
+→ 26     return await this.prisma.empleado.create(
+Unique constraint failed on the constraint: `documento`
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-03T18:57:37.949Z error: PrismaClientKnownRequestError: 
+Invalid `this.prisma.empleado.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:26:41
+
+  23 async createEmpleado(data: PrismaInterfaces.ICreateEmpleado) {
+  24   try {
+  25     logger.info('Creando nuevo empleado', { data });
+→ 26     return await this.prisma.empleado.create(
+Unique constraint failed on the constraint: `documento`
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-03T18:58:18.121Z info: Obteniendo empleado por ID
+2025-10-03T18:58:18.163Z info: Creando información académica
+2025-10-03T18:58:18.182Z info: Información académica digitalizada por jean.duran@superadmin.com (super_admin)
+2025-10-03T19:01:10.592Z info: Información académica obtenida: 1 de 1
+2025-10-03T19:11:55.601Z info: Obteniendo usuarios
+2025-10-03T19:11:55.805Z info: Usuarios obtenidos: 2
+2025-10-03T19:12:03.866Z error: Error en middleware de autenticación
+2025-10-03T19:12:10.681Z error: Error en middleware de autenticación
+2025-10-03T19:12:23.177Z info: Obteniendo usuarios
+2025-10-03T19:12:23.184Z info: Usuarios obtenidos: 2
+2025-10-03T19:35:02.722Z info: Obteniendo usuario por email
+2025-10-03T19:35:02.931Z info: Login exitoso
+2025-10-03T19:36:09.588Z info: Obteniendo usuario por email
+2025-10-03T19:36:09.782Z info: Login exitoso
+2025-10-03T19:36:28.949Z info: Obteniendo usuario por ID
+2025-10-03T19:38:16.583Z info: Usuario cerró sesión
+2025-10-03T19:38:37.601Z info: Obteniendo usuarios
+2025-10-03T19:38:37.695Z info: Usuarios obtenidos: 2
+2025-10-03T19:39:04.555Z info: Obteniendo usuario por ID
