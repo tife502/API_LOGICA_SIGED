@@ -41,7 +41,8 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
 
     // Verificar y decodificar token (incluye verificación de blacklist)
     const payload = JwtService.verifyToken(token);
-    
+
+    console.log("Usuario autenticado en auth:", req.usuario);
     // Añadir usuario al request
     req.usuario = {
       id: payload.id,
@@ -77,10 +78,12 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
 export const roleMiddleware = (allowedRoles: string[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
+      console.log("Roles permitidos en roleMiddleware:", allowedRoles);
+      console.log("Usuario autenticado en roleMiddleware:", req.usuario);
       if (!req.usuario) {
         return res.status(401).json({
           ok: false,
-          msg: 'Usuario no autenticado'
+          msg: 'Usuario no autenticado aquí'
         });
       }
 

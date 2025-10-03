@@ -189,3 +189,53 @@ Unique constraint failed on the constraint: `documento`
 2025-10-03T19:38:37.601Z info: Obteniendo usuarios
 2025-10-03T19:38:37.695Z info: Usuarios obtenidos: 2
 2025-10-03T19:39:04.555Z info: Obteniendo usuario por ID
+2025-10-03T19:49:40.873Z info: Obteniendo usuario por ID
+2025-10-03T19:49:44.300Z info: Token agregado a blacklist
+2025-10-03T19:49:44.301Z info: Token invalidado exitosamente
+2025-10-03T19:49:44.301Z info: Token de acceso invalidado
+2025-10-03T19:49:44.301Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-03T19:49:50.182Z warn: Intento de uso de token blacklisteado
+2025-10-03T19:49:50.183Z warn: Error en middleware de autenticación
+2025-10-03T19:51:53.193Z info: Obteniendo usuario por email
+2025-10-03T19:51:53.392Z info: Login exitoso
+2025-10-03T19:52:05.737Z info: Obteniendo usuario por ID
+2025-10-03T19:52:15.492Z info: Token agregado a blacklist
+2025-10-03T19:52:15.493Z info: Token invalidado exitosamente
+2025-10-03T19:52:15.493Z info: Token de acceso invalidado
+2025-10-03T19:52:15.493Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-03T19:52:20.832Z warn: Intento de uso de token blacklisteado
+2025-10-03T19:52:20.832Z warn: Error en middleware de autenticación
+2025-10-03T19:53:02.370Z info: Obteniendo usuario por email
+2025-10-03T19:53:04.093Z info: Login exitoso
+2025-10-03T19:53:14.132Z info: Obteniendo usuario por ID
+2025-10-03T19:56:39.659Z info: Información académica obtenida: 1 de 1
+2025-10-03T19:56:59.802Z info: Obteniendo usuario por email
+2025-10-03T19:57:00.003Z info: Login exitoso
+2025-10-03T19:57:11.839Z info: Obteniendo usuario por ID
+2025-10-03T19:57:22.569Z info: Token agregado a blacklist
+2025-10-03T19:57:22.569Z info: Token invalidado exitosamente
+2025-10-03T19:57:22.569Z info: Token de acceso invalidado
+2025-10-03T19:57:22.569Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-03T19:57:31.729Z warn: Intento de uso de token blacklisteado
+2025-10-03T19:57:31.730Z warn: Error en middleware de autenticación
+2025-10-03T20:33:46.387Z info: Obteniendo usuario por email
+2025-10-03T20:33:46.596Z info: Login exitoso
+2025-10-03T20:34:56.955Z info: Obteniendo usuario por email
+2025-10-03T20:34:57.151Z info: Login exitoso
+2025-10-03T20:35:10.243Z info: Obteniendo usuario por email
+2025-10-03T20:35:10.460Z info: Login exitoso
+2025-10-03T21:28:25.426Z info: Obteniendo usuario por email
+2025-10-03T21:28:26.101Z info: Login exitoso
+2025-10-03T21:28:58.808Z info: Obteniendo usuario por ID
+2025-10-03T21:35:28.849Z info: Obteniendo usuario por ID
+2025-10-03T21:39:57.249Z info: Token agregado a blacklist
+2025-10-03T21:39:57.251Z info: Token invalidado exitosamente
+2025-10-03T21:39:57.252Z info: Token de acceso invalidado
+2025-10-03T21:39:57.252Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-03T21:40:00.764Z info: Obteniendo usuario por email
+2025-10-03T21:40:00.973Z info: Login exitoso
+2025-10-03T21:40:14.702Z info: Obteniendo usuario por ID
+2025-10-03T21:52:40.810Z info: Creando rector completo
+2025-10-03T21:52:40.813Z info: Ejecutando transacción
+2025-10-03T21:52:40.819Z info: Iniciando creación de rector completo
+2025-10-03T21:52:40.897Z info: Rector completo creado exitosamente

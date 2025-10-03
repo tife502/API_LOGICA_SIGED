@@ -93,6 +93,24 @@ src/
 ├── modulo/                 # Contenedor de modulos
 |   ├── usuario/            # Módulo de usuarios
 |   ├── empleado/           # Módulo de empleados
+|   ├── sede/ 
+|        ├── README.md                           # Documentación general del módulo
+|        ├── sede.routes.ts                      # Router principal que une todas las rutas
+|        ├── sede/                              # Gestión principal de sedes
+|        │   ├── sede.controller.ts
+|        │   ├── sede.routes.ts
+|        ├── comentarios/                       # Comentarios de sedes
+|        │   ├── comentarios-sede.controller.ts
+|        │   ├── comentarios-sede.routes.ts
+|        ├── asignaciones/                      # Asignación empleados a sedes
+|        │   ├── asignacion-empleado.controller.ts
+|        │   ├── asignacion-empleado.routes.ts
+|        ├── instituciones/                     # Relación sede-institución educativa
+|        │   ├── sede-ie.controller.ts
+|        │   ├── sede-ie.routes.ts
+|        └── jornadas/                         # Relación sede-jornada
+|            ├── sede-jornada.controller.ts
+|            ├── sede-jornada.routes.ts
 └── presentation/           # Capa de presentación
     ├── routes.ts           # Rutas principales
     └── server.ts           # Configuración del servidor

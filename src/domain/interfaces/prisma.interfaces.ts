@@ -79,6 +79,65 @@ export enum NivelAcademico {
   doctorado = 'doctorado'
 }
 
+// ============= INTERFACES PARA DATOS REALES (con id, created_at, etc.) =============
+
+// Interface para empleado completo (datos reales de DB)
+export interface IEmpleado {
+  id: string;
+  tipo_documento: string;
+  documento: string;
+  nombre: string;
+  apellido: string;
+  email: string;
+  direccion: string | null;
+  cargo: EmpleadoCargo;
+  estado: EmpleadoEstado;
+  created_at: Date | null;
+  updated_at: Date | null;
+}
+
+// Interface para sede completa (datos reales de DB)
+export interface ISede {
+  id: string;
+  nombre: string;
+  estado: SedeEstado;
+  zona: SedeZona;
+  direccion: string;
+  codigo_DANE: string | null;
+  created_at: Date | null;
+  updated_at: Date | null;
+}
+
+// Interface para institución educativa completa (datos reales de DB)
+export interface IInstitucionEducativa {
+  id: string;
+  nombre: string;
+  rector_encargado_id: string | null;
+  created_at: Date | null;
+  updated_at: Date | null;
+}
+
+// Interface para asignación empleado completa (datos reales de DB)
+export interface IAsignacionEmpleado {
+  id: string;
+  empleado_id: string;
+  sede_id: string;
+  fecha_asignacion: Date | null;
+  fecha_fin: Date | null;
+  estado: AsignacionEmpleadoEstado;
+  created_at: Date | null;
+  updated_at: Date | null;
+}
+
+// Interface para jornada completa (datos reales de DB)
+export interface IJornada {
+  id: number;
+  nombre: string;
+  created_at: Date | null;
+  updated_at: Date | null;
+}
+
+
 // ============= INTERFACES PARA INFORMACIÓN ACADÉMICA =============
 
 // Interface para crear información académica
@@ -111,6 +170,43 @@ export interface IInformacionAcademica {
   updated_at: Date | null;
 }
 
+// Interface para crear rector completo (request body)
+// Interface para crear rector completo (request body) - CORREGIDA
+export interface ICreateRectorCompletoRequest {
+  empleado: ICreateEmpleado;
+  informacionAcademica?: ICreateInformacionAcademica;
+  institucion: ICreateInstitucionEducativa;
+  sedes: {
+    crear?: Array<ICreateSede & {
+      jornadas?: Array<{
+        nombre: string;
+        hora_inicio: string;
+        hora_fin: string;
+        descripcion?: string;
+      }>;
+    }>;
+    asignar_existentes?: string[];
+  };
+  fechaAsignacion?: string | Date;
+  observaciones?: string;
+}
+
+// Interface para respuesta del rector completo
+export interface ICreateRectorCompletoResponse {
+  rector: IEmpleado;                        // Datos reales del empleado creado
+  informacionAcademica?: IInformacionAcademica; // Datos reales de info académica
+  institucion: IInstitucionEducativa;      // Datos reales de institución
+  sedes: ISede[];                          // Array de sedes reales creadas/asignadas
+  asignaciones: IAsignacionEmpleado[];     // Array de asignaciones reales
+  jornadas?: IJornada[];                   // Array de jornadas creadas (opcional)
+  resumen: {
+    sedesCreadas: number;
+    sedesAsignadas: number;
+    asignacionesRealizadas: number;
+    jornadasCreadas?: number;
+  };
+}
+
 // Interface para filtros de información académica
 export interface IInformacionAcademicaFilters {
   empleado_id?: string;
@@ -119,6 +215,101 @@ export interface IInformacionAcademicaFilters {
   anos_experiencia_max?: number;
   institucion?: string;
   titulo?: string;
+}
+
+// ============= INTERFACES PARA SEDES =============
+
+// Interface para crear sede
+export interface ICreateSede {
+  nombre: string;
+  estado?: SedeEstado;
+  zona: SedeZona;
+  direccion: string;
+  codigo_DANE?: string;
+}
+
+// Interface para actualizar sede
+export interface IUpdateSede {
+  nombre?: string;
+  estado?: SedeEstado;
+  zona?: SedeZona;
+  direccion?: string;
+  codigo_DANE?: string;
+}
+
+// Interface para filtros de sede
+export interface ISedeFilters {
+  nombre?: string;
+  estado?: SedeEstado;
+  zona?: SedeZona;
+  codigo_DANE?: string;
+}
+
+// Interface para comentarios de sede
+export interface ICreateComentarioSede {
+  observacion: string;
+  sede_id: string;
+  usuario_id: string;
+}
+
+export interface IUpdateComentarioSede {
+  observacion?: string;
+}
+
+export interface IComentarioSedeFilters {
+  sede_id?: string;
+  usuario_id?: string;
+}
+
+// Interface para asignación empleado-sede
+export interface ICreateAsignacionEmpleado {
+  empleado_id: string;
+  sede_id: string;
+  fecha_asignacion?: Date;
+  fecha_fin?: Date;
+  estado?: AsignacionEmpleadoEstado;
+}
+
+// Interface para actualizar asignación empleado-sede
+export interface IUpdateAsignacionEmpleado {
+  fecha_fin?: Date;
+  estado?: AsignacionEmpleadoEstado;
+}
+
+// Interface para filtros de asignación empleado-sede
+export interface IAsignacionEmpleadoFilters {
+  empleado_id?: string;
+  sede_id?: string;
+  estado?: AsignacionEmpleadoEstado;
+  fecha_asignacion?: Date;
+}
+
+// Interface para sede-institución educativa
+export interface ICreateSedeIE {
+  sede_id: string;
+  institucion_educativa_id: string;
+}
+
+// Interface para sede-jornada
+export interface ICreateSedeJornada {
+  sede_id: string;
+  jornada_id: number;
+}
+
+// Interface para institución educativa
+export interface ICreateInstitucionEducativa {
+  nombre: string;
+  rector_encargado_id?: string;
+}
+
+export interface IUpdateInstitucionEducativa {
+  nombre?: string;
+  rector_encargado_id?: string;
+}
+
+export interface IInstitucionEducativaFilters {
+  nombre?: string;
+  rector_encargado_id?: string;
 }
 
 // Interface para crear un empleado

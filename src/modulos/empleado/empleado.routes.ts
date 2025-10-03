@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { EmpleadoController } from "./empleado.controller";
 import { authMiddleware, roleMiddleware } from "../../middlewares/auth.middleware";
+import rectorRoutes from "./metodos/rector.routes";
+import empleadoNormalRoutes from "./metodos/empleado.routes";
 
 /**
  * Rutas para la gestión de empleados (docentes/rectores)
@@ -66,6 +68,22 @@ export class EmpleadoRoutes {
       authMiddleware,
       roleMiddleware(['super_admin']),
       empleadoController.reactivarEmpleado
+    );
+
+    // ============= MÓDULOS ESPECIALIZADOS =============
+    
+    // Rutas especializadas para rectores - Admin y Super_admin
+    router.use('/rector',
+      authMiddleware, 
+      roleMiddleware(['admin', 'super_admin']),
+      rectorRoutes
+    );
+
+    // Rutas para flujo normal de empleados - Gestores, Admin y Super_admin
+    router.use('/normal', 
+      authMiddleware, 
+      roleMiddleware(['gestor', 'admin', 'super_admin']),
+      empleadoNormalRoutes
     );
 
     return router;

@@ -401,6 +401,511 @@ class PrismaService {
     }
   }
 
+  async getSedeById(id: string) {
+    try {
+      logger.info('Obteniendo sede por ID', { id });
+      return await this.prisma.sede.findFirst({
+        where: { id },
+        include: {
+          asignacion_empleado: {
+            include: { 
+              empleado: {
+                select: { id: true, nombre: true, apellido: true, cargo: true, documento: true }
+              }
+            }
+          },
+          sede_ie: {
+            include: { 
+              institucion_educativa: true
+            }
+          },
+          sede_jornada: {
+            include: {
+              jornada: {
+                select: { id: true, nombre: true }
+              }
+            }
+          },
+          comentario_sede: {
+            include: {
+              usuario: {
+                select: { id: true, nombre: true, apellido: true }
+              }
+            },
+            orderBy: { created_at: 'desc' }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error obteniendo sede por ID', error);
+      throw error;
+    }
+  }
+
+  async updateSede(id: string, data: PrismaInterfaces.IUpdateSede) {
+    try {
+      logger.info('Actualizando sede', { id, data });
+      return await this.prisma.sede.update({
+        where: { id },
+        data: {
+          ...data,
+          updated_at: new Date()
+        }
+      });
+    } catch (error) {
+      logger.error('Error actualizando sede', error);
+      throw error;
+    }
+  }
+
+  async deleteSede(id: string) {
+    try {
+      logger.info('Eliminando sede (borrado físico)', { id });
+      // Verificar si tiene relaciones activas
+      const asignacionesActivas = await this.prisma.asignacion_empleado.findFirst({
+        where: {
+          sede_id: id,
+          estado: 'activa'
+        }
+      });
+
+      if (asignacionesActivas) {
+        throw new Error('No se puede eliminar la sede porque tiene empleados asignados activos');
+      }
+
+      // Eliminar físicamente
+      return await this.prisma.sede.delete({
+        where: { id }
+      });
+    } catch (error) {
+      logger.error('Error eliminando sede', error);
+      throw error;
+    }
+  }
+
+  async getComentariosSede(filters?: PrismaInterfaces.IComentarioSedeFilters, pagination?: PrismaInterfaces.IPaginationOptions) {
+    try {
+      logger.info('Obteniendo comentarios de sede', { filters, pagination });
+      
+      const where: any = {};
+      if (filters) {
+        if (filters.sede_id) where.sede_id = filters.sede_id;
+        if (filters.usuario_id) where.usuario_id = filters.usuario_id;
+      }
+
+      const page = pagination?.page || 1;
+      const limit = pagination?.limit || 10;
+      const skip = (page - 1) * limit;
+
+      const [comentarios, total] = await Promise.all([
+        this.prisma.comentario_sede.findMany({
+          where,
+          skip,
+          take: limit,
+          orderBy: pagination?.orderBy ? {
+            [pagination.orderBy]: pagination.orderDirection || 'asc'
+          } : { created_at: 'desc' },
+          include: {
+            usuario: {
+              select: { id: true, nombre: true, apellido: true, email: true }
+            },
+            sede: {
+              select: { id: true, nombre: true }
+            }
+          }
+        }),
+        this.prisma.comentario_sede.count({ where })
+      ]);
+
+      return {
+        data: comentarios,
+        pagination: {
+          page,
+          limit,
+          total,
+          totalPages: Math.ceil(total / limit),
+          hasNextPage: page < Math.ceil(total / limit),
+          hasPrevPage: page > 1
+        }
+      } as PrismaInterfaces.IPaginatedResponse<any>;
+    } catch (error) {
+      logger.error('Error obteniendo comentarios de sede', error);
+      throw error;
+    }
+  }
+
+  async updateComentarioSede(id: string, data: PrismaInterfaces.IUpdateComentarioSede) {
+    try {
+      logger.info('Actualizando comentario de sede', { id, data });
+      return await this.prisma.comentario_sede.update({
+        where: { id },
+        data,
+        include: {
+          usuario: {
+            select: { id: true, nombre: true, apellido: true }
+          },
+          sede: {
+            select: { id: true, nombre: true }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error actualizando comentario de sede', error);
+      throw error;
+    }
+  }
+
+  async deleteComentarioSede(id: string) {
+    try {
+      logger.info('Eliminando comentario de sede', { id });
+      return await this.prisma.comentario_sede.delete({
+        where: { id }
+      });
+    } catch (error) {
+      logger.error('Error eliminando comentario de sede', error);
+      throw error;
+    }
+  }
+
+  // ============= MÉTODOS DE ASIGNACIONES EMPLEADO-SEDE =============
+
+  async createAsignacionEmpleado(data: PrismaInterfaces.ICreateAsignacionEmpleado) {
+    try {
+      logger.info('Creando asignación empleado-sede', { data });
+      return await this.prisma.asignacion_empleado.create({
+        data,
+        include: {
+          empleado: {
+            select: { id: true, nombre: true, apellido: true, cargo: true, documento: true }
+          },
+          sede: {
+            select: { id: true, nombre: true, direccion: true }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error creando asignación empleado-sede', error);
+      throw error;
+    }
+  }
+
+  async getAsignacionesEmpleado(filters?: PrismaInterfaces.IAsignacionEmpleadoFilters, pagination?: PrismaInterfaces.IPaginationOptions) {
+    try {
+      logger.info('Obteniendo asignaciones empleado-sede', { filters, pagination });
+      
+      const where: any = {};
+      if (filters) {
+        if (filters.empleado_id) where.empleado_id = filters.empleado_id;
+        if (filters.sede_id) where.sede_id = filters.sede_id;
+        if (filters.estado) where.estado = filters.estado;
+        if (filters.fecha_asignacion) where.fecha_asignacion = filters.fecha_asignacion;
+      }
+
+      const page = pagination?.page || 1;
+      const limit = pagination?.limit || 10;
+      const skip = (page - 1) * limit;
+
+      const [asignaciones, total] = await Promise.all([
+        this.prisma.asignacion_empleado.findMany({
+          where,
+          skip,
+          take: limit,
+          orderBy: pagination?.orderBy ? {
+            [pagination.orderBy]: pagination.orderDirection || 'asc'
+          } : { fecha_asignacion: 'desc' },
+          include: {
+            empleado: {
+              select: { id: true, nombre: true, apellido: true, cargo: true, documento: true }
+            },
+            sede: {
+              select: { id: true, nombre: true, direccion: true }
+            }
+          }
+        }),
+        this.prisma.asignacion_empleado.count({ where })
+      ]);
+
+      return {
+        data: asignaciones,
+        pagination: {
+          page,
+          limit,
+          total,
+          totalPages: Math.ceil(total / limit),
+          hasNextPage: page < Math.ceil(total / limit),
+          hasPrevPage: page > 1
+        }
+      } as PrismaInterfaces.IPaginatedResponse<any>;
+    } catch (error) {
+      logger.error('Error obteniendo asignaciones empleado-sede', error);
+      throw error;
+    }
+  }
+
+  async updateAsignacionEmpleado(id: string, data: PrismaInterfaces.IUpdateAsignacionEmpleado) {
+    try {
+      logger.info('Actualizando asignación empleado-sede', { id, data });
+      return await this.prisma.asignacion_empleado.update({
+        where: { id },
+        data,
+        include: {
+          empleado: {
+            select: { id: true, nombre: true, apellido: true, cargo: true }
+          },
+          sede: {
+            select: { id: true, nombre: true }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error actualizando asignación empleado-sede', error);
+      throw error;
+    }
+  }
+
+  async deleteAsignacionEmpleado(id: string) {
+    try {
+      logger.info('Eliminando asignación empleado-sede', { id });
+      return await this.prisma.asignacion_empleado.delete({
+        where: { id }
+      });
+    } catch (error) {
+      logger.error('Error eliminando asignación empleado-sede', error);
+      throw error;
+    }
+  }
+
+  // ============= MÉTODOS DE INSTITUCIONES EDUCATIVAS =============
+
+  async createInstitucionEducativa(data: PrismaInterfaces.ICreateInstitucionEducativa) {
+    try {
+      logger.info('Creando institución educativa', { data });
+      return await this.prisma.institucion_educativa.create({
+        data,
+        include: {
+          empleado: {
+            select: { id: true, nombre: true, apellido: true, documento: true }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error creando institución educativa', error);
+      throw error;
+    }
+  }
+
+  async getInstitucionesEducativas(filters?: PrismaInterfaces.IInstitucionEducativaFilters, pagination?: PrismaInterfaces.IPaginationOptions) {
+    try {
+      logger.info('Obteniendo instituciones educativas', { filters, pagination });
+      
+      const where: any = {};
+      if (filters) {
+        if (filters.nombre) {
+          where.nombre = { contains: filters.nombre, mode: 'insensitive' };
+        }
+        if (filters.rector_encargado_id) where.rector_encargado_id = filters.rector_encargado_id;
+      }
+
+      const page = pagination?.page || 1;
+      const limit = pagination?.limit || 10;
+      const skip = (page - 1) * limit;
+
+      const [instituciones, total] = await Promise.all([
+        this.prisma.institucion_educativa.findMany({
+          where,
+          skip,
+          take: limit,
+          orderBy: pagination?.orderBy ? {
+            [pagination.orderBy]: pagination.orderDirection || 'asc'
+          } : { created_at: 'desc' },
+          include: {
+            empleado: {
+              select: { id: true, nombre: true, apellido: true, documento: true, cargo: true }
+            },
+            sede_ie: {
+              include: {
+                sede: {
+                  select: { id: true, nombre: true, direccion: true, zona: true }
+                }
+              }
+            }
+          }
+        }),
+        this.prisma.institucion_educativa.count({ where })
+      ]);
+
+      return {
+        data: instituciones,
+        pagination: {
+          page,
+          limit,
+          total,
+          totalPages: Math.ceil(total / limit),
+          hasNextPage: page < Math.ceil(total / limit),
+          hasPrevPage: page > 1
+        }
+      } as PrismaInterfaces.IPaginatedResponse<any>;
+    } catch (error) {
+      logger.error('Error obteniendo instituciones educativas', error);
+      throw error;
+    }
+  }
+
+  async getInstitucionEducativaById(id: string) {
+    try {
+      logger.info('Obteniendo institución educativa por ID', { id });
+      return await this.prisma.institucion_educativa.findUnique({
+        where: { id },
+        include: {
+          empleado: {
+            select: { id: true, nombre: true, apellido: true, documento: true, cargo: true }
+          },
+          sede_ie: {
+            include: {
+              sede: {
+                select: { id: true, nombre: true, direccion: true, zona: true, codigo_DANE: true }
+              }
+            }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error obteniendo institución educativa por ID', error);
+      throw error;
+    }
+  }
+
+  async updateInstitucionEducativa(id: string, data: PrismaInterfaces.IUpdateInstitucionEducativa) {
+    try {
+      logger.info('Actualizando institución educativa', { id, data });
+      return await this.prisma.institucion_educativa.update({
+        where: { id },
+        data,
+        include: {
+          empleado: {
+            select: { id: true, nombre: true, apellido: true, documento: true }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error actualizando institución educativa', error);
+      throw error;
+    }
+  }
+
+  async deleteInstitucionEducativa(id: string) {
+    try {
+      logger.info('Eliminando institución educativa', { id });
+      
+      // Verificar si tiene sedes asociadas
+      const sedesAsociadas = await this.prisma.sede_ie.findFirst({
+        where: { institucion_educativa_id: id }
+      });
+
+      if (sedesAsociadas) {
+        throw new Error('No se puede eliminar la institución educativa porque tiene sedes asociadas');
+      }
+
+      return await this.prisma.institucion_educativa.delete({
+        where: { id }
+      });
+    } catch (error) {
+      logger.error('Error eliminando institución educativa', error);
+      throw error;
+    }
+  }
+
+  async asignarSedeInstitucionEducativa(data: PrismaInterfaces.ICreateSedeIE) {
+    try {
+      logger.info('Asignando sede a institución educativa', { data });
+      return await this.prisma.sede_ie.create({
+        data,
+        include: {
+          sede: {
+            select: { id: true, nombre: true, direccion: true }
+          },
+          institucion_educativa: {
+            select: { id: true, nombre: true }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error asignando sede a institución educativa', error);
+      throw error;
+    }
+  }
+
+  // ============= MÉTODOS DE JORNADAS =============
+
+  async getJornadas() {
+    try {
+      logger.info('Obteniendo todas las jornadas');
+      return await this.prisma.jornada.findMany({
+        orderBy: { nombre: 'asc' }
+      });
+    } catch (error) {
+      logger.error('Error obteniendo jornadas', error);
+      throw error;
+    }
+  }
+
+  async asignarJornadaSede(data: PrismaInterfaces.ICreateSedeJornada) {
+    try {
+      logger.info('Asignando jornada a sede', { data });
+      return await this.prisma.sede_jornada.create({
+        data,
+        include: {
+          sede: {
+            select: { id: true, nombre: true }
+          },
+          jornada: {
+            select: { id: true, nombre: true }
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error asignando jornada a sede', error);
+      throw error;
+    }
+  }
+
+  async getJornadasBySede(sede_id: string) {
+    try {
+      logger.info('Obteniendo jornadas por sede', { sede_id });
+      return await this.prisma.sede_jornada.findMany({
+        where: { sede_id },
+        include: {
+          jornada: {
+            select: { id: true, nombre: true }
+          }
+        },
+        orderBy: { 
+          jornada: { nombre: 'asc' } 
+        }
+      });
+    } catch (error) {
+      logger.error('Error obteniendo jornadas por sede', error);
+      throw error;
+    }
+  }
+
+  async desasignarJornadaSede(sede_id: string, jornada_id: number) {
+    try {
+      logger.info('Desasignando jornada de sede', { sede_id, jornada_id });
+      return await this.prisma.sede_jornada.delete({
+        where: {
+          sede_id_jornada_id: {
+            sede_id,
+            jornada_id
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Error desasignando jornada de sede', error);
+      throw error;
+    }
+  }
+
   // ============= MÉTODOS DE HORAS EXTRA =============
 
   async createHorasExtra(data: PrismaInterfaces.ICreateHorasExtra) {
