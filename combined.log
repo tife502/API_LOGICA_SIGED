@@ -1,0 +1,86 @@
+2025-10-03T16:37:27.686Z info: Obteniendo usuario por email
+2025-10-03T16:37:27.704Z warn: Intento de login con email no registrado
+2025-10-03T16:46:18.274Z error: Error en middleware de autenticación
+2025-10-03T16:55:28.706Z info: Obteniendo usuarios
+2025-10-03T16:55:28.967Z info: Creando nuevo usuario
+2025-10-03T16:55:29.133Z error: PrismaClientValidationError: 
+Invalid `this.prisma.usuario.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:197:40
+
+  194 async createUsuario(data: PrismaInterfaces.ICreateUsuario) {
+  195   try {
+  196     logger.info('Creando nuevo usuario', { data: { ...data, contrasena: '[HIDDEN]' } });
+→ 197     return await this.prisma.usuario.create({
+            data: {
+              tipo_documento: "CC",
+              documento: "1088238704",
+              nombre: "Jean",
+              apellido: "Duran",
+              email: "jean.duran@superadmin.com",
+              contrasena: "Admin123456",
+              rol: "super_Admin",
+                   ~~~~~~~~~~~~~
+              estado: "activo"
+            }
+          })
+
+Invalid value for argument `rol`. Expected usuario_rol.
+    at throwValidationException (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-03T16:55:29.133Z error: PrismaClientValidationError: 
+Invalid `this.prisma.usuario.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:197:40
+
+  194 async createUsuario(data: PrismaInterfaces.ICreateUsuario) {
+  195   try {
+  196     logger.info('Creando nuevo usuario', { data: { ...data, contrasena: '[HIDDEN]' } });
+→ 197     return await this.prisma.usuario.create({
+            data: {
+              tipo_documento: "CC",
+              documento: "1088238704",
+              nombre: "Jean",
+              apellido: "Duran",
+              email: "jean.duran@superadmin.com",
+              contrasena: "Admin123456",
+              rol: "super_Admin",
+                   ~~~~~~~~~~~~~
+              estado: "activo"
+            }
+          })
+
+Invalid value for argument `rol`. Expected usuario_rol.
+    at throwValidationException (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-03T16:56:25.931Z info: Obteniendo usuarios
+2025-10-03T16:56:25.941Z info: Creando nuevo usuario
+2025-10-03T16:56:25.996Z info: Usuario inicial creado: jean.duran@superadmin.com
+2025-10-03T16:59:59.025Z info: Obteniendo usuario por email
+2025-10-03T16:59:59.134Z warn: Intento de login con contraseña incorrecta
+2025-10-03T17:01:26.386Z info: Obteniendo usuario por email
+2025-10-03T17:01:26.400Z warn: Intento de login con contraseña incorrecta
+2025-10-03T17:08:15.754Z info: Obteniendo usuarios
+2025-10-03T17:08:15.963Z info: Creando nuevo usuario
+2025-10-03T17:08:15.982Z info: Usuario inicial creado: jean.duran@superadmin.com
+2025-10-03T17:08:43.160Z info: Obteniendo usuario por email
+2025-10-03T17:08:43.369Z info: Login exitoso
+2025-10-03T17:10:43.139Z info: Obteniendo usuarios
+2025-10-03T17:10:43.332Z info: Creando nuevo usuario
+2025-10-03T17:10:43.347Z info: Usuario creado exitosamente
+2025-10-03T17:12:55.718Z info: Obteniendo usuarios
+2025-10-03T17:12:55.730Z info: Usuarios obtenidos: 2
+2025-10-03T17:23:17.995Z info: Obteniendo usuarios
+2025-10-03T17:23:18.021Z info: Usuarios obtenidos: 2
+2025-10-03T17:24:00.178Z info: Obteniendo usuario por email
+2025-10-03T17:24:00.382Z info: Login exitoso
+2025-10-03T17:25:40.069Z info: Obteniendo usuario por email
+2025-10-03T17:25:40.264Z info: Login exitoso
+2025-10-03T17:25:51.845Z info: Obteniendo usuarios
+2025-10-03T17:25:51.851Z info: Usuarios obtenidos: 2
+2025-10-03T17:40:38.838Z info: Obteniendo usuario por email
+2025-10-03T17:40:39.050Z info: Login exitoso

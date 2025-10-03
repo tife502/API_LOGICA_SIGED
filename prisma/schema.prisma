@@ -268,7 +268,6 @@ model suplencias {
   horas_cubiertas                                    Decimal                @db.Decimal(4, 2)
   jornada                                            suplencias_jornada
   observacion                                        String?                @db.Text
-  estado                                             suplencias_estado      @default(activa)
   created_at                                         DateTime?              @default(now()) @db.Timestamp(0)
   documentos_suplencia                               documentos_suplencia[]
   empleado_suplencias_docente_ausente_idToempleado   empleado               @relation("suplencias_docente_ausente_idToempleado", fields: [docente_ausente_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "suplencias_ibfk_1")
@@ -277,7 +276,6 @@ model suplencias {
 
   @@index([docente_ausente_id], map: "idx_docente_ausente")
   @@index([docente_reemplazo_id], map: "idx_docente_reemplazo")
-  @@index([estado], map: "idx_estado_suplencia")
   @@index([fecha_inicio_ausencia, fecha_fin_ausencia], map: "idx_fecha_ausencia")
   @@index([fecha_inicio_reemplazo, fecha_fin_reemplazo], map: "idx_fecha_reemplazo")
   @@index([jornada], map: "idx_jornada_suplencia")
@@ -380,10 +378,4 @@ enum suplencias_jornada {
   ma_ana   @map("mañana")
   tarde
   sabatina
-}
-
-enum suplencias_estado {
-  activa
-  finalizada
-  cancelada
 }

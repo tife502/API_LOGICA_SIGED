@@ -4,8 +4,8 @@ import { logger } from '../config';
 import { PrismaInterfaces, Utils } from '../domain';
 
 /**
- * Controlador para gestión de empleados
- * Ejemplo de cómo usar las interfaces tipadas con el servicio de Prisma
+ * Controlador para gestión de empleados (docentes/rectores)
+ * Los gestores hacen el trabajo diario de digitalización de información
  */
 export class EmpleadoController {
   private prismaService: PrismaService;
@@ -14,9 +14,11 @@ export class EmpleadoController {
     this.prismaService = PrismaService.getInstance();
   }
 
-  // Crear nuevo empleado
+  // Crear nuevo empleado (docente/rector)
   createEmpleado = async (req: Request, res: Response) => {
     try {
+      const usuario = req.usuario; // Usuario que está digitalizando
+      
       // Validar datos de entrada usando la interface
       const empleadoData: PrismaInterfaces.ICreateEmpleado = {
         tipo_documento: req.body.tipo_documento,
@@ -48,13 +50,32 @@ export class EmpleadoController {
 
       const nuevoEmpleado = await this.prismaService.createEmpleado(empleadoData);
 
+      // Auditoría: Quién digitalizó la información
+      logger.info(`Empleado digitalizado por ${usuario?.email} (${usuario?.rol})`, {
+        empleado_id: nuevoEmpleado.id,
+        empleado_documento: nuevoEmpleado.documento,
+        empleado_nombre: `${nuevoEmpleado.nombre} ${nuevoEmpleado.apellido}`,
+        digitalizado_por: usuario?.id,
+        digitalizado_por_rol: usuario?.rol
+      });
+
       res.status(201).json({
         success: true,
-        message: 'Empleado creado exitosamente',
+        message: 'Empleado digitalizado exitosamente',
         data: nuevoEmpleado
       });
     } catch (error: any) {
       logger.error('Error en createEmpleado controller', error);
+      
+      // Manejo específico de errores de Prisma
+      if (error.code === 'P2002') {
+        return res.status(400).json({
+          success: false,
+          message: 'Ya existe un empleado con este documento o email',
+          error: 'Conflict'
+        });
+      }
+
       res.status(500).json({
         success: false,
         message: 'Error interno del servidor',
@@ -66,6 +87,8 @@ export class EmpleadoController {
   // Obtener empleados con filtros y paginación
   getEmpleados = async (req: Request, res: Response) => {
     try {
+      const usuario = req.usuario;
+      
       // Filtros opcionales
       const filters: PrismaInterfaces.IEmpleadoFilters = {
         tipo_documento: req.query.tipo_documento as string,
@@ -94,6 +117,14 @@ export class EmpleadoController {
       };
 
       const resultado = await this.prismaService.getEmpleados(filters, pagination);
+
+      // Log de consulta (sin saturar el log)
+      if (usuario?.rol === 'gestor') {
+        logger.info(`Gestor ${usuario.email} consultó empleados`, {
+          total_encontrados: resultado.pagination.total,
+          pagina: pagination.page
+        });
+      }
 
       res.status(200).json({
         success: true,
@@ -148,10 +179,11 @@ export class EmpleadoController {
     }
   };
 
-  // Actualizar empleado
+  // Actualizar empleado (digitalización de cambios)
   updateEmpleado = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
+      const usuario = req.usuario;
 
       if (!id) {
         return res.status(400).json({
@@ -201,9 +233,19 @@ export class EmpleadoController {
 
       const empleadoActualizado = await this.prismaService.updateEmpleado(id, updateData);
 
+      // Auditoría: Cambios realizados
+      logger.info(`Información de empleado actualizada por ${usuario?.email} (${usuario?.rol})`, {
+        empleado_id: id,
+        empleado_documento: empleadoExistente.documento,
+        empleado_nombre: `${empleadoExistente.nombre} ${empleadoExistente.apellido}`,
+        campos_modificados: Object.keys(updateData),
+        modificado_por: usuario?.id,
+        modificado_por_rol: usuario?.rol
+      });
+
       res.status(200).json({
         success: true,
-        message: 'Empleado actualizado exitosamente',
+        message: 'Información del empleado actualizada exitosamente',
         data: empleadoActualizado
       });
     } catch (error: any) {
@@ -216,10 +258,11 @@ export class EmpleadoController {
     }
   };
 
-  // Borrado lógico - cambiar estado a inactivo
+  // Borrado lógico - Solo para Admins (decisión administrativa importante)
   deleteEmpleado = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
+      const usuario = req.usuario;
 
       if (!id) {
         return res.status(400).json({
@@ -251,6 +294,19 @@ export class EmpleadoController {
       // Borrado lógico: actualizar estado a inactivo
       const empleadoInactivado = await this.prismaService.updateEmpleado(id, {
         estado: PrismaInterfaces.EmpleadoEstado.inactivo
+      });
+
+      // Auditoría CRÍTICA: Desactivación de empleado
+      logger.warn(`🚨 EMPLEADO DESACTIVADO - Decisión administrativa`, {
+        empleado_id: id,
+        empleado_documento: empleadoExistente.documento,
+        empleado_nombre: `${empleadoExistente.nombre} ${empleadoExistente.apellido}`,
+        empleado_cargo: empleadoExistente.cargo,
+        desactivado_por: usuario?.id,
+        desactivado_por_email: usuario?.email,
+        desactivado_por_rol: usuario?.rol,
+        fecha_desactivacion: new Date().toISOString(),
+        razon: 'Borrado lógico administrativo'
       });
 
       res.status(200).json({
@@ -298,10 +354,11 @@ export class EmpleadoController {
     }
   };
 
-  // Reactivar empleado
+  // Reactivar empleado - Solo Super_admin (decisión crítica)
   reactivarEmpleado = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
+      const usuario = req.usuario;
 
       if (!id) {
         return res.status(400).json({
@@ -312,6 +369,17 @@ export class EmpleadoController {
       }
 
       const empleadoReactivado = await this.prismaService.reactivarEmpleado(id);
+
+      // Auditoría CRÍTICA: Reactivación de empleado
+      logger.warn(`🔄 EMPLEADO REACTIVADO - Decisión super administrativa`, {
+        empleado_id: id,
+        empleado_documento: empleadoReactivado.documento,
+        empleado_nombre: `${empleadoReactivado.nombre} ${empleadoReactivado.apellido}`,
+        reactivado_por: usuario?.id,
+        reactivado_por_email: usuario?.email,
+        reactivado_por_rol: usuario?.rol,
+        fecha_reactivacion: new Date().toISOString()
+      });
 
       res.status(200).json({
         success: true,
@@ -328,7 +396,7 @@ export class EmpleadoController {
     }
   };
 
-   // Obtener empleados inactivos
+  // Obtener empleados inactivos
   getEmpleadosInactivos = async (req: Request, res: Response) => {
     try {
       const filters: PrismaInterfaces.IEmpleadoFilters = {

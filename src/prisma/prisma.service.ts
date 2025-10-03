@@ -293,6 +293,34 @@ class PrismaService {
     }
   }
 
+  async getUsuarioByEmail(email: string) {
+    try {
+      logger.info('Obteniendo usuario por email', { email });
+      return await this.prisma.usuario.findUnique({
+        where: { email },
+        select: {
+          id: true,
+          tipo_documento: true,
+          documento: true,
+          nombre: true,
+          apellido: true,
+          email: true,
+          celular: true,
+          contrasena: true, // Incluir contraseña para autenticación
+          rol: true,
+          estado: true,
+          created_at: true,
+          updated_at: true,
+          comentario_empleado: true,
+          comentario_sede: true
+        }
+      });
+    } catch (error) {
+      logger.error('Error obteniendo usuario por email', error);
+      throw error;
+    }
+  }
+
   async updateUsuario(id: string, data: PrismaInterfaces.IUpdateUsuario) {
     try {
       logger.info('Actualizando usuario', { id, data: { ...data, contrasena: data.contrasena ? '[HIDDEN]' : undefined } });

@@ -59,11 +59,7 @@ export enum SuplenciasJornada {
   sabatina = 'sabatina'
 }
 
-export enum SuplenciasEstado {
-  activa = 'activa',
-  finalizada = 'finalizada',
-  cancelada = 'cancelada'
-}
+
 
 export enum DocumentosEmpleadoTipo {
   HV = 'HV',
@@ -131,6 +127,22 @@ export interface IUpdateUsuario {
   contrasena?: string;
   rol?: UsuarioRol;
   estado?: UsuarioEstado;
+}
+
+// Interface para el usuario completo (basado en el modelo de Prisma)
+export interface IUsuario {
+  id: string;
+  tipo_documento: string;
+  documento: string;
+  nombre: string;
+  apellido: string;
+  email: string;
+  celular?: string | null;
+  contrasena: string;
+  rol: 'super_admin' | 'admin' | 'gestor';
+  estado: 'activo' | 'inactivo' | 'suspendido';
+  created_at: Date;
+  updated_at: Date;
 }
 
 // Interface para crear una sede
@@ -204,7 +216,6 @@ export interface ICreateSuplencia {
   horas_cubiertas: number;
   jornada: 'ma_ana' | 'tarde' | 'sabatina';
   observacion?: string;
-  estado?: 'activa' | 'finalizada' | 'cancelada';
 }
 
 // Interface para actualizar suplencia
@@ -220,7 +231,6 @@ export interface IUpdateSuplencia {
   horas_cubiertas?: number;
   jornada?: SuplenciasJornada;
   observacion?: string;
-  estado?: SuplenciasEstado;
 }
 
 // Interface para crear institución educativa
