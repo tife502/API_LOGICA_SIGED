@@ -19,7 +19,8 @@ export class EmpleadoNormalController {
    */
   public crearEmpleadoConSede = async (req: Request, res: Response): Promise<Response> => {
     try {
-      const { empleado, informacionAcademica, sedeId, fechaAsignacion } = req.body;
+      const { empleado, informacionAcademica, sedeId, fechaAsignacion, comentario } = req.body;
+      const usuario = req.usuario; // Usuario que está creando
 
       // Validaciones básicas
       if (!empleado || !sedeId) {
@@ -36,10 +37,12 @@ export class EmpleadoNormalController {
       });
 
       const resultado = await this.empleadoService.crearEmpleadoConSede({
+        usuarioId: usuario?.id || '',
         empleado,
         informacionAcademica,
         sedeId,
-        fechaAsignacion: fechaAsignacion ? new Date(fechaAsignacion) : undefined
+        fechaAsignacion: fechaAsignacion ? new Date(fechaAsignacion) : undefined,
+        comentario
       });
 
       return res.status(201).json({

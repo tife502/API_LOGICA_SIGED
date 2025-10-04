@@ -71,13 +71,13 @@ export class AsignacionEmpleadoRoutes {
      * @desc Eliminar asignación empleado-sede
      * @access super_admin
      */
-    router.delete('/:id', 
-      authMiddleware,
-      roleMiddleware(['super_admin']),
-      async (req, res) => {
-        await asignacionController.deleteAsignacion(req, res);
-      }
-    );
+    // router.delete('/:id', 
+    //   authMiddleware,
+    //   roleMiddleware(['super_admin']),
+    //   async (req, res) => {
+    //     await asignacionController.deleteAsignacion(req, res);
+    //   }
+    // );
 
     return router;
   }

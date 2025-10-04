@@ -170,7 +170,6 @@ export interface IInformacionAcademica {
   updated_at: Date | null;
 }
 
-// Interface para crear rector completo (request body)
 // Interface para crear rector completo (request body) - CORREGIDA
 export interface ICreateRectorCompletoRequest {
   empleado: ICreateEmpleado;
@@ -178,12 +177,7 @@ export interface ICreateRectorCompletoRequest {
   institucion: ICreateInstitucionEducativa;
   sedes: {
     crear?: Array<ICreateSede & {
-      jornadas?: Array<{
-        nombre: string;
-        hora_inicio: string;
-        hora_fin: string;
-        descripcion?: string;
-      }>;
+      jornadas?: string[]; // Solo nombres de jornadas existentes: "Mañana", "Tarde", "Sabatina", "Nocturna"
     }>;
     asignar_existentes?: string[];
   };
@@ -198,12 +192,16 @@ export interface ICreateRectorCompletoResponse {
   institucion: IInstitucionEducativa;      // Datos reales de institución
   sedes: ISede[];                          // Array de sedes reales creadas/asignadas
   asignaciones: IAsignacionEmpleado[];     // Array de asignaciones reales
-  jornadas?: IJornada[];                   // Array de jornadas creadas (opcional)
+  jornadaAsignaciones?: Array<{            // Asignaciones de jornadas existentes
+    sede_id: string;
+    jornada_id: number;
+    jornada_nombre: string;
+  }>;
   resumen: {
     sedesCreadas: number;
     sedesAsignadas: number;
     asignacionesRealizadas: number;
-    jornadasCreadas?: number;
+    jornadasAsignadas?: number;
   };
 }
 
