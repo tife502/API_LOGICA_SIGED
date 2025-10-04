@@ -239,3 +239,25 @@ Unique constraint failed on the constraint: `documento`
 2025-10-03T21:52:40.813Z info: Ejecutando transacción
 2025-10-03T21:52:40.819Z info: Iniciando creación de rector completo
 2025-10-03T21:52:40.897Z info: Rector completo creado exitosamente
+2025-10-04T16:01:21.491Z info: Obteniendo usuarios
+2025-10-04T16:08:41.542Z info: Obteniendo usuarios
+2025-10-04T16:13:01.777Z info: Obteniendo usuarios
+2025-10-04T16:19:44.532Z info: Obteniendo usuario por email
+2025-10-04T16:19:45.356Z info: Login exitoso
+2025-10-04T16:34:59.454Z info: Obteniendo usuario por email
+2025-10-04T16:35:00.317Z info: Login exitoso
+2025-10-04T17:03:31.576Z info: Token agregado a blacklist
+2025-10-04T17:03:31.578Z info: Token invalidado exitosamente
+2025-10-04T17:03:31.579Z info: Token de acceso invalidado
+2025-10-04T17:03:31.580Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-04T17:03:43.106Z info: Obteniendo usuario por email
+2025-10-04T17:03:43.923Z info: Login exitoso
+2025-10-04T17:30:52.159Z info: Obteniendo usuarios
+2025-10-04T17:30:52.999Z info: Creando nuevo usuario
+2025-10-04T17:30:53.020Z info: Usuario creado exitosamente
+2025-10-04T17:32:16.156Z info: Token agregado a blacklist
+2025-10-04T17:32:16.157Z info: Token invalidado exitosamente
+2025-10-04T17:32:16.157Z info: Token de acceso invalidado
+2025-10-04T17:32:16.158Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-04T17:32:38.029Z info: Obteniendo usuario por email
+2025-10-04T17:32:38.749Z info: Login exitoso
