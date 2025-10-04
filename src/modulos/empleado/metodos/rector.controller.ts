@@ -99,8 +99,6 @@ export class RectorController {
         informacionAcademica,
         institucion,
         sedes,
-        fechaAsignacion,
-        observaciones
       });
 
       return res.status(201).json({
