@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import PrismaService from '../../prisma/prisma.service';
 import { logger } from '../../config';
 import { PrismaInterfaces, Utils } from '../../domain';
+import { Prisma } from '@prisma/client';
 
 /**
  * Controlador para gestión de empleados (docentes/rectores)
@@ -31,6 +32,13 @@ export class EmpleadoController {
         estado: req.body.estado as PrismaInterfaces.EmpleadoEstado || PrismaInterfaces.EmpleadoEstado.activo
       };
 
+      const comentarioEmpleado: PrismaInterfaces.ICreateComentarioEmpleado = {
+        observacion: req.body.comentario?.trim(),
+        empleado_id: '', // Se asignará después de crear el empleado
+        usuario_id: usuario?.id || ''
+      };
+
+      
       // Validación básica
       if (!empleadoData.documento || !empleadoData.nombre || !empleadoData.email) {
         return res.status(400).json({
@@ -50,19 +58,26 @@ export class EmpleadoController {
 
       const nuevoEmpleado = await this.prismaService.createEmpleado(empleadoData);
 
+      const comentarioEmpleadoCreado = await this.prismaService.createComentarioEmpleado({
+        ...comentarioEmpleado,
+        empleado_id: nuevoEmpleado.id
+      });
+
       // Auditoría: Quién digitalizó la información
       logger.info(`Empleado digitalizado por ${usuario?.email} (${usuario?.rol})`, {
         empleado_id: nuevoEmpleado.id,
         empleado_documento: nuevoEmpleado.documento,
         empleado_nombre: `${nuevoEmpleado.nombre} ${nuevoEmpleado.apellido}`,
         digitalizado_por: usuario?.id,
-        digitalizado_por_rol: usuario?.rol
+        digitalizado_por_rol: usuario?.rol,
+        comentario_id: comentarioEmpleadoCreado.id
       });
 
       res.status(201).json({
         success: true,
         message: 'Empleado digitalizado exitosamente',
-        data: nuevoEmpleado
+        data: nuevoEmpleado,
+        comentarioEmpleado: comentarioEmpleadoCreado
       });
     } catch (error: any) {
       logger.error('Error en createEmpleado controller', error);

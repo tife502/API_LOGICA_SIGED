@@ -3,17 +3,21 @@ import PrismaService from '../../prisma/prisma.service';
 import { logger } from '../../config';
 import { PrismaInterfaces, Utils } from '../../domain';
 import { v4 as uuidv4 } from 'uuid';
+import { ComentarioSedeController } from './comentarios/comentarios.controller';
 
-/**
- * Controlador para gestión de sedes educativas
- * Administración de ubicaciones físicas donde se imparten clases
- */
+
+
+  /**
+   * Controlador para gestión de sedes educativas
+   * Administración de ubicaciones físicas donde se imparten clases
+   */
 export class SedeController {
   private prismaService: PrismaService;
 
   constructor() {
     this.prismaService = PrismaService.getInstance();
   }
+
 
   /**
    * Crear nueva sede
@@ -24,12 +28,18 @@ export class SedeController {
       const usuario = req.usuario; // Usuario que está creando
       
       // Validar datos de entrada usando la interface
-      const sedeData: PrismaInterfaces.ICreateSede = {
+      const sedeData: PrismaInterfaces.ICreateSede= {
         nombre: req.body.nombre?.trim(),
         estado: req.body.estado || PrismaInterfaces.SedeEstado.activa,
         zona: req.body.zona as PrismaInterfaces.SedeZona,
         direccion: req.body.direccion?.trim(),
         codigo_DANE: req.body.codigo_DANE?.trim() || null
+      };
+
+      const comentarioData: PrismaInterfaces.ICreateComentarioSede = {
+        observacion: req.body.comentario?.trim(),
+        sede_id: '', // Se asignará después de crear la sede
+        usuario_id: usuario?.id || ''
       };
 
       // Validación básica
@@ -60,17 +70,25 @@ export class SedeController {
       // Crear sede usando el método del servicio
       const sede = await this.prismaService.createSede(sedeData);
 
-      logger.info(`Sede creada: ${sede.id} por usuario ${usuario?.id}`, {
+      const comentarioSede = await this.prismaService.createComentarioSede({
+        ...comentarioData,
+        sede_id: sede.id
+      });
+
+      logger.info(`Sede creada: ${sede.id} por usuario ${usuario?.id}, 
+        y con el comentario: ${comentarioSede.id} con el contenido: ${comentarioSede.observacion}`, {
         action: 'CREATE_SEDE',
         userId: usuario?.id,
         sedeId: sede.id,
-        sede: sede
+        sede: sede,
+        comentarioSede: comentarioSede
       });
 
       res.status(201).json({
         success: true,
         message: 'Sede creada exitosamente',
-        data: sede
+        data: sede, 
+        comentarioSede: comentarioSede
       });
 
     } catch (error: any) {

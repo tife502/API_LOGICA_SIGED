@@ -68,7 +68,11 @@ export class RectorService {
       // 5. Procesar sedes
       const sedesCreadas: PrismaInterfaces.ISede[] = [];
       const asignacionesCreadas: PrismaInterfaces.IAsignacionEmpleado[] = [];
-      let jornadasCreadas: PrismaInterfaces.IJornada[] = [];
+      const jornadaAsignaciones: Array<{
+        sede_id: string;
+        jornada_id: number;
+        jornada_nombre: string;
+      }> = [];
 
       // 5a. Crear sedes nuevas si se especifican
       if (data.sedes.crear && data.sedes.crear.length > 0) {
@@ -96,26 +100,45 @@ export class RectorService {
             }
           });
 
-          // Crear jornadas si se especifican
+          // Asignar jornadas existentes a la sede si se especifican
           if (sedeData.jornadas && sedeData.jornadas.length > 0) {
-            for (const jornadaData of sedeData.jornadas) {
-            const jornada = await prisma.jornada.create({
-              data: {
-                nombre: jornadaData.nombre,
-                created_at: new Date()
-              }
-            });
-            jornadasCreadas.push(jornada as PrismaInterfaces.IJornada);
+            for (const nombreJornada of sedeData.jornadas) {
+              // Buscar jornada existente por nombre
+              const jornadaExistente = await prisma.jornada.findFirst({
+                where: { 
+                  nombre: nombreJornada 
+                }
+              });
 
-            // Relacionar jornada con sede
-            await prisma.sede_jornada.create({
-              data: {
-                id: uuidv4(),
-                sede_id: sedeCreada.id,
-                jornada_id: jornada.id,
-                created_at: new Date()
+              if (!jornadaExistente) {
+                throw new Error(`Jornada '${nombreJornada}' no encontrada. Las jornadas válidas son: Mañana, Tarde, Sabatina, Nocturna`);
               }
-            });
+
+              // Verificar si ya existe la relación sede-jornada
+              const relacionExistente = await prisma.sede_jornada.findFirst({
+                where: {
+                  sede_id: sedeCreada.id,
+                  jornada_id: jornadaExistente.id
+                }
+              });
+
+              // Solo crear la relación si no existe
+              if (!relacionExistente) {
+                await prisma.sede_jornada.create({
+                  data: {
+                    id: uuidv4(),
+                    sede_id: sedeCreada.id,
+                    jornada_id: jornadaExistente.id,
+                    created_at: new Date()
+                  }
+                });
+
+                jornadaAsignaciones.push({
+                  sede_id: sedeCreada.id,
+                  jornada_id: jornadaExistente.id,
+                  jornada_nombre: jornadaExistente.nombre
+                });
+              }
             }
           }
 
@@ -197,12 +220,12 @@ export class RectorService {
       institucion: institucionCreada as PrismaInterfaces.IInstitucionEducativa,           // ✅ IInstitucionEducativa
       sedes: sedesCreadas,                      // ✅ ISede[]
       asignaciones: asignacionesCreadas,        // ✅ IAsignacionEmpleado[]
-      jornadas: jornadasCreadas.length > 0 ? jornadasCreadas : undefined, // ✅ IJornada[] | undefined
+      jornadaAsignaciones: jornadaAsignaciones.length > 0 ? jornadaAsignaciones : undefined,
       resumen: {
         sedesCreadas: data.sedes.crear?.length || 0,
-        sedesAsignadas: asignacionesCreadas.length,
+        sedesAsignadas: data.sedes.asignar_existentes?.length || 0,
         asignacionesRealizadas: asignacionesCreadas.length,
-        jornadasCreadas: jornadasCreadas.length
+        jornadasAsignadas: jornadaAsignaciones.length
       }
     };      return response;
     });

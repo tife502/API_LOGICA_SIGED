@@ -135,3 +135,104 @@ Unique constraint failed on the constraint: `documento`
     at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
 2025-10-03T19:12:03.866Z error: Error en middleware de autenticación
 2025-10-03T19:12:10.681Z error: Error en middleware de autenticación
+2025-10-04T16:03:23.281Z error: Error: Ya existe un empleado activo con el documento 87654321098
+    at RectorService.<anonymous> (/home/finova/api_basica/src/modulos/empleado/metodos/rector.service.ts:392:11)
+    at Generator.next (<anonymous>)
+    at fulfilled (/home/finova/api_basica/src/modulos/empleado/metodos/rector.service.ts:5:58)
+2025-10-04T16:03:23.282Z error: Error: Ya existe un empleado activo con el documento 87654321098
+    at RectorService.<anonymous> (/home/finova/api_basica/src/modulos/empleado/metodos/rector.service.ts:392:11)
+    at Generator.next (<anonymous>)
+    at fulfilled (/home/finova/api_basica/src/modulos/empleado/metodos/rector.service.ts:5:58)
+2025-10-04T16:29:52.249Z error: PrismaClientValidationError: 
+Invalid `prisma.informacion_academica.create()` invocation in
+/home/finova/api_basica/src/modulos/empleado/metodos/empleado.service.ts:65:67
+
+  62 // 4. Crear información académica si se proporciona
+  63 let informacionAcademica = null;
+  64 if (data.informacionAcademica) {
+→ 65   informacionAcademica = await prisma.informacion_academica.create({
+         data: {
+           nivel_academico: "licenciada",
+                            ~~~~~~~~~~~~
+           anos_experiencia: 8,
+           institucion: "Universidad Tecnologica De Pereira",
+           titulo: "Licenciatura en Matemáticas",
+           id: "4d6a69b6-eaaa-4c0b-a89d-82880bcfe671",
+           empleado_id: "657ced33-3f1e-427d-9523-b88eb072683e",
+           created_at: new Date("2025-10-04T16:29:52.104Z"),
+           updated_at: new Date("2025-10-04T16:29:52.104Z")
+         }
+       })
+
+Invalid value for argument `nivel_academico`. Expected informacion_academica_nivel_academico.
+    at throwValidationException (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-04T16:29:52.249Z error: PrismaClientValidationError: 
+Invalid `prisma.informacion_academica.create()` invocation in
+/home/finova/api_basica/src/modulos/empleado/metodos/empleado.service.ts:65:67
+
+  62 // 4. Crear información académica si se proporciona
+  63 let informacionAcademica = null;
+  64 if (data.informacionAcademica) {
+→ 65   informacionAcademica = await prisma.informacion_academica.create({
+         data: {
+           nivel_academico: "licenciada",
+                            ~~~~~~~~~~~~
+           anos_experiencia: 8,
+           institucion: "Universidad Tecnologica De Pereira",
+           titulo: "Licenciatura en Matemáticas",
+           id: "4d6a69b6-eaaa-4c0b-a89d-82880bcfe671",
+           empleado_id: "657ced33-3f1e-427d-9523-b88eb072683e",
+           created_at: new Date("2025-10-04T16:29:52.104Z"),
+           updated_at: new Date("2025-10-04T16:29:52.104Z")
+         }
+       })
+
+Invalid value for argument `nivel_academico`. Expected informacion_academica_nivel_academico.
+    at throwValidationException (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-04T17:02:34.036Z error: PrismaClientKnownRequestError: 
+Invalid `this.prisma.sede.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:342:37
+
+  339 async createSede(data: PrismaInterfaces.ICreateSede) {
+  340   try {
+  341     logger.info('Creando nueva sede', { data });
+→ 342     return await this.prisma.sede.create(
+Unique constraint failed on the constraint: `codigo_DANE`
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-04T17:18:04.721Z error: PrismaClientKnownRequestError: 
+Invalid `this.prisma.empleado.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:26:41
+
+  23 async createEmpleado(data: PrismaInterfaces.ICreateEmpleado) {
+  24   try {
+  25     logger.info('Creando nuevo empleado', { data });
+→ 26     return await this.prisma.empleado.create(
+Unique constraint failed on the constraint: `documento`
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-04T17:18:04.722Z error: PrismaClientKnownRequestError: 
+Invalid `this.prisma.empleado.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:26:41
+
+  23 async createEmpleado(data: PrismaInterfaces.ICreateEmpleado) {
+  24   try {
+  25     logger.info('Creando nuevo empleado', { data });
+→ 26     return await this.prisma.empleado.create(
+Unique constraint failed on the constraint: `documento`
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)

@@ -239,6 +239,7 @@ Unique constraint failed on the constraint: `documento`
 2025-10-03T21:52:40.813Z info: Ejecutando transacción
 2025-10-03T21:52:40.819Z info: Iniciando creación de rector completo
 2025-10-03T21:52:40.897Z info: Rector completo creado exitosamente
+<<<<<<< HEAD
 2025-10-04T16:01:21.491Z info: Obteniendo usuarios
 2025-10-04T16:08:41.542Z info: Obteniendo usuarios
 2025-10-04T16:13:01.777Z info: Obteniendo usuarios
@@ -261,3 +262,226 @@ Unique constraint failed on the constraint: `documento`
 2025-10-04T17:32:16.158Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
 2025-10-04T17:32:38.029Z info: Obteniendo usuario por email
 2025-10-04T17:32:38.749Z info: Login exitoso
+=======
+2025-10-04T16:03:23.157Z info: Creando rector completo
+2025-10-04T16:03:23.162Z info: Ejecutando transacción
+2025-10-04T16:03:23.174Z info: Iniciando creación de rector completo
+2025-10-04T16:03:23.176Z info: Ejecutando transacción
+2025-10-04T16:03:23.281Z error: Error: Ya existe un empleado activo con el documento 87654321098
+    at RectorService.<anonymous> (/home/finova/api_basica/src/modulos/empleado/metodos/rector.service.ts:392:11)
+    at Generator.next (<anonymous>)
+    at fulfilled (/home/finova/api_basica/src/modulos/empleado/metodos/rector.service.ts:5:58)
+2025-10-04T16:03:23.282Z error: Error: Ya existe un empleado activo con el documento 87654321098
+    at RectorService.<anonymous> (/home/finova/api_basica/src/modulos/empleado/metodos/rector.service.ts:392:11)
+    at Generator.next (<anonymous>)
+    at fulfilled (/home/finova/api_basica/src/modulos/empleado/metodos/rector.service.ts:5:58)
+2025-10-04T16:03:59.326Z info: Obteniendo usuario por ID
+2025-10-04T16:04:10.619Z info: Obteniendo usuario por email
+2025-10-04T16:04:10.818Z info: Login exitoso
+2025-10-04T16:04:36.829Z info: Obteniendo usuario por email
+2025-10-04T16:04:37.062Z info: Login exitoso
+2025-10-04T16:06:17.839Z info: Obteniendo usuario por ID
+2025-10-04T16:06:26.134Z info: Obteniendo usuario por ID
+2025-10-04T16:11:16.620Z info: Obteniendo usuario por ID
+2025-10-04T16:15:29.861Z info: Obteniendo usuarios
+2025-10-04T16:15:40.644Z info: Obteniendo usuarios
+2025-10-04T16:15:40.839Z info: Creando nuevo usuario
+2025-10-04T16:15:40.860Z info: Usuario inicial creado: jean.duran@superadmin.com
+2025-10-04T16:16:23.673Z info: Obteniendo usuario por ID
+2025-10-04T16:16:28.993Z info: Obteniendo usuario por ID
+2025-10-04T16:16:29.387Z info: Obteniendo usuario por ID
+2025-10-04T16:16:29.885Z info: Obteniendo usuario por ID
+2025-10-04T16:16:30.192Z info: Obteniendo usuario por ID
+2025-10-04T16:16:30.605Z info: Obteniendo usuario por ID
+2025-10-04T16:16:34.082Z info: Obteniendo usuario por email
+2025-10-04T16:16:34.281Z info: Login exitoso
+2025-10-04T16:16:52.674Z info: Obteniendo usuario por ID
+2025-10-04T16:17:34.426Z info: Creando rector completo
+2025-10-04T16:17:34.426Z info: Ejecutando transacción
+2025-10-04T16:17:34.433Z info: Iniciando creación de rector completo
+2025-10-04T16:17:34.433Z info: Ejecutando transacción
+2025-10-04T16:17:34.539Z info: Ejecutando transacción
+2025-10-04T16:17:34.656Z info: Rector completo creado exitosamente
+2025-10-04T16:18:46.452Z info: Información académica obtenida: 3 de 3
+2025-10-04T16:18:56.601Z info: Información académica obtenida: 3 de 3
+2025-10-04T16:18:57.581Z info: Información académica obtenida: 3 de 3
+2025-10-04T16:18:58.182Z info: Información académica obtenida: 3 de 3
+2025-10-04T16:18:58.649Z info: Información académica obtenida: 3 de 3
+2025-10-04T16:18:59.114Z info: Información académica obtenida: 3 de 3
+2025-10-04T16:20:02.545Z info: Información académica obtenida: 3 de 3
+2025-10-04T16:20:18.996Z info: Información académica obtenida: 3 de 3
+2025-10-04T16:20:38.526Z info: Información académica obtenida: 3 de 3
+2025-10-04T16:21:19.766Z info: Información académica obtenida: 3 de 3
+2025-10-04T16:29:51.822Z info: Creando empleado con sede
+2025-10-04T16:29:51.825Z info: Ejecutando transacción
+2025-10-04T16:29:52.029Z info: Iniciando creación de empleado con sede
+2025-10-04T16:29:52.061Z info: Ejecutando transacción
+2025-10-04T16:29:52.084Z info: Ejecutando transacción
+2025-10-04T16:29:52.249Z error: PrismaClientValidationError: 
+Invalid `prisma.informacion_academica.create()` invocation in
+/home/finova/api_basica/src/modulos/empleado/metodos/empleado.service.ts:65:67
+
+  62 // 4. Crear información académica si se proporciona
+  63 let informacionAcademica = null;
+  64 if (data.informacionAcademica) {
+→ 65   informacionAcademica = await prisma.informacion_academica.create({
+         data: {
+           nivel_academico: "licenciada",
+                            ~~~~~~~~~~~~
+           anos_experiencia: 8,
+           institucion: "Universidad Tecnologica De Pereira",
+           titulo: "Licenciatura en Matemáticas",
+           id: "4d6a69b6-eaaa-4c0b-a89d-82880bcfe671",
+           empleado_id: "657ced33-3f1e-427d-9523-b88eb072683e",
+           created_at: new Date("2025-10-04T16:29:52.104Z"),
+           updated_at: new Date("2025-10-04T16:29:52.104Z")
+         }
+       })
+
+Invalid value for argument `nivel_academico`. Expected informacion_academica_nivel_academico.
+    at throwValidationException (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-04T16:29:52.249Z error: PrismaClientValidationError: 
+Invalid `prisma.informacion_academica.create()` invocation in
+/home/finova/api_basica/src/modulos/empleado/metodos/empleado.service.ts:65:67
+
+  62 // 4. Crear información académica si se proporciona
+  63 let informacionAcademica = null;
+  64 if (data.informacionAcademica) {
+→ 65   informacionAcademica = await prisma.informacion_academica.create({
+         data: {
+           nivel_academico: "licenciada",
+                            ~~~~~~~~~~~~
+           anos_experiencia: 8,
+           institucion: "Universidad Tecnologica De Pereira",
+           titulo: "Licenciatura en Matemáticas",
+           id: "4d6a69b6-eaaa-4c0b-a89d-82880bcfe671",
+           empleado_id: "657ced33-3f1e-427d-9523-b88eb072683e",
+           created_at: new Date("2025-10-04T16:29:52.104Z"),
+           updated_at: new Date("2025-10-04T16:29:52.104Z")
+         }
+       })
+
+Invalid value for argument `nivel_academico`. Expected informacion_academica_nivel_academico.
+    at throwValidationException (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-04T16:30:18.425Z info: Creando empleado con sede
+2025-10-04T16:30:18.425Z info: Ejecutando transacción
+2025-10-04T16:30:18.430Z info: Iniciando creación de empleado con sede
+2025-10-04T16:30:18.435Z info: Ejecutando transacción
+2025-10-04T16:30:18.446Z info: Ejecutando transacción
+2025-10-04T16:30:18.480Z info: Empleado creado y asignado exitosamente
+2025-10-04T16:54:07.859Z info: Obteniendo usuario por ID
+2025-10-04T16:57:18.421Z info: Obteniendo usuario por email
+2025-10-04T16:57:18.642Z info: Login exitoso
+2025-10-04T16:57:30.635Z warn: Error verificando token JWT
+2025-10-04T16:57:30.636Z warn: Error en middleware de autenticación
+2025-10-04T16:57:44.642Z info: Obteniendo usuario por ID
+2025-10-04T16:58:08.587Z info: Obteniendo usuario por ID
+2025-10-04T16:58:09.808Z info: Obteniendo usuario por ID
+2025-10-04T16:58:10.774Z info: Obteniendo usuario por ID
+2025-10-04T16:58:11.222Z info: Obteniendo usuario por ID
+2025-10-04T16:58:11.554Z info: Obteniendo usuario por ID
+2025-10-04T16:58:11.894Z info: Obteniendo usuario por ID
+2025-10-04T16:58:12.042Z info: Obteniendo usuario por ID
+2025-10-04T16:58:12.366Z info: Obteniendo usuario por ID
+2025-10-04T16:58:12.685Z info: Obteniendo usuario por ID
+2025-10-04T16:58:12.809Z info: Obteniendo usuario por ID
+2025-10-04T16:58:13.205Z info: Obteniendo usuario por ID
+2025-10-04T16:58:13.508Z info: Obteniendo usuario por ID
+2025-10-04T16:58:13.867Z info: Obteniendo usuario por ID
+2025-10-04T16:58:14.007Z info: Obteniendo usuario por ID
+2025-10-04T16:58:14.217Z info: Obteniendo usuario por ID
+2025-10-04T16:58:14.628Z info: Obteniendo usuario por ID
+2025-10-04T16:58:14.759Z info: Obteniendo usuario por ID
+2025-10-04T16:58:14.956Z info: Obteniendo usuario por ID
+2025-10-04T16:58:15.222Z info: Obteniendo usuario por ID
+2025-10-04T16:58:15.417Z info: Obteniendo usuario por ID
+2025-10-04T16:58:15.758Z info: Obteniendo usuario por ID
+2025-10-04T16:58:15.878Z info: Obteniendo usuario por ID
+2025-10-04T16:58:16.066Z info: Obteniendo usuario por ID
+2025-10-04T16:58:16.398Z info: Obteniendo usuario por ID
+2025-10-04T16:58:16.526Z info: Obteniendo usuario por ID
+2025-10-04T16:58:16.826Z info: Obteniendo usuario por ID
+2025-10-04T16:58:16.986Z info: Obteniendo usuario por ID
+2025-10-04T16:58:17.294Z info: Obteniendo usuario por ID
+2025-10-04T16:58:54.826Z info: Token agregado a blacklist
+2025-10-04T16:58:54.826Z info: Token invalidado exitosamente
+2025-10-04T16:58:54.826Z info: Token de acceso invalidado
+2025-10-04T16:58:54.826Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-04T16:58:59.005Z warn: Intento de uso de token blacklisteado
+2025-10-04T16:58:59.005Z warn: Error en middleware de autenticación
+2025-10-04T17:00:42.909Z info: Obteniendo usuario por email
+2025-10-04T17:00:43.122Z info: Login exitoso
+2025-10-04T17:02:33.875Z info: Creando nueva sede
+2025-10-04T17:02:34.036Z error: PrismaClientKnownRequestError: 
+Invalid `this.prisma.sede.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:342:37
+
+  339 async createSede(data: PrismaInterfaces.ICreateSede) {
+  340   try {
+  341     logger.info('Creando nueva sede', { data });
+→ 342     return await this.prisma.sede.create(
+Unique constraint failed on the constraint: `codigo_DANE`
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-04T17:03:46.090Z info: Creando nueva sede
+2025-10-04T17:03:46.112Z info: Creando comentario de sede
+2025-10-04T17:03:46.138Z info: Sede creada: 16ce4b27-a144-11f0-99f3-0242ac120002 por usuario 5f0e4a36-a13d-11f0-99f3-0242ac120002, 
+        y con el comentario: 16d13c71-a144-11f0-99f3-0242ac120002 con el contenido: Sede principal de la institución con capacidad para 800 estudiantes. Cuenta con laboratorios de ciencias, biblioteca y aulas especializadas.
+2025-10-04T17:17:32.318Z warn: Error verificando token JWT
+2025-10-04T17:17:32.320Z warn: Error en middleware de autenticación
+2025-10-04T17:18:04.109Z info: Creando nuevo empleado
+2025-10-04T17:18:04.491Z info: Creando nuevo empleado
+2025-10-04T17:18:04.577Z info: Creando comentario de empleado
+2025-10-04T17:18:04.721Z error: PrismaClientKnownRequestError: 
+Invalid `this.prisma.empleado.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:26:41
+
+  23 async createEmpleado(data: PrismaInterfaces.ICreateEmpleado) {
+  24   try {
+  25     logger.info('Creando nuevo empleado', { data });
+→ 26     return await this.prisma.empleado.create(
+Unique constraint failed on the constraint: `documento`
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-04T17:18:04.722Z error: PrismaClientKnownRequestError: 
+Invalid `this.prisma.empleado.create()` invocation in
+/home/finova/api_basica/src/prisma/prisma.service.ts:26:41
+
+  23 async createEmpleado(data: PrismaInterfaces.ICreateEmpleado) {
+  24   try {
+  25     logger.info('Creando nuevo empleado', { data });
+→ 26     return await this.prisma.empleado.create(
+Unique constraint failed on the constraint: `documento`
+    at ei.handleRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-04T17:18:04.727Z info: Empleado digitalizado por jean.duran@superadmin.com (super_admin)
+2025-10-04T17:20:28.504Z info: Creando nuevo empleado
+2025-10-04T17:20:28.530Z info: Creando comentario de empleado
+2025-10-04T17:20:28.556Z info: Empleado digitalizado por jean.duran@superadmin.com (super_admin)
+2025-10-04T17:26:43.510Z warn: Error verificando token JWT
+2025-10-04T17:26:43.511Z warn: Error en middleware de autenticación
+2025-10-04T17:26:55.909Z info: Obteniendo usuarios
+2025-10-04T17:26:56.251Z info: Usuarios obtenidos: 1
+2025-10-04T17:40:10.376Z warn: Error verificando token JWT
+2025-10-04T17:40:10.378Z warn: Error en middleware de autenticación
+2025-10-04T17:40:44.939Z info: Obteniendo usuarios
+2025-10-04T17:40:45.141Z info: Creando nuevo usuario
+2025-10-04T17:40:45.163Z info: Usuario creado exitosamente
+2025-10-04T17:44:36.514Z info: Obteniendo usuarios
+2025-10-04T17:44:36.803Z info: Creando nuevo usuario
+2025-10-04T17:44:36.821Z info: Usuario creado exitosamente
+>>>>>>> 4edd7b1ada331e23fa73b933ee91e5c0eb970ae7

@@ -28,7 +28,6 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
         msg: 'Token de autorización requerido'
       });
     }
-
     // Extraer token del header
     const token = JwtService.extractTokenFromHeader(authorization);
     
@@ -42,14 +41,12 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     // Verificar y decodificar token (incluye verificación de blacklist)
     const payload = JwtService.verifyToken(token);
 
-    console.log("Usuario autenticado en auth:", req.usuario);
     // Añadir usuario al request
     req.usuario = {
       id: payload.id,
       rol: payload.rol,
       email: payload.email
     };
-
     next();
   } catch (error: any) {
     logger.warn('Error en middleware de autenticación', { 
@@ -78,8 +75,6 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
 export const roleMiddleware = (allowedRoles: string[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
-      console.log("Roles permitidos en roleMiddleware:", allowedRoles);
-      console.log("Usuario autenticado en roleMiddleware:", req.usuario);
       if (!req.usuario) {
         return res.status(401).json({
           ok: false,

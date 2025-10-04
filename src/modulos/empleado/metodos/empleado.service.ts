@@ -22,10 +22,11 @@ export class EmpleadoService {
     // Datos del empleado
     empleado: PrismaInterfaces.ICreateEmpleado;
     informacionAcademica?: PrismaInterfaces.ICreateInformacionAcademica;
-    
+    usuarioId: string;
     // Asignación a sede
     sedeId: string;
     fechaAsignacion?: Date;
+    comentario?: PrismaInterfaces.ICreateComentarioEmpleado;
   }) {
     return await this.prismaService.executeTransaction(async (prisma) => {
       logger.info('Iniciando creación de empleado con sede', { 
@@ -58,6 +59,7 @@ export class EmpleadoService {
           updated_at: new Date()
         }
       });
+      
 
       // 4. Crear información académica si se proporciona
       let informacionAcademica = null;
@@ -72,6 +74,16 @@ export class EmpleadoService {
           }
         });
       }
+
+      const comentarioEmpleadoCreado = data.comentario ? await prisma.comentario_empleado.create({
+        data: {
+          ...data.comentario,
+          id: uuidv4(),
+          empleado_id: empleado.id,
+          usuario_id: data.usuarioId,
+          created_at: new Date(),
+        }
+      }) : null;
 
       // 5. Crear asignación a sede
       const asignacion = await prisma.asignacion_empleado.create({
@@ -88,7 +100,8 @@ export class EmpleadoService {
       logger.info('Empleado creado y asignado exitosamente', {
         empleadoId: empleado.id,
         sedeId: data.sedeId,
-        cargo: empleado.cargo
+        cargo: empleado.cargo,
+        comentarioEmpleadoId: comentarioEmpleadoCreado?.id
       });
 
       return {
@@ -96,6 +109,7 @@ export class EmpleadoService {
         informacionAcademica,
         asignacion,
         sede,
+        comentarioEmpleado: comentarioEmpleadoCreado,
         resumen: {
           empleadoCreado: true,
           sedeAsignada: sede.nombre,
