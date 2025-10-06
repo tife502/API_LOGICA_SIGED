@@ -122,4 +122,15 @@ router.get('/:empleadoId/historial-asignaciones', authMiddleware, empleadoContro
  */
 router.get('/validar-asignacion', authMiddleware, empleadoController.validarAsignacion);
 
+
+//`* @route POST /api/v1/empleados/normal/:empleadoId/primera-asignacion
+// * @desc Asignar sede a un empleado que nunca ha sido asignado (primera asignación)
+// * @access Private (requiere autenticación)
+// * @params empleadoId - ID del empleado
+// * @body {
+// *   sedeId: string,
+// *   fechaAsignacion?: Date,
+// * }
+router.post('/:empleadoId/primera-asignacion', authMiddleware, empleadoController.primeraAsignacionEmpleado);
+
 export default router;

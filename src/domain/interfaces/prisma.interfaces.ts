@@ -509,6 +509,15 @@ export interface ICreateDocumentoEmpleado {
   descripcion?: string;
 }
 
+// Interface para actualizar documento de empleado
+export interface IUpdateDocumentoEmpleado {
+  empleado_id?: string;
+  tipo_documento?: DocumentosEmpleadoTipo;
+  nombre?: string;
+  ruta_relativa?: string;
+  descripcion?: string;
+}
+
 // Interface para crear acto administrativo
 export interface ICreateActoAdministrativo {
   fecha_creacion?: Date;
@@ -586,4 +595,47 @@ export interface IApiResponse<T> {
   message: string;
   data?: T;
   error?: string;
+}
+
+// ============= INTERFACES PARA SUPLENCIAS =============
+
+// Interface para suplencia completa (datos reales de DB)
+export interface ISuplencias {
+  id: string;
+  docente_ausente_id: string;
+  causa_ausencia: string;
+  fecha_inicio_ausencia: Date;
+  fecha_fin_ausencia: Date;
+  sede_id: string;
+  docente_reemplazo_id: string;
+  fecha_inicio_reemplazo: Date;
+  fecha_fin_reemplazo: Date;
+  horas_cubiertas: number;
+  jornada: SuplenciasJornada;
+  observacion: string | null;
+  created_at: Date | null;
+}
+
+// ============= INTERFACES PARA DOCUMENTOS DE SUPLENCIAS =============
+
+// Interface para crear documento de suplencia
+export interface ICreateDocumentoSuplencia {
+  suplencia_id: string;
+  nombre: string;
+  ruta_relativa: string;
+}
+
+// Interface para actualizar documento de suplencia
+export interface IUpdateDocumentoSuplencia {
+  nombre?: string;
+  ruta_relativa?: string;
+}
+
+// Interface para documento de suplencia completo (datos reales de DB)
+export interface IDocumentoSuplencia {
+  id: string;
+  suplencia_id: string;
+  nombre: string;
+  ruta_relativa: string;
+  created_at: Date | null;
 }

@@ -420,4 +420,68 @@ export class EmpleadoNormalController {
       });
     }
   };
+
+  /**
+   * POST /api/v1/empleados/normal/:empleadoId/primera-asignacion
+   * Asignar empleado por primera vez (debe NO tener asignación activa)
+   */
+  public primeraAsignacionEmpleado = async (req: Request, res: Response): Promise<Response> => {
+    try {
+      const { empleadoId } = req.params;
+      const { sedeId, fechaAsignacion } = req.body;
+
+      // Verificar que NO tenga asignación activa
+      const empleado = await this.empleadoService['prismaService'].executeTransaction(async (prisma) => {
+        return await prisma.empleado.findUnique({
+          where: { id: empleadoId },
+          include: {
+            asignacion_empleado: {
+              where: { estado: 'activa' }
+            }
+          }
+        });
+      });
+
+      if (!empleado) {
+        return res.status(404).json({
+          success: false,
+          message: 'Empleado no encontrado',
+          data: null
+        });
+      }
+
+      const tieneAsignacionActiva = (empleado.asignacion_empleado?.length || 0) > 0;
+      
+      if (tieneAsignacionActiva) {
+        return res.status(400).json({
+          success: false,
+          message: 'El empleado ya tiene una asignación activa. Use el endpoint de transferencia.',
+          data: {
+            asignacionActual: empleado.asignacion_empleado?.[0]
+          }
+        });
+      }
+
+      const resultado = await this.empleadoService.asignarEmpleadoASede({
+        empleadoId,
+        sedeId,
+        fechaAsignacion: fechaAsignacion ? new Date(fechaAsignacion) : new Date(),
+        reemplazarAsignacionActual: false
+      });
+
+      return res.status(200).json({
+        success: true,
+        message: 'Primera asignación creada exitosamente',
+        data: resultado
+      });
+
+    } catch (error) {
+      logger.error('Error asignando primera vez empleado a sede', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Error interno del servidor',
+        error: error instanceof Error ? error.message : 'Error desconocido'
+      });
+    }
+  };
 }

@@ -8,6 +8,9 @@ import ActoAdministrativoRoutes from '../modulos/actos.administrativos/act.admin
 import DocumentoActoAdministrativoRoutes from '../modulos/documentos/documentos_actos_administrativos/doc.act.admin.routes';
 import HorasExtraRoutes from '../modulos/horas.extras/horas.extra.routes';
 import DocumentoHorasExtraRoutes from '../modulos/documentos/documentos.horas.extra/doc.horas.extra.routes';
+import DocumentoEmpleadoRoutes from '../modulos/documentos/documentos_empleados/doc.empleado.routes';
+import SuplenciasRoutes from '../modulos/suplencias/suplencia.routes';
+import DocumentoSuplenciaRoutes from '../modulos/documentos/documentos_suplencias/doc.suplencia.routes';
 
 /**
  * Clase para definir las rutas principales de la aplicación
@@ -53,6 +56,15 @@ export class AppRoutes {
 
     //Rutas para documentos de horas extra
     router.use(`/api/documentos-horas-extra`, DocumentoHorasExtraRoutes);
+
+    //Rutas para documentos de empleado
+    router.use(`/api/documentos-empleado`, DocumentoEmpleadoRoutes);
+
+    //Rutas para suplencias
+    router.use(`/api/suplencias`, SuplenciasRoutes);
+
+    //Rutas para documentos de suplencias
+    router.use(`/api/documentos-suplencia`, DocumentoSuplenciaRoutes);
 
     return router;
   }
