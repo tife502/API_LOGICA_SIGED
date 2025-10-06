@@ -912,7 +912,7 @@ class PrismaService {
     try {
       logger.info('Creando registro de horas extra', { data });
       return await this.prisma.horas_extra.create({
-        data
+        data: data as any
       });
     } catch (error) {
       logger.error('Error creando horas extra', error);

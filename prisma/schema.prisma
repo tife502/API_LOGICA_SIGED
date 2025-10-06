@@ -156,14 +156,12 @@ model horas_extra {
   fecha_realizacion      DateTime                 @db.Date
   jornada                horas_extra_jornada
   observacion            String?                  @db.Text
-  estado                 horas_extra_estado       @default(pendiente)
   created_at             DateTime?                @default(now()) @db.Timestamp(0)
   documentos_horas_extra documentos_horas_extra[]
   empleado               empleado                 @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "horas_extra_ibfk_1")
   sede                   sede                     @relation(fields: [sede_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "horas_extra_ibfk_2")
 
   @@index([empleado_id], map: "idx_empleado_horas")
-  @@index([estado], map: "idx_estado_horas")
   @@index([fecha_realizacion], map: "idx_fecha_realizacion")
   @@index([jornada], map: "idx_jornada_horas")
   @@index([sede_id], map: "idx_sede_horas")
@@ -348,12 +346,6 @@ enum horas_extra_jornada {
 enum empleado_cargo {
   Docente
   Rector
-}
-
-enum horas_extra_estado {
-  pendiente
-  aprobada
-  rechazada
 }
 
 enum empleado_estado {

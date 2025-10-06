@@ -47,12 +47,6 @@ export enum HorasExtraJornada {
   nocturna = 'nocturna'
 }
 
-export enum HorasExtraEstado {
-  pendiente = 'pendiente',
-  aprobada = 'aprobada',
-  rechazada = 'rechazada'
-}
-
 export enum SuplenciasJornada {
   mañana = 'mañana',
   tarde = 'tarde',
@@ -418,9 +412,8 @@ export interface ICreateHorasExtra {
   sede_id: string;
   cantidad_horas: number;
   fecha_realizacion: Date;
-  jornada: 'ma_ana' | 'tarde' | 'sabatina' | 'nocturna';
+  jornada: HorasExtraJornada;
   observacion?: string;
-  estado?: 'pendiente' | 'aprobada' | 'rechazada';
 }
 
 // Interface para actualizar horas extra
@@ -431,7 +424,6 @@ export interface IUpdateHorasExtra {
   fecha_realizacion?: Date;
   jornada?: HorasExtraJornada;
   observacion?: string;
-  estado?: HorasExtraEstado;
 }
 
 // Interface para crear suplencia

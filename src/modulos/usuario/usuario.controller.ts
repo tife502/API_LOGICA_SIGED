@@ -120,7 +120,6 @@ export class UsuarioController {
   };
 
   createInitialUser = async (req: Request, res: Response) => {
-    console.log(req.body);
     try {
       // Verificar si ya existe al menos un usuario
       const existingUsers = await this.prismaService.getUsuarios({}, { page: 1, limit: 1 });
@@ -366,6 +365,7 @@ export class UsuarioController {
   // ============= ACTUALIZAR USUARIO =============
 
   updateUsuario = async (req: Request, res: Response) => {
+    console.log(req.body);
     try {
       const { id } = req.params;
 

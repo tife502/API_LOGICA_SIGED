@@ -4,6 +4,10 @@ import { UsuarioRoutes } from '../modulos/usuario/usuario.routes';
 import { InformacionAcademicaRoutes } from '../modulos/informacion.academica/informacion.academica.routes';
 import { SedeRoutes, InstitucionesRouter, JornadasGlobalRouter } from '../modulos/sede/sede.routes';
 import AuthRoutes from '../auth/auth.routes';
+import ActoAdministrativoRoutes from '../modulos/actos.administrativos/act.admin.routes';
+import DocumentoActoAdministrativoRoutes from '../modulos/documentos/documentos_actos_administrativos/doc.act.admin.routes';
+import HorasExtraRoutes from '../modulos/horas.extras/horas.extra.routes';
+import DocumentoHorasExtraRoutes from '../modulos/documentos/documentos.horas.extra/doc.horas.extra.routes';
 
 /**
  * Clase para definir las rutas principales de la aplicación
@@ -37,6 +41,18 @@ export class AppRoutes {
 
     //Rutas globales para jornadas
     router.use(`/api`, JornadasGlobalRouter.routes);
+
+    //Rutas para actos administrativos
+    router.use(`/api/actos-administrativos`, ActoAdministrativoRoutes);
+
+    //Rutas para documentos de actos administrativos
+    router.use(`/api/documentos-actos-administrativos`, DocumentoActoAdministrativoRoutes);
+
+    //Rutas para horas extra
+    router.use(`/api/horas-extra`, HorasExtraRoutes);
+
+    //Rutas para documentos de horas extra
+    router.use(`/api/documentos-horas-extra`, DocumentoHorasExtraRoutes);
 
     return router;
   }

@@ -236,3 +236,137 @@ Unique constraint failed on the constraint: `documento`
     at ei.handleAndLogRequestError (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
     at ei.request (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
     at a (/home/finova/api_basica/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-05T01:39:58.436Z error: PrismaClientValidationError: 
+Invalid `this.prisma.comentario_empleado.create()` invocation in
+/home/node/app/src/prisma/prisma.service.ts:1221:52
+
+  1218 async createComentarioEmpleado(data: PrismaInterfaces.ICreateComentarioEmpleado) {
+  1219   try {
+  1220     logger.info('Creando comentario de empleado', { data });
+→ 1221     return await this.prisma.comentario_empleado.create({
+             data: {
+               empleado_id: "3389ecbe-a18c-11f0-99f3-0242ac120002",
+               usuario_id: "5f0e4a36-a13d-11f0-99f3-0242ac120002",
+           +   observacion: String
+             },
+             include: {
+               empleado: true,
+               usuario: true
+             }
+           })
+
+Argument `observacion` is missing.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-05T01:39:58.438Z error: PrismaClientValidationError: 
+Invalid `this.prisma.comentario_empleado.create()` invocation in
+/home/node/app/src/prisma/prisma.service.ts:1221:52
+
+  1218 async createComentarioEmpleado(data: PrismaInterfaces.ICreateComentarioEmpleado) {
+  1219   try {
+  1220     logger.info('Creando comentario de empleado', { data });
+→ 1221     return await this.prisma.comentario_empleado.create({
+             data: {
+               empleado_id: "3389ecbe-a18c-11f0-99f3-0242ac120002",
+               usuario_id: "5f0e4a36-a13d-11f0-99f3-0242ac120002",
+           +   observacion: String
+             },
+             include: {
+               empleado: true,
+               usuario: true
+             }
+           })
+
+Argument `observacion` is missing.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-06T18:12:46.484Z error: PrismaClientValidationError: 
+Invalid `this.prisma.horas_extra.create()` invocation in
+/home/node/app/src/modulos/horas.extras/horas.extra.controller.ts:81:62
+
+  78 }
+  79 
+  80 // Crear el registro de horas extra
+→ 81 const nuevasHorasExtra = await this.prisma.horas_extra.create({
+       data: {
+         empleado_id: "c372ba67-823b-45b4-b5d5-fa4739032909",
+         sede_id: "47c2ad3e-c6c7-4b4f-9a66-086fc4f2a360",
+         cantidad_horas: 4.5,
+         fecha_realizacion: new Date("2025-10-06T00:00:00.000Z"),
+         jornada: "manana",
+                  ~~~~~~~~
+         observacion: "Horas extra por actividad especial"
+       },
+       include: {
+         empleado: {
+           select: {
+             id: true,
+             nombre: true,
+             apellido: true,
+             documento: true
+           }
+         },
+         sede: {
+           select: {
+             id: true,
+             nombre: true
+           }
+         },
+         documentos_horas_extra: true
+       }
+     })
+
+Invalid value for argument `jornada`. Expected horas_extra_jornada.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-06T18:13:11.242Z error: PrismaClientValidationError: 
+Invalid `this.prisma.horas_extra.create()` invocation in
+/home/node/app/src/modulos/horas.extras/horas.extra.controller.ts:81:62
+
+  78 }
+  79 
+  80 // Crear el registro de horas extra
+→ 81 const nuevasHorasExtra = await this.prisma.horas_extra.create({
+       data: {
+         empleado_id: "c372ba67-823b-45b4-b5d5-fa4739032909",
+         sede_id: "47c2ad3e-c6c7-4b4f-9a66-086fc4f2a360",
+         cantidad_horas: 4.5,
+         fecha_realizacion: new Date("2025-10-06T00:00:00.000Z"),
+         jornada: "manana",
+                  ~~~~~~~~
+         observacion: "Horas extra por actividad especial"
+       },
+       include: {
+         empleado: {
+           select: {
+             id: true,
+             nombre: true,
+             apellido: true,
+             documento: true
+           }
+         },
+         sede: {
+           select: {
+             id: true,
+             nombre: true
+           }
+         },
+         documentos_horas_extra: true
+       }
+     })
+
+Invalid value for argument `jornada`. Expected horas_extra_jornada.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)

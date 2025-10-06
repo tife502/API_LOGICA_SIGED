@@ -485,3 +485,910 @@ Unique constraint failed on the constraint: `documento`
 2025-10-04T17:44:36.803Z info: Creando nuevo usuario
 2025-10-04T17:44:36.821Z info: Usuario creado exitosamente
 >>>>>>> 4edd7b1ada331e23fa73b933ee91e5c0eb970ae7
+2025-10-04T18:23:09.143Z info: Obteniendo usuarios
+2025-10-04T18:23:09.279Z info: Usuarios obtenidos: 3
+2025-10-04T18:23:09.337Z info: Obteniendo usuarios
+2025-10-04T18:23:09.342Z info: Usuarios obtenidos: 3
+2025-10-04T18:23:34.307Z info: Obteniendo usuarios
+2025-10-04T18:23:34.316Z info: Usuarios obtenidos: 3
+2025-10-04T18:23:34.368Z info: Obteniendo usuarios
+2025-10-04T18:23:34.374Z info: Usuarios obtenidos: 3
+2025-10-04T18:31:00.273Z info: Obteniendo usuarios
+2025-10-04T18:31:00.403Z info: Usuarios obtenidos: 3
+2025-10-04T18:31:00.458Z info: Obteniendo usuarios
+2025-10-04T18:31:00.465Z info: Usuarios obtenidos: 3
+2025-10-04T18:47:25.326Z info: Obteniendo usuario por email
+2025-10-04T18:47:26.210Z info: Login exitoso
+2025-10-04T18:47:53.734Z info: Obteniendo usuarios
+2025-10-04T18:47:53.872Z info: Usuarios obtenidos: 3
+2025-10-04T18:47:53.893Z info: Obteniendo usuarios
+2025-10-04T18:47:53.898Z info: Usuarios obtenidos: 3
+2025-10-04T18:47:55.724Z info: Obteniendo usuarios
+2025-10-04T18:47:55.731Z info: Usuarios obtenidos: 3
+2025-10-04T18:47:55.746Z info: Obteniendo usuarios
+2025-10-04T18:47:55.751Z info: Usuarios obtenidos: 3
+2025-10-04T18:48:20.113Z info: Obteniendo usuarios
+2025-10-04T18:48:20.120Z info: Usuarios obtenidos: 3
+2025-10-04T18:48:20.132Z info: Obteniendo usuarios
+2025-10-04T18:48:20.137Z info: Usuarios obtenidos: 3
+2025-10-04T18:49:07.434Z info: Obteniendo usuarios
+2025-10-04T18:49:07.441Z info: Usuarios obtenidos: 3
+2025-10-04T18:49:07.453Z info: Obteniendo usuarios
+2025-10-04T18:49:07.457Z info: Usuarios obtenidos: 3
+2025-10-04T18:49:33.528Z info: Obteniendo usuarios
+2025-10-04T18:49:33.533Z info: Usuarios obtenidos: 3
+2025-10-04T18:49:33.544Z info: Obteniendo usuarios
+2025-10-04T18:49:33.547Z info: Usuarios obtenidos: 3
+2025-10-04T18:49:51.875Z info: Obteniendo usuarios
+2025-10-04T18:49:51.881Z info: Usuarios obtenidos: 3
+2025-10-04T18:49:56.418Z info: Obteniendo usuarios
+2025-10-04T18:49:56.424Z info: Usuarios obtenidos: 3
+2025-10-04T18:49:58.223Z info: Obteniendo usuarios
+2025-10-04T18:49:58.228Z info: Usuarios obtenidos: 3
+2025-10-04T18:50:01.251Z info: Obteniendo usuarios
+2025-10-04T18:50:01.257Z info: Usuarios obtenidos: 3
+2025-10-04T18:50:05.982Z info: Obteniendo usuarios
+2025-10-04T18:50:05.987Z info: Usuarios obtenidos: 3
+2025-10-04T18:50:06.239Z info: Obteniendo usuarios
+2025-10-04T18:50:06.244Z info: Usuarios obtenidos: 3
+2025-10-04T18:50:06.369Z info: Obteniendo usuarios
+2025-10-04T18:50:06.375Z info: Usuarios obtenidos: 3
+2025-10-04T18:50:06.535Z info: Obteniendo usuarios
+2025-10-04T18:50:06.540Z info: Usuarios obtenidos: 3
+2025-10-04T18:50:07.763Z info: Obteniendo usuarios
+2025-10-04T18:50:07.770Z info: Usuarios obtenidos: 3
+2025-10-04T18:50:07.963Z info: Obteniendo usuarios
+2025-10-04T18:50:07.968Z info: Usuarios obtenidos: 3
+2025-10-04T18:50:08.197Z info: Obteniendo usuarios
+2025-10-04T18:50:08.202Z info: Usuarios obtenidos: 3
+2025-10-04T18:50:08.478Z info: Obteniendo usuarios
+2025-10-04T18:50:08.483Z info: Usuarios obtenidos: 3
+2025-10-05T00:13:12.124Z info: Obteniendo usuarios
+2025-10-05T00:13:12.270Z info: Usuarios obtenidos: 3
+2025-10-05T00:13:12.348Z info: Obteniendo usuarios
+2025-10-05T00:13:12.354Z info: Usuarios obtenidos: 3
+2025-10-05T00:41:43.844Z info: Obteniendo usuarios
+2025-10-05T00:41:43.975Z info: Usuarios obtenidos: 3
+2025-10-05T00:41:44.025Z info: Obteniendo usuarios
+2025-10-05T00:41:44.032Z info: Usuarios obtenidos: 3
+2025-10-05T01:16:38.940Z info: Token agregado a blacklist
+2025-10-05T01:16:38.941Z info: Token invalidado exitosamente
+2025-10-05T01:16:38.941Z info: Token de acceso invalidado
+2025-10-05T01:16:38.942Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-05T01:16:50.786Z info: Obteniendo usuario por email
+2025-10-05T01:16:51.583Z info: Login exitoso
+2025-10-05T01:38:38.860Z info: Empleados obtenidos: 6 de 6
+2025-10-05T01:38:38.918Z info: Empleados obtenidos: 6 de 6
+2025-10-05T01:39:05.288Z info: Empleados obtenidos: 6 de 6
+2025-10-05T01:39:05.338Z info: Empleados obtenidos: 6 de 6
+2025-10-05T01:39:58.063Z info: Creando nuevo empleado
+2025-10-05T01:39:58.090Z info: Creando comentario de empleado
+2025-10-05T01:39:58.436Z error: PrismaClientValidationError: 
+Invalid `this.prisma.comentario_empleado.create()` invocation in
+/home/node/app/src/prisma/prisma.service.ts:1221:52
+
+  1218 async createComentarioEmpleado(data: PrismaInterfaces.ICreateComentarioEmpleado) {
+  1219   try {
+  1220     logger.info('Creando comentario de empleado', { data });
+→ 1221     return await this.prisma.comentario_empleado.create({
+             data: {
+               empleado_id: "3389ecbe-a18c-11f0-99f3-0242ac120002",
+               usuario_id: "5f0e4a36-a13d-11f0-99f3-0242ac120002",
+           +   observacion: String
+             },
+             include: {
+               empleado: true,
+               usuario: true
+             }
+           })
+
+Argument `observacion` is missing.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-05T01:39:58.438Z error: PrismaClientValidationError: 
+Invalid `this.prisma.comentario_empleado.create()` invocation in
+/home/node/app/src/prisma/prisma.service.ts:1221:52
+
+  1218 async createComentarioEmpleado(data: PrismaInterfaces.ICreateComentarioEmpleado) {
+  1219   try {
+  1220     logger.info('Creando comentario de empleado', { data });
+→ 1221     return await this.prisma.comentario_empleado.create({
+             data: {
+               empleado_id: "3389ecbe-a18c-11f0-99f3-0242ac120002",
+               usuario_id: "5f0e4a36-a13d-11f0-99f3-0242ac120002",
+           +   observacion: String
+             },
+             include: {
+               empleado: true,
+               usuario: true
+             }
+           })
+
+Argument `observacion` is missing.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-05T01:40:44.281Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.346Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.451Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.517Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.576Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.629Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.680Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.783Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.843Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.900Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.942Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:44.990Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.034Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.076Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.119Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.160Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.199Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.237Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.292Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.341Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.390Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.432Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.487Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.538Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.600Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.643Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.710Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.794Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.838Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.884Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:45.956Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.005Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.065Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.127Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.177Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.221Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.270Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.322Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.370Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.423Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.464Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.514Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.619Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.655Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.726Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.775Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.831Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.872Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.920Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:46.965Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:47.030Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:47.072Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:40:47.123Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:41:42.616Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:41:42.666Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:37.875Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:37.941Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:37.988Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.033Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.076Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.123Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.194Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.242Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.307Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.353Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.414Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.455Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.523Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.565Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.607Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.654Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.697Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.740Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.804Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.855Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.904Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:38.982Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.018Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.055Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.124Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.162Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.211Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.271Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.313Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.364Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.404Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.443Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.483Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.522Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.567Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.605Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.646Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.688Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.729Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.798Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.839Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.873Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.912Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:39.961Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:40.000Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:40.034Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:40.096Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:40.134Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:40.180Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:40.233Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:40.282Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:40.337Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:45:40.390Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:47:48.845Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:47:48.899Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:50:38.155Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:50:38.206Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:51:01.613Z info: Obteniendo empleado por ID
+2025-10-05T01:51:01.620Z info: Empleados obtenidos: 5 de 5
+2025-10-05T01:51:01.672Z info: Obteniendo empleado por ID
+2025-10-05T01:51:01.675Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:05:07.418Z info: Obteniendo empleado por ID
+2025-10-05T02:05:07.567Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:07:34.621Z info: Obteniendo empleado por ID
+2025-10-05T02:07:34.670Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:07:34.682Z info: Obteniendo empleado por ID
+2025-10-05T02:07:34.749Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:07:55.270Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:07:55.316Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:08:00.438Z info: Obteniendo empleado por ID
+2025-10-05T02:08:00.444Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:08:00.511Z info: Obteniendo empleado por ID
+2025-10-05T02:08:00.525Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:15:27.827Z info: Obteniendo empleado por ID
+2025-10-05T02:15:27.972Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:15:28.016Z info: Obteniendo empleado por ID
+2025-10-05T02:15:28.024Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:15:59.903Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:15:59.954Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:16:10.637Z info: Obteniendo empleado por ID
+2025-10-05T02:16:10.643Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:16:10.689Z info: Obteniendo empleado por ID
+2025-10-05T02:16:10.703Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:57:22.181Z info: Obteniendo empleado por ID
+2025-10-05T02:57:22.323Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:58:31.836Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:58:42.543Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:59:59.310Z info: Obteniendo empleado por ID
+2025-10-05T02:59:59.317Z info: Empleados obtenidos: 5 de 5
+2025-10-05T02:59:59.385Z info: Obteniendo empleado por ID
+2025-10-05T02:59:59.395Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:00:38.697Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:00:38.765Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:00:44.837Z info: Obteniendo empleado por ID
+2025-10-05T03:00:44.844Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:00:44.900Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:00:44.978Z info: Obteniendo empleado por ID
+2025-10-05T03:08:36.252Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:08:36.329Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:08:45.576Z info: Obteniendo empleado por ID
+2025-10-05T03:08:45.582Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:08:45.638Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:08:45.675Z info: Obteniendo empleado por ID
+2025-10-05T03:08:53.179Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:08:53.336Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:08:59.716Z info: Obteniendo empleado por ID
+2025-10-05T03:08:59.721Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:08:59.780Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:08:59.809Z info: Obteniendo empleado por ID
+2025-10-05T03:25:52.697Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:27:26.576Z info: Obteniendo empleado por ID
+2025-10-05T03:27:26.635Z info: Obteniendo empleado por ID
+2025-10-05T03:27:26.679Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:27:26.737Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:28:04.759Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:28:04.910Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:28:13.726Z info: Obteniendo empleado por ID
+2025-10-05T03:28:13.733Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:28:13.787Z info: Obteniendo empleado por ID
+2025-10-05T03:28:13.806Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:34:51.885Z info: Obteniendo empleado por ID
+2025-10-05T03:34:52.011Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:34:52.074Z info: Obteniendo empleado por ID
+2025-10-05T03:34:52.092Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:35:22.935Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:35:23.009Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:35:30.150Z info: Obteniendo empleado por ID
+2025-10-05T03:35:30.175Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:35:30.211Z info: Obteniendo empleado por ID
+2025-10-05T03:35:30.247Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:42:02.693Z info: Obteniendo empleado por ID
+2025-10-05T03:42:02.814Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:42:02.871Z info: Obteniendo empleado por ID
+2025-10-05T03:42:02.879Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:43:02.198Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:43:02.302Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:43:07.358Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:43:07.407Z info: Obteniendo empleado por ID
+2025-10-05T03:43:07.425Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:43:07.487Z info: Obteniendo empleado por ID
+2025-10-05T03:45:54.540Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:47:04.414Z info: Obteniendo empleado por ID
+2025-10-05T03:47:04.488Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:47:04.621Z info: Obteniendo empleado por ID
+2025-10-05T03:47:04.635Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:47:32.792Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:47:32.850Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:47:38.465Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:47:38.479Z info: Obteniendo empleado por ID
+2025-10-05T03:47:38.525Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:47:38.577Z info: Obteniendo empleado por ID
+2025-10-05T03:53:10.385Z info: Obteniendo empleado por ID
+2025-10-05T03:53:10.492Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:53:10.544Z info: Obteniendo empleado por ID
+2025-10-05T03:53:10.559Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:54:04.419Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:54:04.474Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:54:11.516Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:54:11.569Z info: Obteniendo empleado por ID
+2025-10-05T03:54:11.649Z info: Empleados obtenidos: 5 de 5
+2025-10-05T03:54:11.704Z info: Obteniendo empleado por ID
+2025-10-05T14:31:51.870Z info: Obteniendo empleado por ID
+2025-10-05T14:31:52.046Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:31:52.110Z info: Obteniendo empleado por ID
+2025-10-05T14:31:52.119Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:32:25.788Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:32:25.853Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:32:28.548Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:32:28.585Z info: Obteniendo empleado por ID
+2025-10-05T14:32:28.602Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:32:28.630Z info: Obteniendo empleado por ID
+2025-10-05T14:42:06.415Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:43:09.244Z info: Obteniendo empleado por ID
+2025-10-05T14:43:09.247Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:43:09.282Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:43:09.315Z info: Obteniendo empleado por ID
+2025-10-05T14:44:31.689Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:44:31.731Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:44:35.624Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:44:35.664Z info: Obteniendo empleado por ID
+2025-10-05T14:44:35.685Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:44:35.719Z info: Obteniendo empleado por ID
+2025-10-05T14:57:57.519Z info: Obteniendo empleado por ID
+2025-10-05T14:57:57.638Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:57:57.704Z info: Obteniendo empleado por ID
+2025-10-05T14:57:57.711Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:58:12.604Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:58:12.645Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:58:16.018Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:58:16.043Z info: Obteniendo empleado por ID
+2025-10-05T14:58:16.065Z info: Empleados obtenidos: 5 de 5
+2025-10-05T14:58:16.104Z info: Obteniendo empleado por ID
+2025-10-05T15:02:35.747Z info: Obteniendo empleado por ID
+2025-10-05T15:02:35.758Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:11:36.627Z info: Obteniendo empleado por ID
+2025-10-05T15:11:36.819Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:19:15.984Z info: Obteniendo empleado por ID
+2025-10-05T15:19:16.102Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:19:16.134Z info: Obteniendo empleado por ID
+2025-10-05T15:19:16.152Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:20:03.736Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:20:03.784Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:20:10.164Z info: Obteniendo empleado por ID
+2025-10-05T15:20:10.174Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:20:10.216Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:20:10.241Z info: Obteniendo empleado por ID
+2025-10-05T15:20:38.299Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:20:38.350Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:20:42.642Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:20:42.681Z info: Obteniendo empleado por ID
+2025-10-05T15:20:42.702Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:20:42.771Z info: Obteniendo empleado por ID
+2025-10-05T15:21:16.293Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:21:16.373Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:21:28.977Z info: Obteniendo empleado por ID
+2025-10-05T15:21:28.986Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:21:29.030Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:21:29.035Z info: Obteniendo empleado por ID
+2025-10-05T15:22:55.507Z info: Obteniendo empleado por ID
+2025-10-05T15:22:55.526Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:22:55.574Z info: Obteniendo empleado por ID
+2025-10-05T15:22:55.580Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:23:10.434Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:23:10.481Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:23:14.864Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:23:14.880Z info: Obteniendo empleado por ID
+2025-10-05T15:23:14.920Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:23:14.925Z info: Obteniendo empleado por ID
+2025-10-05T15:30:03.881Z info: Obteniendo empleado por ID
+2025-10-05T15:30:04.054Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:04.113Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:04.152Z info: Obteniendo empleado por ID
+2025-10-05T15:30:21.756Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:21.802Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:24.421Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:24.442Z info: Obteniendo empleado por ID
+2025-10-05T15:30:24.467Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:24.489Z info: Obteniendo empleado por ID
+2025-10-05T15:30:34.060Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:34.141Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:37.857Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:37.884Z info: Obteniendo empleado por ID
+2025-10-05T15:30:37.914Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:37.931Z info: Obteniendo empleado por ID
+2025-10-05T15:30:53.283Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:53.331Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:59.426Z info: Obteniendo empleado por ID
+2025-10-05T15:30:59.433Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:30:59.478Z info: Obteniendo empleado por ID
+2025-10-05T15:30:59.480Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:31:06.502Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:31:06.563Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:31:11.145Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:31:11.193Z info: Obteniendo empleado por ID
+2025-10-05T15:31:11.200Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:31:11.244Z info: Obteniendo empleado por ID
+2025-10-05T15:36:30.037Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:36:52.543Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:36:52.608Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:36:56.564Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:36:56.629Z info: Obteniendo empleado por ID
+2025-10-05T15:36:56.637Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:36:56.687Z info: Obteniendo empleado por ID
+2025-10-05T15:37:25.850Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:37:25.902Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:37:28.353Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:37:28.389Z info: Obteniendo empleado por ID
+2025-10-05T15:37:28.453Z info: Obteniendo empleado por ID
+2025-10-05T15:37:28.514Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:43:40.009Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:44:30.158Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:44:30.215Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:44:33.923Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:44:33.958Z info: Obteniendo empleado por ID
+2025-10-05T15:44:34.012Z info: Obteniendo empleado por ID
+2025-10-05T15:44:34.084Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:50:34.570Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:50:34.615Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:50:37.557Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:50:37.637Z info: Obteniendo empleado por ID
+2025-10-05T15:50:37.684Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:50:37.698Z info: Obteniendo empleado por ID
+2025-10-05T15:55:26.751Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:56:13.754Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:56:13.851Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:56:17.487Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:56:17.505Z info: Obteniendo empleado por ID
+2025-10-05T15:56:17.536Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:56:17.561Z info: Obteniendo empleado por ID
+2025-10-05T15:56:29.857Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:56:29.909Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:56:33.946Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:56:33.971Z info: Obteniendo empleado por ID
+2025-10-05T15:56:33.999Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:56:34.037Z info: Obteniendo empleado por ID
+2025-10-05T15:57:00.139Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:00.280Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:06.025Z info: Obteniendo empleado por ID
+2025-10-05T15:57:06.030Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:06.078Z info: Obteniendo empleado por ID
+2025-10-05T15:57:06.084Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:17.326Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:17.411Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:25.940Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:25.981Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:55.916Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:55.960Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:59.412Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:57:59.446Z info: Obteniendo empleado por ID
+2025-10-05T15:57:59.499Z info: Obteniendo empleado por ID
+2025-10-05T15:57:59.602Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:58:25.612Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:58:25.700Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:58:30.398Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:58:30.430Z info: Obteniendo empleado por ID
+2025-10-05T15:58:30.453Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:58:30.490Z info: Obteniendo empleado por ID
+2025-10-05T15:58:42.359Z info: Empleados obtenidos: 5 de 5
+2025-10-05T15:58:42.406Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:00:10.646Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:00:10.688Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:00:49.457Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:00:49.519Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:01:06.422Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:01:06.428Z info: Obteniendo empleado por ID
+2025-10-05T16:01:06.469Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:01:06.554Z info: Obteniendo empleado por ID
+2025-10-05T16:06:52.531Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:07:04.856Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:19:38.379Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:19:38.437Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:19:42.414Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:19:42.459Z info: Obteniendo empleado por ID
+2025-10-05T16:19:42.560Z info: Obteniendo empleado por ID
+2025-10-05T16:19:42.609Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:20:03.073Z info: Obteniendo empleado por ID
+2025-10-05T16:20:03.076Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:20:03.133Z info: Obteniendo empleado por ID
+2025-10-05T16:20:03.136Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:20:56.650Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:20:56.691Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:21:07.164Z info: Obteniendo empleado por ID
+2025-10-05T16:21:07.167Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:21:07.225Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:21:07.241Z info: Obteniendo empleado por ID
+2025-10-05T16:22:21.811Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:22:21.945Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:22:26.177Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:22:26.228Z info: Obteniendo empleado por ID
+2025-10-05T16:22:26.230Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:22:26.280Z info: Obteniendo empleado por ID
+2025-10-05T16:23:28.680Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:23:28.871Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:23:32.604Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:23:32.633Z info: Obteniendo empleado por ID
+2025-10-05T16:23:32.682Z info: Obteniendo empleado por ID
+2025-10-05T16:23:32.688Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:34:07.418Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:34:07.503Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:34:37.572Z info: Obteniendo empleado por ID
+2025-10-05T16:34:37.632Z info: Obteniendo empleado por ID
+2025-10-05T16:34:37.639Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:34:37.678Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:35:01.827Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:35:01.901Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:35:07.994Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:35:08.004Z info: Obteniendo empleado por ID
+2025-10-05T16:35:08.038Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:35:08.053Z info: Obteniendo empleado por ID
+2025-10-05T16:35:38.583Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:35:38.641Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:35:43.161Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:35:43.191Z info: Obteniendo empleado por ID
+2025-10-05T16:35:43.216Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:35:43.253Z info: Obteniendo empleado por ID
+2025-10-05T16:37:10.870Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:37:11.062Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:37:16.859Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:37:16.887Z info: Obteniendo empleado por ID
+2025-10-05T16:37:16.903Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:37:16.940Z info: Obteniendo empleado por ID
+2025-10-05T16:40:41.278Z info: Obteniendo empleado por ID
+2025-10-05T16:40:41.408Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:40:41.449Z info: Obteniendo empleado por ID
+2025-10-05T16:40:41.457Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:41:50.718Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:41:51.001Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:41:58.009Z info: Obteniendo empleado por ID
+2025-10-05T16:41:58.013Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:41:58.080Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:41:58.120Z info: Obteniendo empleado por ID
+2025-10-05T16:42:12.370Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:12.425Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:17.628Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:17.633Z info: Obteniendo empleado por ID
+2025-10-05T16:42:17.704Z info: Obteniendo empleado por ID
+2025-10-05T16:42:17.705Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:35.460Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:35.522Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:42.121Z info: Obteniendo empleado por ID
+2025-10-05T16:42:42.126Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:42.168Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:42.191Z info: Obteniendo empleado por ID
+2025-10-05T16:42:52.489Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:52.579Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:59.605Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:59.630Z info: Obteniendo empleado por ID
+2025-10-05T16:42:59.789Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:42:59.984Z info: Obteniendo empleado por ID
+2025-10-05T16:44:16.026Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:44:33.454Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:45:48.160Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:46:34.029Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:51:35.271Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:57:37.834Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:57:37.893Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:57:42.159Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:57:42.198Z info: Obteniendo empleado por ID
+2025-10-05T16:57:42.236Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:57:42.273Z info: Obteniendo empleado por ID
+2025-10-05T16:57:57.730Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:57:57.785Z info: Empleados obtenidos: 5 de 5
+2025-10-05T16:58:56.162Z info: Obteniendo usuarios
+2025-10-05T16:58:56.173Z info: Usuarios obtenidos: 3
+2025-10-05T16:58:56.217Z info: Obteniendo usuarios
+2025-10-05T16:58:56.221Z info: Usuarios obtenidos: 3
+2025-10-06T13:04:29.897Z warn: Error verificando token JWT
+2025-10-06T13:04:29.898Z warn: Error en middleware de autenticación
+2025-10-06T13:04:29.915Z warn: Error verificando token JWT
+2025-10-06T13:04:29.915Z warn: Error en middleware de autenticación
+2025-10-06T13:06:23.095Z warn: Error verificando token JWT
+2025-10-06T13:06:23.096Z warn: Error en middleware de autenticación
+2025-10-06T13:06:23.107Z warn: Error verificando token JWT
+2025-10-06T13:06:23.108Z warn: Error en middleware de autenticación
+2025-10-06T13:07:16.176Z warn: Error verificando token JWT
+2025-10-06T13:07:16.177Z warn: Error en middleware de autenticación
+2025-10-06T13:07:21.541Z info: Obteniendo usuario por email
+2025-10-06T13:07:22.087Z info: Login exitoso
+2025-10-06T13:07:36.021Z info: Obteniendo usuarios
+2025-10-06T13:07:36.134Z info: Usuarios obtenidos: 3
+2025-10-06T13:07:36.151Z info: Obteniendo usuarios
+2025-10-06T13:07:36.158Z info: Usuarios obtenidos: 3
+2025-10-06T13:08:44.443Z info: Obteniendo usuarios
+2025-10-06T13:08:44.451Z info: Usuarios obtenidos: 3
+2025-10-06T13:08:44.463Z info: Obteniendo usuarios
+2025-10-06T13:08:44.468Z info: Usuarios obtenidos: 3
+2025-10-06T13:08:48.174Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:08:48.202Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:09:11.656Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:09:11.680Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:10:51.136Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:10:51.156Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:11:01.948Z info: Obteniendo empleado por ID
+2025-10-06T13:11:01.951Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:11:01.980Z info: Obteniendo empleado por ID
+2025-10-06T13:11:02.095Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:18:40.845Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:18:40.871Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:18:46.064Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:18:46.129Z info: Obteniendo empleado por ID
+2025-10-06T13:18:46.138Z info: Empleados obtenidos: 5 de 5
+2025-10-06T13:18:46.166Z info: Obteniendo empleado por ID
+2025-10-06T15:27:05.827Z info: Obteniendo usuarios
+2025-10-06T15:27:05.981Z info: Usuarios obtenidos: 3
+2025-10-06T15:27:06.013Z info: Obteniendo usuarios
+2025-10-06T15:27:06.022Z info: Usuarios obtenidos: 3
+2025-10-06T15:27:42.977Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:27:43.009Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:27:57.697Z info: Obteniendo empleado por ID
+2025-10-06T15:27:57.703Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:27:57.735Z info: Obteniendo empleado por ID
+2025-10-06T15:27:57.739Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:28:22.362Z info: Obteniendo empleado por ID
+2025-10-06T15:28:22.370Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:28:22.392Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:28:22.504Z info: Obteniendo empleado por ID
+2025-10-06T15:28:29.394Z info: Obteniendo empleado por ID
+2025-10-06T15:28:29.404Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:28:29.426Z info: Obteniendo empleado por ID
+2025-10-06T15:28:29.437Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:28:50.138Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:28:50.171Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:28:56.126Z info: Obteniendo empleado por ID
+2025-10-06T15:28:56.132Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:28:56.152Z info: Obteniendo empleado por ID
+2025-10-06T15:28:56.157Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:29:11.227Z info: Obteniendo empleado por ID
+2025-10-06T15:29:11.244Z info: Actualizando empleado
+2025-10-06T15:29:11.264Z info: Información de empleado actualizada por jean.duran@superadmin.com (super_admin)
+2025-10-06T15:29:14.142Z info: Obteniendo empleado por ID
+2025-10-06T15:29:14.160Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:29:14.178Z info: Obteniendo empleado por ID
+2025-10-06T15:29:14.197Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:29:25.431Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:29:25.452Z info: Empleados obtenidos: 5 de 5
+2025-10-06T15:41:15.435Z info: Obteniendo usuarios
+2025-10-06T15:41:15.504Z info: Usuarios obtenidos: 3
+2025-10-06T15:41:15.535Z info: Obteniendo usuarios
+2025-10-06T15:41:15.542Z info: Usuarios obtenidos: 3
+2025-10-06T15:53:04.683Z info: Obteniendo usuarios
+2025-10-06T15:53:04.824Z info: Usuarios obtenidos: 3
+2025-10-06T15:54:01.875Z info: Obteniendo usuarios
+2025-10-06T15:54:01.881Z info: Usuarios obtenidos: 3
+2025-10-06T15:54:01.891Z info: Obteniendo usuarios
+2025-10-06T15:54:01.896Z info: Usuarios obtenidos: 3
+2025-10-06T15:57:28.273Z info: Obteniendo usuarios
+2025-10-06T15:57:28.384Z info: Usuarios obtenidos: 3
+2025-10-06T15:57:28.400Z info: Obteniendo usuarios
+2025-10-06T15:57:28.411Z info: Usuarios obtenidos: 3
+2025-10-06T15:58:35.281Z info: Obteniendo usuario por email
+2025-10-06T15:58:36.078Z info: Login exitoso
+2025-10-06T15:58:45.449Z info: Acto administrativo creado exitosamente
+2025-10-06T16:00:06.162Z info: Obteniendo usuarios
+2025-10-06T16:00:06.170Z info: Usuarios obtenidos: 3
+2025-10-06T16:00:06.179Z info: Obteniendo usuarios
+2025-10-06T16:00:06.183Z info: Usuarios obtenidos: 3
+2025-10-06T16:00:26.518Z info: Obteniendo usuarios
+2025-10-06T16:00:26.527Z info: Usuarios obtenidos: 3
+2025-10-06T16:00:26.549Z info: Obteniendo usuarios
+2025-10-06T16:00:26.553Z info: Usuarios obtenidos: 3
+2025-10-06T16:01:01.672Z info: Obteniendo usuarios
+2025-10-06T16:01:01.679Z info: Usuarios obtenidos: 3
+2025-10-06T16:01:01.696Z info: Obteniendo usuarios
+2025-10-06T16:01:01.701Z info: Usuarios obtenidos: 3
+2025-10-06T16:05:38.772Z info: Empleados obtenidos: 5 de 5
+2025-10-06T16:05:38.805Z info: Empleados obtenidos: 5 de 5
+2025-10-06T16:05:44.512Z info: Obteniendo empleado por ID
+2025-10-06T16:05:44.555Z info: Obteniendo empleado por ID
+2025-10-06T16:05:44.640Z info: Empleados obtenidos: 5 de 5
+2025-10-06T16:05:44.666Z info: Empleados obtenidos: 5 de 5
+2025-10-06T16:06:43.019Z info: Obteniendo usuarios
+2025-10-06T16:06:43.028Z info: Usuarios obtenidos: 3
+2025-10-06T16:06:43.038Z info: Obteniendo usuarios
+2025-10-06T16:06:43.043Z info: Usuarios obtenidos: 3
+2025-10-06T16:18:50.540Z info: Obteniendo usuarios
+2025-10-06T16:18:50.600Z info: Usuarios obtenidos: 3
+2025-10-06T16:18:50.651Z info: Obteniendo usuarios
+2025-10-06T16:18:50.658Z info: Usuarios obtenidos: 3
+2025-10-06T16:19:10.676Z info: Obteniendo usuarios
+2025-10-06T16:19:10.685Z info: Usuarios obtenidos: 3
+2025-10-06T16:19:10.701Z info: Obteniendo usuarios
+2025-10-06T16:19:10.708Z info: Usuarios obtenidos: 3
+2025-10-06T16:24:01.357Z info: Acto administrativo creado exitosamente
+2025-10-06T16:24:21.583Z info: Acto administrativo creado exitosamente
+2025-10-06T16:24:26.287Z info: Acto administrativo creado exitosamente
+2025-10-06T16:25:17.919Z info: Acto administrativo creado exitosamente
+2025-10-06T16:35:12.465Z info: Documento de acto administrativo creado exitosamente
+2025-10-06T16:35:19.573Z info: Obteniendo usuarios
+2025-10-06T16:35:19.618Z info: Usuarios obtenidos: 3
+2025-10-06T16:35:19.632Z info: Obteniendo usuarios
+2025-10-06T16:35:19.636Z info: Usuarios obtenidos: 3
+2025-10-06T16:35:57.404Z info: Obteniendo usuarios
+2025-10-06T16:35:57.415Z info: Usuarios obtenidos: 3
+2025-10-06T16:35:57.433Z info: Obteniendo usuarios
+2025-10-06T16:35:57.441Z info: Usuarios obtenidos: 3
+2025-10-06T16:36:09.920Z info: Obteniendo usuarios
+2025-10-06T16:36:09.925Z info: Usuarios obtenidos: 3
+2025-10-06T16:36:10.020Z info: Obteniendo usuarios
+2025-10-06T16:36:10.025Z info: Usuarios obtenidos: 3
+2025-10-06T16:36:11.348Z info: Obteniendo usuarios
+2025-10-06T16:36:11.354Z info: Usuarios obtenidos: 3
+2025-10-06T16:36:55.411Z info: Obteniendo usuarios
+2025-10-06T16:36:55.417Z info: Usuarios obtenidos: 3
+2025-10-06T16:38:32.055Z info: Obteniendo usuarios
+2025-10-06T16:38:32.063Z info: Usuarios obtenidos: 3
+2025-10-06T16:38:32.331Z info: Obteniendo usuarios
+2025-10-06T16:38:32.336Z info: Usuarios obtenidos: 3
+2025-10-06T16:38:32.477Z info: Obteniendo usuarios
+2025-10-06T16:38:32.482Z info: Usuarios obtenidos: 3
+2025-10-06T16:39:45.989Z info: Documento de acto administrativo creado exitosamente
+2025-10-06T16:47:58.595Z info: Obteniendo usuarios
+2025-10-06T16:47:58.746Z info: Usuarios obtenidos: 3
+2025-10-06T16:47:58.766Z info: Obteniendo usuarios
+2025-10-06T16:47:58.774Z info: Usuarios obtenidos: 3
+2025-10-06T16:52:03.109Z info: Obteniendo usuarios
+2025-10-06T16:52:03.223Z info: Usuarios obtenidos: 3
+2025-10-06T16:57:19.048Z info: Obteniendo usuarios
+2025-10-06T16:57:19.195Z info: Usuarios obtenidos: 3
+2025-10-06T16:57:19.212Z info: Obteniendo usuarios
+2025-10-06T16:57:19.221Z info: Usuarios obtenidos: 3
+2025-10-06T16:57:30.872Z info: Obteniendo usuarios
+2025-10-06T16:57:30.882Z info: Usuarios obtenidos: 3
+2025-10-06T16:57:30.900Z info: Obteniendo usuarios
+2025-10-06T16:57:30.905Z info: Usuarios obtenidos: 3
+2025-10-06T18:08:33.711Z info: Obteniendo usuarios
+2025-10-06T18:08:33.790Z info: Usuarios obtenidos: 3
+2025-10-06T18:08:33.817Z info: Obteniendo usuarios
+2025-10-06T18:08:33.826Z info: Usuarios obtenidos: 3
+2025-10-06T18:08:46.797Z info: Obteniendo usuarios
+2025-10-06T18:08:46.805Z info: Usuarios obtenidos: 3
+2025-10-06T18:08:46.821Z info: Obteniendo usuarios
+2025-10-06T18:08:46.826Z info: Usuarios obtenidos: 3
+2025-10-06T18:09:10.767Z info: Obteniendo usuarios
+2025-10-06T18:09:10.777Z info: Usuarios obtenidos: 3
+2025-10-06T18:09:10.789Z info: Obteniendo usuarios
+2025-10-06T18:09:10.795Z info: Usuarios obtenidos: 3
+2025-10-06T18:09:45.005Z info: Obteniendo usuarios
+2025-10-06T18:09:45.014Z info: Usuarios obtenidos: 3
+2025-10-06T18:09:45.045Z info: Obteniendo usuarios
+2025-10-06T18:09:45.052Z info: Usuarios obtenidos: 3
+2025-10-06T18:12:46.484Z error: PrismaClientValidationError: 
+Invalid `this.prisma.horas_extra.create()` invocation in
+/home/node/app/src/modulos/horas.extras/horas.extra.controller.ts:81:62
+
+  78 }
+  79 
+  80 // Crear el registro de horas extra
+→ 81 const nuevasHorasExtra = await this.prisma.horas_extra.create({
+       data: {
+         empleado_id: "c372ba67-823b-45b4-b5d5-fa4739032909",
+         sede_id: "47c2ad3e-c6c7-4b4f-9a66-086fc4f2a360",
+         cantidad_horas: 4.5,
+         fecha_realizacion: new Date("2025-10-06T00:00:00.000Z"),
+         jornada: "manana",
+                  ~~~~~~~~
+         observacion: "Horas extra por actividad especial"
+       },
+       include: {
+         empleado: {
+           select: {
+             id: true,
+             nombre: true,
+             apellido: true,
+             documento: true
+           }
+         },
+         sede: {
+           select: {
+             id: true,
+             nombre: true
+           }
+         },
+         documentos_horas_extra: true
+       }
+     })
+
+Invalid value for argument `jornada`. Expected horas_extra_jornada.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-06T18:13:11.242Z error: PrismaClientValidationError: 
+Invalid `this.prisma.horas_extra.create()` invocation in
+/home/node/app/src/modulos/horas.extras/horas.extra.controller.ts:81:62
+
+  78 }
+  79 
+  80 // Crear el registro de horas extra
+→ 81 const nuevasHorasExtra = await this.prisma.horas_extra.create({
+       data: {
+         empleado_id: "c372ba67-823b-45b4-b5d5-fa4739032909",
+         sede_id: "47c2ad3e-c6c7-4b4f-9a66-086fc4f2a360",
+         cantidad_horas: 4.5,
+         fecha_realizacion: new Date("2025-10-06T00:00:00.000Z"),
+         jornada: "manana",
+                  ~~~~~~~~
+         observacion: "Horas extra por actividad especial"
+       },
+       include: {
+         empleado: {
+           select: {
+             id: true,
+             nombre: true,
+             apellido: true,
+             documento: true
+           }
+         },
+         sede: {
+           select: {
+             id: true,
+             nombre: true
+           }
+         },
+         documentos_horas_extra: true
+       }
+     })
+
+Invalid value for argument `jornada`. Expected horas_extra_jornada.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-06T18:16:48.919Z info: Registro de horas extra creado exitosamente
+2025-10-06T18:17:55.463Z info: Obteniendo usuarios
+2025-10-06T18:17:55.592Z info: Usuarios obtenidos: 3
+2025-10-06T18:17:55.608Z info: Obteniendo usuarios
+2025-10-06T18:17:55.618Z info: Usuarios obtenidos: 3
+2025-10-06T18:18:15.972Z info: Obteniendo usuarios
+2025-10-06T18:18:15.984Z info: Usuarios obtenidos: 3
+2025-10-06T18:18:15.999Z info: Obteniendo usuarios
+2025-10-06T18:18:16.005Z info: Usuarios obtenidos: 3
+2025-10-06T18:18:32.549Z info: Obteniendo usuarios
+2025-10-06T18:18:32.557Z info: Usuarios obtenidos: 3
+2025-10-06T18:18:32.569Z info: Obteniendo usuarios
+2025-10-06T18:18:32.575Z info: Usuarios obtenidos: 3
+2025-10-06T18:19:05.163Z info: Obteniendo usuarios
+2025-10-06T18:19:05.171Z info: Usuarios obtenidos: 3
+2025-10-06T18:19:05.183Z info: Obteniendo usuarios
+2025-10-06T18:19:05.189Z info: Usuarios obtenidos: 3
+2025-10-06T18:19:17.089Z info: Obteniendo usuarios
+2025-10-06T18:19:17.096Z info: Usuarios obtenidos: 3
+2025-10-06T18:19:17.107Z info: Obteniendo usuarios
+2025-10-06T18:19:17.112Z info: Usuarios obtenidos: 3
+2025-10-06T18:19:46.690Z info: Obteniendo usuarios
+2025-10-06T18:19:46.696Z info: Usuarios obtenidos: 3
+2025-10-06T18:19:46.708Z info: Obteniendo usuarios
+2025-10-06T18:19:46.713Z info: Usuarios obtenidos: 3
+2025-10-06T18:20:05.233Z info: Token agregado a blacklist
+2025-10-06T18:20:05.234Z info: Token invalidado exitosamente
+2025-10-06T18:20:05.235Z info: Token de acceso invalidado
+2025-10-06T18:20:05.235Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-06T18:20:08.367Z info: Documento de horas extra creado exitosamente
+2025-10-06T18:20:09.083Z info: Obteniendo usuario por email
+2025-10-06T18:20:09.485Z info: Login exitoso
+2025-10-06T18:20:15.772Z info: Obteniendo usuarios
+2025-10-06T18:20:15.778Z info: Usuarios obtenidos: 3
+2025-10-06T18:20:15.794Z info: Obteniendo usuarios
+2025-10-06T18:20:15.800Z info: Usuarios obtenidos: 3
+2025-10-06T18:20:32.773Z info: Obteniendo usuarios
+2025-10-06T18:20:32.781Z info: Usuarios obtenidos: 3
+2025-10-06T18:20:32.794Z info: Obteniendo usuarios
+2025-10-06T18:20:32.799Z info: Usuarios obtenidos: 3
