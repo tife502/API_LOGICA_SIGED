@@ -76,6 +76,22 @@ export class UsuarioRoutes {
 
     router.post('/create-initial-user', usuarioController.createInitialUser);
 
+    // ============= RUTAS DE RECUPERACIÓN DE CONTRASEÑA (PÚBLICAS) =============
+    
+    // Solicitar código de recuperación por SMS
+    router.post('/recuperacion/solicitar-codigo', 
+      usuarioController.solicitarCodigoRecuperacion
+    );
+
+    // Verificar código y cambiar contraseña
+    router.post('/recuperacion/verificar-codigo', 
+      usuarioController.verificarCodigoYCambiarContrasena
+    );
+
+    // Reenviar código de recuperación
+    router.post('/recuperacion/reenviar-codigo', 
+      usuarioController.reenviarCodigoRecuperacion
+    );
 
     return router;
   }

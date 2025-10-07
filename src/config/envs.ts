@@ -8,6 +8,9 @@ export const envs = {
 
   DATABASE_URL: get('DATABASE_URL').required().asString(),
 
+  NOTIFICATION_API : get('NOTIFICATION_API_URL').required().asString(),
+  
+  
   // JWT Configuration
   JWT_SECRET: get('JWT_SECRET').required().asString(),
 

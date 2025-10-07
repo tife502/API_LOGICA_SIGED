@@ -352,9 +352,11 @@ export interface IUpdateUsuario {
   contrasena?: string;
   rol?: UsuarioRol;
   estado?: UsuarioEstado;
+  reset_password_token?: string | null;
+  reset_password_expires?: Date | null;
 }
 
-// Interface para el usuario completo (basado en el modelo de Prisma)
+// Interface para el usuario completo (basado en el modelo de Prisma) - ACTUALIZADA
 export interface IUsuario {
   id: string;
   tipo_documento: string;
@@ -362,12 +364,14 @@ export interface IUsuario {
   nombre: string;
   apellido: string;
   email: string;
-  celular?: string | null;
+  celular: string | null;
   contrasena: string;
   rol: 'super_admin' | 'admin' | 'gestor';
   estado: 'activo' | 'inactivo' | 'suspendido';
   created_at: Date;
   updated_at: Date;
+  reset_password_expires: Date | null;  // ✅ AGREGADO
+  reset_password_token: string | null;  // ✅ AGREGADO
 }
 
 // Interface para crear una sede
@@ -558,6 +562,8 @@ export interface IUsuarioFilters {
   email?: string;
   rol?: UsuarioRol;
   estado?: UsuarioEstado;
+  reset_password_token?: string | null;   // ✅ YA ESTABA
+  reset_password_expires?: Date | null;   // ✅ YA ESTABA
 }
 
 // Interface para filtros de búsqueda de sedes

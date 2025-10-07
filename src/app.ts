@@ -18,7 +18,6 @@ function main() {
 
   httpServer.listen(envs.PORT, '0.0.0.0', () => {
     console.log(`Server corriendo en el puerto ${envs.PORT}`);
-  //  console.log(`WebSocket server improved is running on ws://localhost:${envs.PORT}/wsImproved`);
 
   });
 }

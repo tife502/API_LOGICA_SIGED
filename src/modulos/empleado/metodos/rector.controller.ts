@@ -36,8 +36,6 @@ export class RectorController {
       // Ahora el body está completamente tipado
       const { empleado, informacionAcademica, institucion, sedes, fechaAsignacion, observaciones } = req.body;
 
-      console.log("Usuario autenticado:", req.usuario);
-
       // Validaciones básicas con tipado
       if (!empleado || !empleado.nombre || !empleado.documento || !empleado.email) {
         return res.status(400).json({

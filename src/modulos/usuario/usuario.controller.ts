@@ -1,9 +1,11 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
+import crypto from 'crypto';
 import PrismaService from '../../prisma/prisma.service';
 import { logger } from '../../config';
 import { PrismaInterfaces } from '../../domain';
 import { validateEmail } from '../../domain/utils';
+import { NotificationService } from '../../services/notification.service';
 
 /**
  * Controlador para gestión de usuarios
@@ -17,9 +19,11 @@ import { validateEmail } from '../../domain/utils';
 export class UsuarioController {
   private prismaService: PrismaService;
   private saltRounds: number = 12; // Rondas de bcrypt para hasheo
+  private notificationService: NotificationService;
 
   constructor() {
     this.prismaService = PrismaService.getInstance();
+    this.notificationService = new NotificationService();
   }
 
   // ============= CREAR USUARIO =============
@@ -365,7 +369,6 @@ export class UsuarioController {
   // ============= ACTUALIZAR USUARIO =============
 
   updateUsuario = async (req: Request, res: Response) => {
-    console.log(req.body);
     try {
       const { id } = req.params;
 
@@ -682,6 +685,358 @@ export class UsuarioController {
         success: false,
         message: 'Error interno del servidor',
         error: error.message
+      });
+    }
+  };
+
+  // ============= RECUPERACIÓN DE CONTRASEÑA POR SMS =============
+
+  /**
+   * Solicitar código de recuperación por SMS
+   * Endpoint: POST /api/usuarios/recuperacion/solicitar-codigo
+   */
+  solicitarCodigoRecuperacion = async (req: Request, res: Response) => {
+    try {
+      const { documento } = req.body;
+
+      if (!documento) {
+        return res.status(400).json({
+          success: false,
+          message: 'Número de documento es requerido',
+          error: 'Validation Error'
+        });
+      }
+
+      logger.info('Solicitud de código de recuperación', { documento });
+
+      // Buscar usuario por documento
+      const usuarios = await this.prismaService.getUsuarios({ documento });
+      
+      if (usuarios.data.length === 0) {
+        // Por seguridad, no revelamos si el documento existe o no
+        return res.status(200).json({
+          success: true,
+          message: 'Si el documento existe en nuestro sistema y tiene número de celular registrado, recibirás un código por SMS'
+        });
+      }
+
+      const usuario = usuarios.data[0];
+
+      // Verificar que el usuario esté activo
+      if (usuario.estado !== PrismaInterfaces.UsuarioEstado.activo) {
+        return res.status(400).json({
+          success: false,
+          message: 'Esta cuenta está inactiva. Contacta al administrador.',
+          error: 'Account Inactive'
+        });
+      }
+
+      // Verificar que tenga número de celular
+      if (!usuario.celular) {
+        // Por seguridad, no revelamos la falta de celular
+        return res.status(200).json({
+          success: true,
+          message: 'Si el documento existe en nuestro sistema y tiene número de celular registrado, recibirás un código por SMS'
+        });
+      }
+
+      // Validar formato del número
+      if (!this.notificationService.validarFormatoTelefono(usuario.celular)) {
+        logger.warn('Número de celular con formato inválido', { 
+          documento,
+          celular: `***${usuario.celular.slice(-4)}` 
+        });
+        
+        return res.status(400).json({
+          success: false,
+          message: 'El número de celular registrado no tiene un formato válido. Contacta al administrador.',
+          error: 'Invalid Phone Format'
+        });
+      }
+
+      // Generar código de 6 dígitos
+      const codigoRecuperacion = Math.floor(100000 + Math.random() * 900000).toString();
+      const codigoExpiry = new Date(Date.now() + 15 * 60 * 1000); // 15 minutos
+
+      // Normalizar número de teléfono
+      const telefonoNormalizado = this.notificationService.normalizarTelefono(usuario.celular);
+
+      // Guardar código en base de datos
+      await this.prismaService.updateUsuario(usuario.id, {
+        reset_password_token: codigoRecuperacion,
+        reset_password_expires: codigoExpiry
+      });
+
+      // Enviar SMS con el código
+      const smsEnviado = await this.notificationService.enviarCodigoRecuperacionSMS(
+        telefonoNormalizado,
+        codigoRecuperacion,
+        `${usuario.nombre} ${usuario.apellido}`
+      );
+
+
+      if (!smsEnviado) {
+        logger.error('Error enviando SMS de recuperación', { documento });
+        
+        // Limpiar código si no se pudo enviar
+        await this.prismaService.updateUsuario(usuario.id, {
+          reset_password_token: null,
+          reset_password_expires: null
+        });
+
+        return res.status(500).json({
+          success: false,
+          message: 'Error enviando código por SMS. Intenta nuevamente.',
+          error: 'SMS Service Error'
+        });
+      }
+
+      logger.info('Código de recuperación enviado exitosamente', { 
+        documento,
+        celular: `***${usuario.celular.slice(-4)}`,
+        expira: codigoExpiry 
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Código enviado por SMS',
+        data: {
+          celularParcial: `***${usuario.celular.slice(-4)}`,
+          validoHasta: codigoExpiry,
+          instrucciones: 'El código es válido por 15 minutos'
+        }
+      });
+
+    } catch (error: any) {
+      logger.error('Error procesando solicitud de código', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error interno del servidor',
+        error: 'Internal Server Error'
+      });
+    }
+  };
+
+  /**
+   * Verificar código y cambiar contraseña
+   * Endpoint: POST /api/usuarios/recuperacion/verificar-codigo
+   */
+  verificarCodigoYCambiarContrasena = async (req: Request, res: Response) => {
+    try {
+      const { documento, codigo, nuevaContrasena } = req.body;
+
+      // Validaciones básicas
+      if (!documento || !codigo || !nuevaContrasena) {
+        return res.status(400).json({
+          success: false,
+          message: 'Documento, código y nueva contraseña son requeridos',
+          error: 'Validation Error'
+        });
+      }
+
+      // Validar nueva contraseña
+      if (nuevaContrasena.length < 8) {
+        return res.status(400).json({
+          success: false,
+          message: 'La contraseña debe tener al menos 8 caracteres',
+          error: 'Validation Error'
+        });
+      }
+
+      if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(nuevaContrasena)) {
+        return res.status(400).json({
+          success: false,
+          message: 'La contraseña debe contener al menos una minúscula, una mayúscula y un número',
+          error: 'Validation Error'
+        });
+      }
+
+      logger.info('Verificando código de recuperación', { documento, codigo });
+
+      // Buscar usuario por documento
+      const usuarios = await this.prismaService.getUsuarios({ documento });
+
+      if (usuarios.data.length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: 'Datos inválidos',
+          error: 'Invalid Data'
+        });
+      }
+
+      const usuario = usuarios.data[0];
+
+      // Verificar código
+      if (usuario.reset_password_token !== codigo) {
+        logger.warn('Código de recuperación inválido', { 
+          documento,
+          codigoIngresado: codigo,
+          codigoEsperado: usuario.reset_password_token ? '***' + usuario.reset_password_token.slice(-3) : 'ninguno'
+        });
+        
+        return res.status(400).json({
+          success: false,
+          message: 'Código inválido',
+          error: 'Invalid Code'
+        });
+      }
+
+      // Verificar expiración
+      if (!usuario.reset_password_expires || usuario.reset_password_expires < new Date()) {
+        logger.warn('Código de recuperación expirado', { 
+          documento,
+          expiracion: usuario.reset_password_expires 
+        });
+        
+        return res.status(400).json({
+          success: false,
+          message: 'Código expirado. Solicita uno nuevo.',
+          error: 'Expired Code'
+        });
+      }
+
+      // Hashear nueva contraseña
+      const hashedPassword = await bcrypt.hash(nuevaContrasena, this.saltRounds);
+
+      // Actualizar contraseña y limpiar código de recuperación
+      await this.prismaService.updateUsuario(usuario.id, {
+        contrasena: hashedPassword,
+        reset_password_token: null,
+        reset_password_expires: null
+      });
+
+      // Enviar notificación de cambio exitoso
+      if (usuario.celular) {
+        const telefonoNormalizado = this.notificationService.normalizarTelefono(usuario.celular);
+        
+        await this.notificationService.notificarCambioContrasenaExitoso(
+          telefonoNormalizado,
+          `${usuario.nombre} ${usuario.apellido}`
+        );
+      }
+
+      logger.info('Contraseña restablecida exitosamente por SMS', { 
+        documento,
+        userId: usuario.id,
+        email: usuario.email 
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Contraseña restablecida exitosamente',
+        data: {
+          usuario: `${usuario.nombre} ${usuario.apellido}`,
+          email: usuario.email
+        }
+      });
+
+    } catch (error: any) {
+      logger.error('Error verificando código y cambiando contraseña', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error interno del servidor',
+        error: 'Internal Server Error'
+      });
+    }
+  };
+
+  /**
+   * Reenviar código de recuperación
+   * Endpoint: POST /api/usuarios/recuperacion/reenviar-codigo
+   */
+  reenviarCodigoRecuperacion = async (req: Request, res: Response) => {
+    try {
+      const { documento } = req.body;
+
+      if (!documento) {
+        return res.status(400).json({
+          success: false,
+          message: 'Número de documento es requerido',
+          error: 'Validation Error'
+        });
+      }
+
+      logger.info('Reenvío de código de recuperación solicitado', { documento });
+
+      // Buscar usuario por documento
+      const usuarios = await this.prismaService.getUsuarios({ documento });
+      
+      if (usuarios.data.length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: 'No se encontró una solicitud de recuperación activa para este documento',
+          error: 'No Active Request'
+        });
+      }
+
+      const usuario = usuarios.data[0];
+
+      // Verificar que tenga un código de recuperación activo
+      if (!usuario.reset_password_token || !usuario.reset_password_expires) {
+        return res.status(400).json({
+          success: false,
+          message: 'No tienes una solicitud de recuperación activa. Solicita un código nuevo.',
+          error: 'No Active Request'
+        });
+      }
+
+      // Verificar que no haya expirado hace mucho (permitir reenvío si expiró hace menos de 1 hora)
+      const unaHoraAtras = new Date(Date.now() - 60 * 60 * 1000);
+      if (usuario.reset_password_expires < unaHoraAtras) {
+        return res.status(400).json({
+          success: false,
+          message: 'La solicitud de recuperación ha expirado. Solicita un código nuevo.',
+          error: 'Request Expired'
+        });
+      }
+
+      // Generar nuevo código
+      const nuevoCodigoRecuperacion = Math.floor(100000 + Math.random() * 900000).toString();
+      const nuevaExpiracion = new Date(Date.now() + 15 * 60 * 1000); // 15 minutos
+
+      // Actualizar código en base de datos
+      await this.prismaService.updateUsuario(usuario.id, {
+        reset_password_token: nuevoCodigoRecuperacion,
+        reset_password_expires: nuevaExpiracion
+      });
+
+      // Reenviar SMS
+      const telefonoNormalizado = this.notificationService.normalizarTelefono(usuario.celular!);
+      
+      const smsEnviado = await this.notificationService.enviarCodigoRecuperacionSMS(
+        telefonoNormalizado,
+        nuevoCodigoRecuperacion,
+        `${usuario.nombre} ${usuario.apellido}`
+      );
+
+      if (!smsEnviado) {
+        return res.status(500).json({
+          success: false,
+          message: 'Error reenviando código por SMS',
+          error: 'SMS Service Error'
+        });
+      }
+
+      logger.info('Código de recuperación reenviado exitosamente', { 
+        documento,
+        celular: `***${usuario.celular!.slice(-4)}` 
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Código reenviado por SMS',
+        data: {
+          celularParcial: `***${usuario.celular!.slice(-4)}`,
+          validoHasta: nuevaExpiracion
+        }
+      });
+
+    } catch (error: any) {
+      logger.error('Error reenviando código', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error interno del servidor',
+        error: 'Internal Server Error'
       });
     }
   };

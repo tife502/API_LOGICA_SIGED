@@ -17,7 +17,6 @@ export class EmpleadoController {
 
   // Crear nuevo empleado (docente/rector)
   createEmpleado = async (req: Request, res: Response) => {
-    console.log(req.body);
     try {
       const usuario = req.usuario; // Usuario que está digitalizando
       

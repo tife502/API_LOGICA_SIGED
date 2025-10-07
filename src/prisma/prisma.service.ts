@@ -241,8 +241,9 @@ class PrismaService {
             rol: true,
             estado: true,
             created_at: true,
-            updated_at: true
-            // Excluir contraseña
+            updated_at: true,
+            reset_password_expires: true,
+            reset_password_token: true
           }
         }),
         this.prisma.usuario.count({ where })

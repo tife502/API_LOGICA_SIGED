@@ -1456,3 +1456,342 @@ Invalid value for argument `jornada`. Expected horas_extra_jornada.
 2025-10-06T20:01:12.760Z info: Empleados obtenidos: 5 de 5
 2025-10-06T20:01:12.777Z info: Obteniendo empleado por ID
 2025-10-06T20:01:12.784Z info: Empleados obtenidos: 5 de 5
+2025-10-06T21:31:10.700Z info: Obteniendo empleado por ID
+2025-10-06T21:31:10.832Z info: Empleados obtenidos: 5 de 5
+2025-10-06T21:31:10.854Z info: Obteniendo empleado por ID
+2025-10-06T21:31:10.874Z info: Empleados obtenidos: 5 de 5
+2025-10-06T21:33:15.484Z info: Obteniendo estadísticas de suplencias
+2025-10-06T21:33:15.633Z info: Estadísticas de suplencias obtenidas exitosamente
+2025-10-06T21:33:50.839Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-06T21:33:50.842Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-06T21:33:50.845Z info: Empleados obtenidos: 5 de 5
+2025-10-06T21:33:50.857Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-06T21:33:50.859Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-06T21:33:50.882Z info: Empleados obtenidos: 5 de 5
+2025-10-06T21:59:01.177Z info: Empleados obtenidos: 5 de 5
+2025-10-06T21:59:01.208Z info: Empleados obtenidos: 5 de 5
+2025-10-06T22:03:18.774Z info: Empleados obtenidos: 5 de 5
+2025-10-06T22:03:19.000Z info: Empleados obtenidos: 5 de 5
+2025-10-06T22:03:42.590Z info: Empleados obtenidos: 5 de 5
+2025-10-06T22:03:42.919Z info: Empleados obtenidos: 5 de 5
+2025-10-06T22:03:58.671Z info: Empleados obtenidos: 5 de 5
+2025-10-06T22:03:58.862Z info: Empleados obtenidos: 5 de 5
+2025-10-07T12:58:49.446Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T12:58:49.451Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T12:58:49.512Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T12:58:49.513Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T12:58:49.580Z info: Empleados obtenidos: 5 de 5
+2025-10-07T12:58:49.643Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:12:20.502Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T13:12:20.504Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T13:12:20.540Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T13:12:20.541Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T13:12:20.652Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:12:20.728Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:13:59.678Z info: Iniciando creación de suplencia
+2025-10-07T13:13:59.700Z warn: Sede no encontrada:
+2025-10-07T13:24:37.727Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T13:24:37.731Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T13:24:37.849Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:24:37.862Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T13:24:37.864Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T13:24:37.922Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:24:52.789Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T13:24:52.791Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T13:24:52.810Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:24:52.820Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T13:24:52.821Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T13:24:52.852Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:25:46.458Z info: Iniciando creación de suplencia
+2025-10-07T13:25:46.473Z warn: Sede no encontrada:
+2025-10-07T13:32:49.605Z warn: Error verificando token JWT
+2025-10-07T13:32:49.607Z warn: Error en middleware de autenticación
+2025-10-07T13:34:03.660Z info: Obteniendo sedes
+2025-10-07T13:44:46.680Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:45:13.679Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T13:45:13.680Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T13:45:13.686Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:45:13.762Z info: Obteniendo sedes
+2025-10-07T13:45:26.191Z info: Obteniendo sedes
+2025-10-07T13:45:26.197Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T13:45:26.199Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T13:45:26.200Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:45:46.530Z info: Obteniendo sedes
+2025-10-07T13:45:46.537Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:46:05.559Z info: Obteniendo sedes
+2025-10-07T13:46:05.580Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:46:34.722Z info: Obteniendo sedes
+2025-10-07T13:46:34.726Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:46:48.943Z info: Empleados obtenidos: 5 de 5
+2025-10-07T13:46:48.970Z info: Obteniendo sedes
+2025-10-07T13:51:19.035Z info: Iniciando creación de suplencia
+2025-10-07T13:51:46.036Z info: Iniciando creación de suplencia
+2025-10-07T13:51:46.185Z info: Suplencia creada exitosamente
+2025-10-07T13:58:37.490Z info: Iniciando creación de suplencia
+2025-10-07T13:58:37.648Z info: Suplencia creada exitosamente
+2025-10-07T14:11:18.271Z info: Iniciando creación de suplencia
+2025-10-07T14:11:18.437Z info: Suplencia creada exitosamente
+2025-10-07T14:11:20.299Z info: Iniciando creación de documento de suplencia
+2025-10-07T14:11:20.337Z info: Documento de suplencia creado exitosamente
+2025-10-07T14:11:37.264Z info: Obteniendo suplencia por ID:
+2025-10-07T14:11:37.274Z info: Obteniendo documentos por suplencia
+2025-10-07T14:11:37.283Z info: Suplencia obtenida exitosamente:
+2025-10-07T14:11:37.380Z info: Documentos por suplencia obtenidos exitosamente
+2025-10-07T14:11:37.402Z info: Obteniendo suplencia por ID:
+2025-10-07T14:11:37.418Z info: Suplencia obtenida exitosamente:
+2025-10-07T14:11:37.702Z info: Obteniendo documentos por suplencia
+2025-10-07T14:11:37.715Z info: Documentos por suplencia obtenidos exitosamente
+2025-10-07T14:11:53.686Z info: Obteniendo suplencias con filtros
+2025-10-07T14:11:53.707Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:11:53.790Z info: Obteniendo suplencias con filtros
+2025-10-07T14:11:53.805Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:13:11.725Z info: Obteniendo suplencias con filtros
+2025-10-07T14:13:11.737Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:13:11.769Z info: Obteniendo suplencias con filtros
+2025-10-07T14:13:11.778Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:13:57.026Z info: Obteniendo suplencias con filtros
+2025-10-07T14:13:57.043Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:13:57.100Z info: Obteniendo suplencias con filtros
+2025-10-07T14:13:57.112Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:19:20.271Z info: Obteniendo suplencias con filtros
+2025-10-07T14:19:20.405Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:19:20.446Z info: Obteniendo suplencias con filtros
+2025-10-07T14:19:20.456Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:19:51.166Z info: Obteniendo suplencias con filtros
+2025-10-07T14:19:51.185Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:19:51.218Z info: Obteniendo suplencias con filtros
+2025-10-07T14:19:51.230Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:20:12.001Z info: Obteniendo suplencias con filtros
+2025-10-07T14:20:12.018Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:20:12.076Z info: Obteniendo suplencias con filtros
+2025-10-07T14:20:12.091Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:20:36.933Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T14:20:36.935Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T14:20:36.939Z info: Obteniendo sedes
+2025-10-07T14:20:36.946Z info: Empleados obtenidos: 5 de 5
+2025-10-07T14:20:37.001Z info: Obteniendo jornadas disponibles para suplencias
+2025-10-07T14:20:37.002Z info: Jornadas de suplencias obtenidas exitosamente
+2025-10-07T14:20:37.009Z info: Empleados obtenidos: 5 de 5
+2025-10-07T14:20:37.187Z info: Obteniendo sedes
+2025-10-07T14:22:23.828Z info: Iniciando creación de suplencia
+2025-10-07T14:22:23.872Z info: Suplencia creada exitosamente
+2025-10-07T14:22:24.992Z info: Iniciando creación de documento de suplencia
+2025-10-07T14:22:25.026Z info: Documento de suplencia creado exitosamente
+2025-10-07T14:22:28.252Z info: Obteniendo documentos por suplencia
+2025-10-07T14:22:28.256Z info: Obteniendo suplencia por ID:
+2025-10-07T14:22:28.272Z info: Documentos por suplencia obtenidos exitosamente
+2025-10-07T14:22:28.274Z info: Suplencia obtenida exitosamente:
+2025-10-07T14:22:28.306Z info: Obteniendo documentos por suplencia
+2025-10-07T14:22:28.320Z info: Obteniendo suplencia por ID:
+2025-10-07T14:22:28.326Z info: Documentos por suplencia obtenidos exitosamente
+2025-10-07T14:22:28.332Z info: Suplencia obtenida exitosamente:
+2025-10-07T14:22:31.362Z info: Obteniendo suplencias con filtros
+2025-10-07T14:22:31.379Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:22:31.478Z info: Obteniendo suplencias con filtros
+2025-10-07T14:22:31.495Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:23:26.828Z info: Obteniendo estadísticas de suplencias
+2025-10-07T14:23:26.938Z info: Estadísticas de suplencias obtenidas exitosamente
+2025-10-07T14:23:27.008Z info: Obteniendo estadísticas de suplencias
+2025-10-07T14:23:27.026Z info: Estadísticas de suplencias obtenidas exitosamente
+2025-10-07T14:23:39.796Z info: Obteniendo suplencias con filtros
+2025-10-07T14:23:39.811Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:23:39.884Z info: Obteniendo suplencias con filtros
+2025-10-07T14:23:39.897Z info: Suplencias obtenidas exitosamente
+2025-10-07T14:25:07.751Z info: Obteniendo suplencia por ID:
+2025-10-07T14:25:07.758Z info: Obteniendo documentos por suplencia
+2025-10-07T14:25:07.765Z info: Suplencia obtenida exitosamente:
+2025-10-07T14:25:07.812Z info: Obteniendo suplencia por ID:
+2025-10-07T14:25:07.824Z info: Suplencia obtenida exitosamente:
+2025-10-07T14:25:07.926Z info: Documentos por suplencia obtenidos exitosamente
+2025-10-07T14:25:08.006Z info: Obteniendo documentos por suplencia
+2025-10-07T14:25:08.019Z info: Documentos por suplencia obtenidos exitosamente
+2025-10-07T14:34:14.614Z info: Obteniendo documentos por suplencia
+2025-10-07T14:34:14.734Z info: Documentos por suplencia obtenidos exitosamente
+2025-10-07T14:34:14.781Z info: Obteniendo documentos por suplencia
+2025-10-07T14:34:14.794Z info: Documentos por suplencia obtenidos exitosamente
+2025-10-07T14:43:57.349Z info: Obteniendo documentos por suplencia
+2025-10-07T14:43:57.504Z info: Documentos por suplencia obtenidos exitosamente
+2025-10-07T16:42:36.736Z info: Obteniendo sedes
+2025-10-07T16:42:36.854Z info: Empleados obtenidos: 5 de 5
+2025-10-07T16:42:36.900Z info: Obteniendo sedes
+2025-10-07T16:42:36.902Z info: Empleados obtenidos: 5 de 5
+2025-10-07T16:46:49.252Z info: Registro de horas extra creado exitosamente
+2025-10-07T16:48:00.020Z info: Obteniendo sedes
+2025-10-07T16:48:00.166Z info: Empleados obtenidos: 5 de 5
+2025-10-07T18:05:48.963Z info: Obteniendo usuario por email
+2025-10-07T18:05:49.407Z info: Login exitoso
+2025-10-07T18:12:17.723Z info: Solicitud de código de recuperación
+2025-10-07T18:12:17.730Z info: Obteniendo usuarios
+2025-10-07T18:12:17.924Z info: Actualizando usuario
+2025-10-07T18:12:18.126Z error: Error enviando SMS de recuperación:
+2025-10-07T18:12:18.127Z error: Error enviando SMS de recuperación
+2025-10-07T18:12:18.128Z info: Actualizando usuario
+2025-10-07T18:14:00.950Z info: Solicitud de código de recuperación
+2025-10-07T18:14:00.957Z info: Obteniendo usuarios
+2025-10-07T18:14:01.061Z info: Actualizando usuario
+2025-10-07T18:14:01.233Z error: Error enviando SMS de recuperación:
+2025-10-07T18:14:01.236Z error: Error enviando SMS de recuperación
+2025-10-07T18:14:01.237Z info: Actualizando usuario
+2025-10-07T18:14:33.685Z info: Solicitud de código de recuperación
+2025-10-07T18:14:33.691Z info: Obteniendo usuarios
+2025-10-07T18:14:33.800Z info: Actualizando usuario
+2025-10-07T18:14:33.971Z error: Error enviando SMS de recuperación:
+2025-10-07T18:14:33.974Z error: Error enviando SMS de recuperación
+2025-10-07T18:14:33.975Z info: Actualizando usuario
+2025-10-07T18:15:34.059Z info: Obteniendo sedes
+2025-10-07T18:15:34.076Z info: Empleados obtenidos: 5 de 5
+2025-10-07T18:15:34.128Z info: Obteniendo sedes
+2025-10-07T18:15:34.131Z info: Empleados obtenidos: 5 de 5
+2025-10-07T18:16:13.646Z info: Registro de horas extra creado exitosamente
+2025-10-07T18:18:31.634Z info: Solicitud de código de recuperación
+2025-10-07T18:18:31.641Z info: Obteniendo usuarios
+2025-10-07T18:18:31.756Z info: Actualizando usuario
+2025-10-07T18:18:31.918Z error: Error enviando SMS de recuperación:
+2025-10-07T18:18:31.921Z error: Error enviando SMS de recuperación
+2025-10-07T18:18:31.923Z info: Actualizando usuario
+2025-10-07T18:18:47.519Z info: Solicitud de código de recuperación
+2025-10-07T18:18:47.529Z info: Obteniendo usuarios
+2025-10-07T18:18:47.639Z info: Actualizando usuario
+2025-10-07T18:18:47.833Z error: Error enviando SMS de recuperación:
+2025-10-07T18:18:47.836Z error: Error enviando SMS de recuperación
+2025-10-07T18:18:47.837Z info: Actualizando usuario
+2025-10-07T18:20:52.291Z info: Solicitud de código de recuperación
+2025-10-07T18:20:52.299Z info: Obteniendo usuarios
+2025-10-07T18:20:52.403Z info: Actualizando usuario
+2025-10-07T18:20:52.636Z error: Error enviando SMS de recuperación:
+2025-10-07T18:20:52.638Z error: Error enviando SMS de recuperación
+2025-10-07T18:20:52.640Z info: Actualizando usuario
+2025-10-07T18:22:10.960Z info: Solicitud de código de recuperación
+2025-10-07T18:22:10.970Z info: Obteniendo usuarios
+2025-10-07T18:22:11.089Z info: Actualizando usuario
+2025-10-07T18:22:11.254Z error: Error enviando SMS de recuperación:
+2025-10-07T18:22:11.256Z error: Error enviando SMS de recuperación
+2025-10-07T18:22:11.256Z info: Actualizando usuario
+2025-10-07T18:23:47.241Z info: Solicitud de código de recuperación
+2025-10-07T18:23:47.248Z info: Obteniendo usuarios
+2025-10-07T18:23:47.307Z info: Actualizando usuario
+2025-10-07T18:23:47.474Z error: Error enviando SMS de recuperación:
+2025-10-07T18:23:47.477Z error: Error enviando SMS de recuperación
+2025-10-07T18:23:47.477Z info: Actualizando usuario
+2025-10-07T18:24:15.780Z info: Solicitud de código de recuperación
+2025-10-07T18:24:15.787Z info: Obteniendo usuarios
+2025-10-07T18:24:15.927Z info: Actualizando usuario
+2025-10-07T18:24:16.091Z error: Error enviando SMS de recuperación:
+2025-10-07T18:24:16.093Z error: Error enviando SMS de recuperación
+2025-10-07T18:24:16.094Z info: Actualizando usuario
+2025-10-07T18:27:00.596Z info: Solicitud de código de recuperación
+2025-10-07T18:27:00.601Z info: Obteniendo usuarios
+2025-10-07T18:27:00.709Z info: Actualizando usuario
+2025-10-07T18:27:00.846Z error: Error enviando SMS de recuperación:
+2025-10-07T18:27:00.849Z error: Error enviando SMS de recuperación
+2025-10-07T18:27:00.850Z info: Actualizando usuario
+2025-10-07T18:43:37.960Z warn: Error verificando token JWT
+2025-10-07T18:43:37.963Z warn: Error en middleware de autenticación
+2025-10-07T18:43:38.001Z warn: Error verificando token JWT
+2025-10-07T18:43:38.002Z warn: Error en middleware de autenticación
+2025-10-07T18:43:43.188Z warn: Error verificando token JWT
+2025-10-07T18:43:43.190Z warn: Error en middleware de autenticación
+2025-10-07T18:43:43.198Z warn: Error verificando token JWT
+2025-10-07T18:43:43.199Z warn: Error en middleware de autenticación
+2025-10-07T18:43:43.248Z warn: Error verificando token JWT
+2025-10-07T18:43:43.249Z warn: Error en middleware de autenticación
+2025-10-07T18:43:43.256Z warn: Error verificando token JWT
+2025-10-07T18:43:43.256Z warn: Error en middleware de autenticación
+2025-10-07T18:43:46.717Z warn: Error verificando token JWT
+2025-10-07T18:43:46.718Z warn: Error en middleware de autenticación
+2025-10-07T18:43:46.800Z warn: Error verificando token JWT
+2025-10-07T18:43:46.800Z warn: Error en middleware de autenticación
+2025-10-07T18:43:50.169Z warn: Error verificando token JWT
+2025-10-07T18:43:50.170Z warn: Error en middleware de autenticación
+2025-10-07T18:43:58.264Z info: Obteniendo usuario por email
+2025-10-07T18:43:58.956Z info: Login exitoso
+2025-10-07T18:45:00.206Z warn: Registro de horas extra eliminado
+2025-10-07T18:45:09.555Z info: Empleados obtenidos: 5 de 5
+2025-10-07T18:45:09.596Z info: Obteniendo sedes
+2025-10-07T18:45:09.644Z info: Empleados obtenidos: 5 de 5
+2025-10-07T18:45:09.677Z info: Obteniendo sedes
+2025-10-07T18:45:24.649Z info: Obteniendo suplencias con filtros
+2025-10-07T18:45:24.671Z info: Suplencias obtenidas exitosamente
+2025-10-07T18:45:24.713Z info: Obteniendo suplencias con filtros
+2025-10-07T18:45:24.730Z info: Suplencias obtenidas exitosamente
+2025-10-07T18:45:32.509Z info: Empleados obtenidos: 5 de 5
+2025-10-07T18:45:32.526Z info: Obteniendo sedes
+2025-10-07T18:45:32.567Z info: Empleados obtenidos: 5 de 5
+2025-10-07T18:45:32.575Z info: Obteniendo sedes
+2025-10-07T18:45:55.044Z info: Registro de horas extra creado exitosamente
+2025-10-07T18:45:56.393Z info: Documento de horas extra creado exitosamente
+2025-10-07T19:06:58.337Z info: Solicitud de código de recuperación
+2025-10-07T19:06:58.339Z info: Obteniendo usuarios
+2025-10-07T19:06:58.465Z info: Actualizando usuario
+2025-10-07T19:06:59.204Z info: SMS de recuperación enviado exitosamente
+2025-10-07T19:06:59.206Z info: Código de recuperación enviado exitosamente
+2025-10-07T19:07:38.951Z info: Solicitud de código de recuperación
+2025-10-07T19:07:38.959Z info: Obteniendo usuarios
+2025-10-07T19:07:39.095Z info: Actualizando usuario
+2025-10-07T19:07:39.641Z info: SMS de recuperación enviado exitosamente
+2025-10-07T19:07:39.643Z info: Código de recuperación enviado exitosamente
+2025-10-07T19:08:43.031Z info: Verificando código de recuperación
+2025-10-07T19:08:43.032Z info: Obteniendo usuarios
+2025-10-07T19:08:43.042Z warn: Código de recuperación inválido
+2025-10-07T19:09:55.266Z info: Verificando código de recuperación
+2025-10-07T19:09:55.268Z info: Obteniendo usuarios
+2025-10-07T19:09:55.278Z warn: Código de recuperación inválido
+2025-10-07T19:10:14.053Z info: Solicitud de código de recuperación
+2025-10-07T19:10:14.055Z info: Obteniendo usuarios
+2025-10-07T19:10:14.065Z info: Actualizando usuario
+2025-10-07T19:10:14.492Z info: SMS de recuperación enviado exitosamente
+2025-10-07T19:10:14.493Z info: Código de recuperación enviado exitosamente
+2025-10-07T19:10:57.223Z info: Verificando código de recuperación
+2025-10-07T19:10:57.224Z info: Obteniendo usuarios
+2025-10-07T19:10:57.233Z warn: Código de recuperación inválido
+2025-10-07T19:12:10.447Z info: Verificando código de recuperación
+2025-10-07T19:12:10.455Z info: Obteniendo usuarios
+2025-10-07T19:12:10.572Z warn: Código de recuperación inválido
+2025-10-07T19:13:16.273Z info: Verificando código de recuperación
+2025-10-07T19:13:16.275Z info: Obteniendo usuarios
+2025-10-07T19:13:16.286Z warn: Código de recuperación inválido
+2025-10-07T19:13:41.763Z info: Verificando código de recuperación
+2025-10-07T19:13:41.770Z info: Obteniendo usuarios
+2025-10-07T19:13:41.882Z warn: Código de recuperación inválido
+2025-10-07T19:16:27.800Z info: Verificando código de recuperación
+2025-10-07T19:16:27.807Z info: Obteniendo usuarios
+2025-10-07T19:16:27.912Z warn: Código de recuperación inválido
+2025-10-07T19:17:01.817Z info: Verificando código de recuperación
+2025-10-07T19:17:01.825Z info: Obteniendo usuarios
+2025-10-07T19:17:01.931Z warn: Código de recuperación inválido
+2025-10-07T19:19:34.998Z info: Verificando código de recuperación
+2025-10-07T19:19:35.005Z info: Obteniendo usuarios
+2025-10-07T19:19:35.119Z warn: Código de recuperación inválido
+2025-10-07T19:19:39.443Z info: Verificando código de recuperación
+2025-10-07T19:19:39.445Z info: Obteniendo usuarios
+2025-10-07T19:19:39.454Z warn: Código de recuperación inválido
+2025-10-07T19:19:44.849Z info: Verificando código de recuperación
+2025-10-07T19:19:44.850Z info: Obteniendo usuarios
+2025-10-07T19:19:45.528Z info: Actualizando usuario
+2025-10-07T19:19:46.250Z info: Notificación de cambio enviada
+2025-10-07T19:19:46.252Z info: Contraseña restablecida exitosamente por SMS
+2025-10-07T19:20:39.906Z info: Solicitud de código de recuperación
+2025-10-07T19:20:39.908Z info: Obteniendo usuarios
+2025-10-07T19:20:39.922Z info: Actualizando usuario
+2025-10-07T19:20:40.288Z info: SMS de recuperación enviado exitosamente
+2025-10-07T19:20:40.289Z info: Código de recuperación enviado exitosamente
+2025-10-07T19:23:35.880Z info: Verificando código de recuperación
+2025-10-07T19:23:35.881Z info: Obteniendo usuarios
+2025-10-07T19:23:36.534Z info: Actualizando usuario
+2025-10-07T19:23:36.911Z info: Notificación de cambio enviada
+2025-10-07T19:23:36.912Z info: Contraseña restablecida exitosamente por SMS
+2025-10-07T19:23:44.120Z info: Obteniendo usuario por email
+2025-10-07T19:23:44.889Z info: Login exitoso
+2025-10-07T20:01:32.336Z info: Token agregado a blacklist
+2025-10-07T20:01:32.343Z info: Token invalidado exitosamente
+2025-10-07T20:01:32.346Z info: Token de acceso invalidado
+2025-10-07T20:01:32.347Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-07T20:01:41.912Z info: Obteniendo usuario por email
+2025-10-07T20:01:42.512Z info: Login exitoso
+2025-10-07T20:12:10.501Z info: Token agregado a blacklist
+2025-10-07T20:12:10.502Z info: Token invalidado exitosamente
+2025-10-07T20:12:10.503Z info: Token de acceso invalidado
+2025-10-07T20:12:10.504Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-07T20:12:29.312Z info: Obteniendo usuario por email
+2025-10-07T20:12:30.076Z info: Login exitoso
+2025-10-07T20:17:57.045Z info: Obteniendo sedes

@@ -370,3 +370,23 @@ Invalid value for argument `jornada`. Expected horas_extra_jornada.
     at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
     at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
     at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-07T18:12:18.126Z error: Error enviando SMS de recuperación:
+2025-10-07T18:12:18.127Z error: Error enviando SMS de recuperación
+2025-10-07T18:14:01.233Z error: Error enviando SMS de recuperación:
+2025-10-07T18:14:01.236Z error: Error enviando SMS de recuperación
+2025-10-07T18:14:33.971Z error: Error enviando SMS de recuperación:
+2025-10-07T18:14:33.974Z error: Error enviando SMS de recuperación
+2025-10-07T18:18:31.918Z error: Error enviando SMS de recuperación:
+2025-10-07T18:18:31.921Z error: Error enviando SMS de recuperación
+2025-10-07T18:18:47.833Z error: Error enviando SMS de recuperación:
+2025-10-07T18:18:47.836Z error: Error enviando SMS de recuperación
+2025-10-07T18:20:52.636Z error: Error enviando SMS de recuperación:
+2025-10-07T18:20:52.638Z error: Error enviando SMS de recuperación
+2025-10-07T18:22:11.254Z error: Error enviando SMS de recuperación:
+2025-10-07T18:22:11.256Z error: Error enviando SMS de recuperación
+2025-10-07T18:23:47.474Z error: Error enviando SMS de recuperación:
+2025-10-07T18:23:47.477Z error: Error enviando SMS de recuperación
+2025-10-07T18:24:16.091Z error: Error enviando SMS de recuperación:
+2025-10-07T18:24:16.093Z error: Error enviando SMS de recuperación
+2025-10-07T18:27:00.846Z error: Error enviando SMS de recuperación:
+2025-10-07T18:27:00.849Z error: Error enviando SMS de recuperación
