@@ -63,16 +63,6 @@ export class EmpleadoController {
         empleado_id: nuevoEmpleado.id
       });
 
-      // Auditoría: Quién digitalizó la información
-      logger.info(`Empleado digitalizado por ${usuario?.email} (${usuario?.rol})`, {
-        empleado_id: nuevoEmpleado.id,
-        empleado_documento: nuevoEmpleado.documento,
-        empleado_nombre: `${nuevoEmpleado.nombre} ${nuevoEmpleado.apellido}`,
-        digitalizado_por: usuario?.id,
-        digitalizado_por_rol: usuario?.rol,
-        comentario_id: comentarioEmpleadoCreado.id
-      });
-
       res.status(201).json({
         success: true,
         message: 'Empleado digitalizado exitosamente',
@@ -135,10 +125,6 @@ export class EmpleadoController {
 
       // Log de consulta (sin saturar el log)
       if (usuario?.rol === 'gestor') {
-        logger.info(`Gestor ${usuario.email} consultó empleados`, {
-          total_encontrados: resultado.pagination.total,
-          pagina: pagination.page
-        });
       }
 
       res.status(200).json({
@@ -247,17 +233,6 @@ export class EmpleadoController {
       });
 
       const empleadoActualizado = await this.prismaService.updateEmpleado(id, updateData);
-
-      // Auditoría: Cambios realizados
-      logger.info(`Información de empleado actualizada por ${usuario?.email} (${usuario?.rol})`, {
-        empleado_id: id,
-        empleado_documento: empleadoExistente.documento,
-        empleado_nombre: `${empleadoExistente.nombre} ${empleadoExistente.apellido}`,
-        campos_modificados: Object.keys(updateData),
-        modificado_por: usuario?.id,
-        modificado_por_rol: usuario?.rol
-      });
-
       res.status(200).json({
         success: true,
         message: 'Información del empleado actualizada exitosamente',

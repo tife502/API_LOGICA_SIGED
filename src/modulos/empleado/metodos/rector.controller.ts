@@ -83,14 +83,6 @@ export class RectorController {
         }
       }
 
-      logger.info('Creando rector completo', {
-        empleado: `${empleado.nombre} ${empleado.apellido}`,
-        documento: empleado.documento,
-        institucion: institucion.nombre,
-        sedesACrear: sedes.crear?.length || 0,
-        sedesAAsignar: sedes.asignar_existentes?.length || 0,
-        usuarioCreador: req.usuario?.email
-      });
 
       const resultado = await this.rectorService.crearRectorCompleto({
         empleado,
@@ -146,11 +138,6 @@ export class RectorController {
         });
       }
 
-      logger.info('Asignando rector a institución', {
-        rectorId,
-        institucionId
-      });
-
       const resultado = await this.rectorService.asignarRectorAInstitucion({
         rectorId,
         institucionId,
@@ -187,10 +174,6 @@ export class RectorController {
         conSedes: con_sedes === 'true'
       };
 
-      logger.info('Obteniendo instituciones disponibles', {
-        filters
-      });
-
       const instituciones = await this.rectorService.getInstitucionesDisponibles(filters);
 
       return res.status(200).json({
@@ -220,11 +203,6 @@ export class RectorController {
   public getResumenRector = async (req: Request, res: Response): Promise<Response> => {
     try {
       const { rectorId } = req.params;
-
-      logger.info('Obteniendo resumen de rector', {
-        rectorId
-      });
-
       const resumen = await this.rectorService.getResumenRector(rectorId);
 
       return res.status(200).json({
@@ -258,11 +236,6 @@ export class RectorController {
           data: null
         });
       }
-
-      logger.info('Validando flujo de rector', {
-        documento,
-        email
-      });
 
       // Verificar si ya existe empleado con documento
       const empleadoExistente = await this.rectorService['prismaService'].executeTransaction(async (prisma) => {
@@ -343,12 +316,6 @@ export class RectorController {
           data: null
         });
       }
-
-      logger.info('Transfiriendo rector entre instituciones', {
-        rectorId,
-        nuevaInstitucionId,
-        mantenerSedesOriginales
-      });
 
       const resultado = await this.rectorService['prismaService'].executeTransaction(async (prisma) => {
         // Obtener institución actual del rector

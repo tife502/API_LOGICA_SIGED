@@ -147,11 +147,7 @@ export class JwtService {
       
       // Agregar a blacklist
       this.blacklistService.addToken(token, expirationTime);
-      
-      logger.info('Token invalidado exitosamente', { 
-        tokenPrefix: token.substring(0, 20) + '...',
-        userId: decoded?.id 
-      });
+
     } catch (error) {
       logger.error('Error invalidando token', error);
       throw new Error('Error al invalidar token');
@@ -168,9 +164,6 @@ export class JwtService {
       
       this.blacklistService.addToken(refreshToken, expirationTime);
       
-      logger.info('Refresh token invalidado exitosamente', { 
-        tokenPrefix: refreshToken.substring(0, 20) + '...'
-      });
     } catch (error) {
       logger.error('Error invalidando refresh token', error);
       throw new Error('Error al invalidar refresh token');

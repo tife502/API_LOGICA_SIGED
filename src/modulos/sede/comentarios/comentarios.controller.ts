@@ -57,13 +57,6 @@ export class ComentarioSedeController {
 
       const comentario = await this.prismaService.createComentarioSede(comentarioData);
 
-      logger.info(`Comentario creado en sede: ${sede_id} por usuario ${usuario?.id}`, {
-        action: 'CREATE_COMENTARIO_SEDE',
-        userId: usuario?.id,
-        sedeId: sede_id,
-        comentarioId: comentario.id
-      });
-
       res.status(201).json({
         success: true,
         message: 'Comentario creado exitosamente',
@@ -157,13 +150,6 @@ export class ComentarioSedeController {
 
       const updatedComentario = await this.prismaService.updateComentarioSede(id, updateData);
 
-      logger.info(`Comentario actualizado: ${id} por usuario ${usuario?.id}`, {
-        action: 'UPDATE_COMENTARIO_SEDE',
-        userId: usuario?.id,
-        comentarioId: id,
-        changes: updateData
-      });
-
       res.status(200).json({
         success: true,
         message: 'Comentario actualizado exitosamente',
@@ -203,12 +189,6 @@ export class ComentarioSedeController {
       }
 
       await this.prismaService.deleteComentarioSede(id);
-
-      logger.info(`Comentario eliminado: ${id} por usuario ${usuario?.id}`, {
-        action: 'DELETE_COMENTARIO_SEDE',
-        userId: usuario?.id,
-        comentarioId: id
-      });
 
       res.status(200).json({
         success: true,

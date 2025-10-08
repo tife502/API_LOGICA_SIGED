@@ -111,14 +111,6 @@ export class DocumentoHorasExtraController {
         }
       });
 
-      logger.info(`Documento de horas extra creado exitosamente`, {
-        documentoId: nuevoDocumento.id,
-        horasExtraId: horas_extra_id,
-        nombre: nuevoDocumento.nombre,
-        empleado: `${horasExtraExistente.empleado.nombre} ${horasExtraExistente.empleado.apellido}`,
-        usuarioId: usuario?.id
-      });
-
       return res.status(201).json({
         success: true,
         message: 'Documento de horas extra creado exitosamente',
@@ -461,11 +453,6 @@ export class DocumentoHorasExtraController {
             }
           }
         }
-      });
-
-      logger.info(`Documento de horas extra actualizado exitosamente`, {
-        documentoId: id,
-        usuarioId: usuario?.id
       });
 
       return res.status(200).json({

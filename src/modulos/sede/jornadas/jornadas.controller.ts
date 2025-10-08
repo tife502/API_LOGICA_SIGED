@@ -74,13 +74,6 @@ export class JornadaController {
         jornada_id: parseInt(jornada_id)
       });
 
-      logger.info(`Jornada asignada a sede: ${jornada_id} -> ${sede_id} por usuario ${usuario?.id}`, {
-        action: 'ASIGNAR_JORNADA_SEDE',
-        userId: usuario?.id,
-        sedeId: sede_id,
-        jornadaId: jornada_id
-      });
-
       res.status(201).json({
         success: true,
         message: 'Jornada asignada a sede exitosamente',
@@ -153,13 +146,6 @@ export class JornadaController {
       }
 
       await this.prismaService.desasignarJornadaSede(sede_id, parseInt(jornada_id));
-
-      logger.info(`Jornada desasignada de sede: ${jornada_id} <- ${sede_id} por usuario ${usuario?.id}`, {
-        action: 'DESASIGNAR_JORNADA_SEDE',
-        userId: usuario?.id,
-        sedeId: sede_id,
-        jornadaId: jornada_id
-      });
 
       res.status(200).json({
         success: true,

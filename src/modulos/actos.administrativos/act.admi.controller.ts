@@ -97,15 +97,6 @@ export class ActoAdministrativoController {
         }
       });
 
-      logger.info(`Acto administrativo creado exitosamente`, {
-        actoId: nuevoActo.id,
-        nombre: nuevoActo.nombre,
-        institucionId: institucion_educativa_id,
-        institucionNombre: institucion.nombre,
-        consecutivo: consecutivoFormateado,
-        usuarioId: usuario?.id
-      });
-
       return res.status(201).json({
         success: true,
         message: 'Acto administrativo creado exitosamente',
@@ -399,11 +390,6 @@ export class ActoAdministrativoController {
         include: {
           documentos_actos_administrativos: true
         }
-      });
-
-      logger.info(`Acto administrativo actualizado exitosamente`, {
-        actoId: actoActualizado.id,
-        usuarioId: usuario?.id
       });
 
       return res.status(200).json({

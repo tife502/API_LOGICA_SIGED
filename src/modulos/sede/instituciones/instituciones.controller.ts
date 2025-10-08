@@ -57,13 +57,6 @@ export class InstitucionEducativaController {
 
       const institucion = await this.prismaService.createInstitucionEducativa(institucionData);
 
-      logger.info(`Institución educativa creada: ${institucion.id} por usuario ${usuario?.id}`, {
-        action: 'CREATE_INSTITUCION_EDUCATIVA',
-        userId: usuario?.id,
-        institucionId: institucion.id,
-        institucion: institucion
-      });
-
       res.status(201).json({
         success: true,
         message: 'Institución educativa creada exitosamente',
@@ -219,13 +212,6 @@ export class InstitucionEducativaController {
 
       const updatedInstitucion = await this.prismaService.updateInstitucionEducativa(id, updateData);
 
-      logger.info(`Institución educativa actualizada: ${id} por usuario ${usuario?.id}`, {
-        action: 'UPDATE_INSTITUCION_EDUCATIVA',
-        userId: usuario?.id,
-        institucionId: id,
-        changes: updateData
-      });
-
       res.status(200).json({
         success: true,
         message: 'Institución educativa actualizada exitosamente',
@@ -273,12 +259,6 @@ export class InstitucionEducativaController {
       }
 
       await this.prismaService.deleteInstitucionEducativa(id);
-
-      logger.info(`Institución educativa eliminada: ${id} por usuario ${usuario?.id}`, {
-        action: 'DELETE_INSTITUCION_EDUCATIVA',
-        userId: usuario?.id,
-        institucionId: id
-      });
 
       res.status(200).json({
         success: true,
@@ -354,14 +334,7 @@ export class InstitucionEducativaController {
         sede_id,
         institucion_educativa_id: id
       });
-
-      logger.info(`Sede asignada a institución: ${sede_id} -> ${id} por usuario ${usuario?.id}`, {
-        action: 'ASIGNAR_SEDE_INSTITUCION',
-        userId: usuario?.id,
-        institucionId: id,
-        sedeId: sede_id
-      });
-
+      
       res.status(201).json({
         success: true,
         message: 'Sede asignada a institución educativa exitosamente',

@@ -27,10 +27,6 @@ export class NotificationService {
       });
 
       if (response.status === 200) {
-        logger.info(`SMS de recuperación enviado exitosamente`, { 
-          telefono: `***${telefono.slice(-4)}`,
-          usuario: nombreUsuario 
-        });
         return true;
       } else {
         logger.error(`Error en respuesta de API SMS: ${response.status}`);
@@ -65,10 +61,6 @@ export class NotificationService {
       });
 
       if (response.status === 200) {
-        logger.info(`Notificación de cambio enviada`, { 
-          telefono: `***${telefono.slice(-4)}`,
-          usuario: nombreUsuario 
-        });
         return true;
       }
       

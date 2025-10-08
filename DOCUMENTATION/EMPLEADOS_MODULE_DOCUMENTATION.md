@@ -690,7 +690,6 @@ export class EmpleadoService {
       }>('/empleados', data);
       
       if (response.data.success) {
-        console.log('✅ Empleado creado:', response.data.data);
         return response.data.data;
       }
       
@@ -714,7 +713,6 @@ export class EmpleadoService {
 
       const response = await api.get<EmpleadosResponse>(`/empleados?${params}`);
       
-      console.log(`✅ Empleados obtenidos: ${response.data.data.length}`);
       return response.data;
     } catch (error: any) {
       console.error('❌ Error obteniendo empleados:', error);
@@ -752,7 +750,6 @@ export class EmpleadoService {
       }>(`/empleados/${id}`, data);
       
       if (response.data.success) {
-        console.log('✅ Empleado actualizado:', response.data.data);
         return response.data.data;
       }
       
@@ -773,7 +770,6 @@ export class EmpleadoService {
       }>(`/empleados/${id}`);
       
       if (response.data.success) {
-        console.log(`✅ Empleado ${id} desactivado`);
         return true;
       }
       
@@ -794,7 +790,6 @@ export class EmpleadoService {
       }>(`/empleados/${id}/reactivar`);
       
       if (response.data.success) {
-        console.log(`✅ Empleado ${id} reactivado`);
         return true;
       }
       
@@ -818,7 +813,6 @@ export class EmpleadoService {
 
       const response = await api.get<EmpleadosResponse>(`/empleados/inactivos?${params}`);
       
-      console.log(`✅ Empleados inactivos obtenidos: ${response.data.data.length}`);
       return response.data;
     } catch (error: any) {
       console.error('❌ Error obteniendo empleados inactivos:', error);
@@ -895,7 +889,6 @@ const CreateEmpleadoForm: React.FC = () => {
 
     try {
       const nuevoEmpleado = await EmpleadoService.createEmpleado(formData);
-      console.log('✅ Empleado creado exitosamente:', nuevoEmpleado);
       
       navigate('/empleados', {
         state: {

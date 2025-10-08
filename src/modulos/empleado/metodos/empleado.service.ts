@@ -29,10 +29,6 @@ export class EmpleadoService {
     comentario?: PrismaInterfaces.ICreateComentarioEmpleado;
   }) {
     return await this.prismaService.executeTransaction(async (prisma) => {
-      logger.info('Iniciando creación de empleado con sede', { 
-        empleado: data.empleado.nombre,
-        sedeId: data.sedeId
-      });
 
       // 1. Validar que la sede existe
       const sede = await prisma.sede.findUnique({
@@ -97,13 +93,6 @@ export class EmpleadoService {
         }
       });
 
-      logger.info('Empleado creado y asignado exitosamente', {
-        empleadoId: empleado.id,
-        sedeId: data.sedeId,
-        cargo: empleado.cargo,
-        comentarioEmpleadoId: comentarioEmpleadoCreado?.id
-      });
-
       return {
         empleado,
         informacionAcademica,
@@ -129,7 +118,6 @@ export class EmpleadoService {
     reemplazarAsignacionActual?: boolean;
   }) {
     return await this.prismaService.executeTransaction(async (prisma) => {
-      logger.info('Asignando empleado existente a sede', data);
 
       // Verificar que el empleado existe
       const empleado = await prisma.empleado.findUnique({
@@ -192,12 +180,6 @@ export class EmpleadoService {
         }
       });
 
-      logger.info('Empleado asignado exitosamente', {
-        empleadoId: data.empleadoId,
-        sedeId: data.sedeId,
-        reemplazoAsignacion: !!asignacionActual
-      });
-
       return {
         empleado,
         sede,
@@ -222,7 +204,6 @@ export class EmpleadoService {
     motivoTransferencia?: string;
   }) {
     return await this.prismaService.executeTransaction(async (prisma) => {
-      logger.info('Transfiriendo empleado a nueva sede', data);
 
       // Obtener asignación actual
       const asignacionActual = await prisma.asignacion_empleado.findFirst({
@@ -276,12 +257,6 @@ export class EmpleadoService {
           estado: 'activa',
           created_at: new Date()
         }
-      });
-
-      logger.info('Empleado transferido exitosamente', {
-        empleadoId: data.empleadoId,
-        sedeAnterior: asignacionActual.sede.nombre,
-        nuevaSede: nuevaSede.nombre
       });
 
       return {
@@ -449,8 +424,6 @@ export class EmpleadoService {
     motivo?: string;
   }) {
     return await this.prismaService.executeTransaction(async (prisma) => {
-      logger.info('Finalizando asignación de empleado', data);
-
       // Buscar asignación activa
       const asignacionActiva = await prisma.asignacion_empleado.findFirst({
         where: {
@@ -474,11 +447,6 @@ export class EmpleadoService {
           estado: 'finalizada',
           fecha_fin: data.fechaFin || new Date()
         }
-      });
-
-      logger.info('Asignación finalizada exitosamente', {
-        empleadoId: data.empleadoId,
-        sede: asignacionActiva.sede.nombre
       });
 
       return {

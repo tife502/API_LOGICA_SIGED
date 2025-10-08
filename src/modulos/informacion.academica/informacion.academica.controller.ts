@@ -69,17 +69,6 @@ export class InformacionAcademicaController {
       }
 
       const nuevaInformacion = await this.prismaService.createInformacionAcademica(informacionData);
-
-      // Auditoría: Quién digitalizó la información académica
-      logger.info(`Información académica digitalizada por ${usuario?.email} (${usuario?.rol})`, {
-        informacion_id: nuevaInformacion.id,
-        empleado_id: informacionData.empleado_id,
-        empleado_nombre: `${empleado.nombre} ${empleado.apellido}`,
-        nivel_academico: informacionData.nivel_academico,
-        digitalizado_por: usuario?.id,
-        digitalizado_por_rol: usuario?.rol
-      });
-
       res.status(201).json({
         success: true,
         message: 'Información académica creada exitosamente',
@@ -142,10 +131,6 @@ export class InformacionAcademicaController {
 
       // Log de consulta (sin saturar el log)
       if (usuario?.rol === 'gestor') {
-        logger.info(`Gestor ${usuario.email} consultó información académica`, {
-          total_encontradas: resultado.pagination.total,
-          pagina: pagination.page
-        });
       }
 
       res.status(200).json({
@@ -192,12 +177,6 @@ export class InformacionAcademicaController {
       }
 
       const informacionAcademica = await this.prismaService.getInformacionAcademicaByEmpleado(empleado_id);
-
-      logger.info(`Información académica consultada por ${usuario?.email}`, {
-        empleado_id,
-        empleado_nombre: `${empleado.nombre} ${empleado.apellido}`,
-        total_registros: informacionAcademica.length
-      });
 
       res.status(200).json({
         success: true,
@@ -318,16 +297,6 @@ export class InformacionAcademicaController {
 
       const informacionActualizada = await this.prismaService.updateInformacionAcademica(id, updateData);
 
-      // Auditoría: Cambios realizados
-      logger.info(`Información académica actualizada por ${usuario?.email} (${usuario?.rol})`, {
-        informacion_id: id,
-        empleado_id: informacionExistente.empleado_id,
-        empleado_nombre: `${informacionExistente.empleado.nombre} ${informacionExistente.empleado.apellido}`,
-        campos_modificados: Object.keys(updateData),
-        modificado_por: usuario?.id,
-        modificado_por_rol: usuario?.rol
-      });
-
       res.status(200).json({
         success: true,
         message: 'Información académica actualizada exitosamente',
@@ -413,11 +382,6 @@ export class InformacionAcademicaController {
       const usuario = req.usuario;
 
       const estadisticas = await this.prismaService.getEstadisticasNivelesAcademicos();
-
-      logger.info(`Estadísticas académicas consultadas por ${usuario?.email}`, {
-        total_empleados_activos: estadisticas.resumen.total_empleados_activos,
-        empleados_con_info_academica: estadisticas.resumen.empleados_con_informacion_academica
-      });
 
       res.status(200).json({
         success: true,

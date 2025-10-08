@@ -22,7 +22,6 @@ class PrismaService {
   
   async createEmpleado(data: PrismaInterfaces.ICreateEmpleado) {
     try {
-      logger.info('Creando nuevo empleado', { data });
       return await this.prisma.empleado.create({
         data
       });
@@ -94,13 +93,6 @@ class PrismaService {
       ]);
 
       const totalPages = Math.ceil(total / limit);
-
-      logger.info(`Empleados obtenidos: ${empleados.length} de ${total}`, {
-        filters,
-        pagination,
-        includeInactive
-      });
-
       return {
         data: empleados,
         pagination: {
@@ -128,7 +120,6 @@ class PrismaService {
 
   async getEmpleadoById(id: string) {
     try {
-      logger.info('Obteniendo empleado por ID', { id });
       return await this.prisma.empleado.findUnique({
         where: { id },
         include: {
@@ -153,7 +144,6 @@ class PrismaService {
 
   async updateEmpleado(id: string, data: PrismaInterfaces.IUpdateEmpleado) {
     try {
-      logger.info('Actualizando empleado', { id, data });
       return await this.prisma.empleado.update({
         where: { id },
         data
@@ -166,9 +156,7 @@ class PrismaService {
 
     // Método para reactivar empleado
   async reactivarEmpleado(id: string) {
-    try {
-      logger.info(`Reactivando empleado: ${id}`);
-      
+    try {      
       const empleado = await this.prisma.empleado.update({
         where: { id },
         data: { estado: PrismaInterfaces.EmpleadoEstado.activo },
@@ -180,7 +168,6 @@ class PrismaService {
         }
       });
 
-      logger.info(`Empleado reactivado exitosamente: ${id}`);
       return empleado;
     } catch (error) {
       logger.error(`Error reactivando empleado ${id}`, error);
@@ -193,7 +180,6 @@ class PrismaService {
 
   async createUsuario(data: PrismaInterfaces.ICreateUsuario) {
     try {
-      logger.info('Creando nuevo usuario', { data: { ...data, contrasena: '[HIDDEN]' } });
       return await this.prisma.usuario.create({
         data
       });
@@ -204,9 +190,7 @@ class PrismaService {
   }
 
   async getUsuarios(filters?: PrismaInterfaces.IUsuarioFilters, pagination?: PrismaInterfaces.IPaginationOptions) {
-    try {
-      logger.info('Obteniendo usuarios', { filters, pagination });
-      
+    try {      
       const where: any = {};
       if (filters) {
         if (filters.tipo_documento) where.tipo_documento = filters.tipo_documento;
@@ -268,7 +252,6 @@ class PrismaService {
 
   async getUsuarioById(id: string) {
     try {
-      logger.info('Obteniendo usuario por ID', { id });
       return await this.prisma.usuario.findUnique({
         where: { id },
         select: {
@@ -296,7 +279,6 @@ class PrismaService {
 
   async getUsuarioByEmail(email: string) {
     try {
-      logger.info('Obteniendo usuario por email', { email });
       return await this.prisma.usuario.findUnique({
         where: { email },
         select: {
@@ -324,7 +306,6 @@ class PrismaService {
 
   async updateUsuario(id: string, data: PrismaInterfaces.IUpdateUsuario) {
     try {
-      logger.info('Actualizando usuario', { id, data: { ...data, contrasena: data.contrasena ? '[HIDDEN]' : undefined } });
       return await this.prisma.usuario.update({
         where: { id },
         data
@@ -339,7 +320,6 @@ class PrismaService {
 
   async createSede(data: PrismaInterfaces.ICreateSede) {
     try {
-      logger.info('Creando nueva sede', { data });
       return await this.prisma.sede.create({
         data
       });
@@ -350,9 +330,7 @@ class PrismaService {
   }
 
   async getSedes(filters?: PrismaInterfaces.ISedeFilters, pagination?: PrismaInterfaces.IPaginationOptions) {
-    try {
-      logger.info('Obteniendo sedes', { filters, pagination });
-      
+    try {      
       const where: any = {};
       if (filters) {
         if (filters.nombre) where.nombre = { contains: filters.nombre };
@@ -404,7 +382,6 @@ class PrismaService {
 
   async getSedeById(id: string) {
     try {
-      logger.info('Obteniendo sede por ID', { id });
       return await this.prisma.sede.findFirst({
         where: { id },
         include: {
@@ -445,7 +422,6 @@ class PrismaService {
 
   async updateSede(id: string, data: PrismaInterfaces.IUpdateSede) {
     try {
-      logger.info('Actualizando sede', { id, data });
       return await this.prisma.sede.update({
         where: { id },
         data: {
@@ -461,7 +437,6 @@ class PrismaService {
 
   async deleteSede(id: string) {
     try {
-      logger.info('Eliminando sede (borrado físico)', { id });
       // Verificar si tiene relaciones activas
       const asignacionesActivas = await this.prisma.asignacion_empleado.findFirst({
         where: {
@@ -486,7 +461,6 @@ class PrismaService {
 
   async getComentariosSede(filters?: PrismaInterfaces.IComentarioSedeFilters, pagination?: PrismaInterfaces.IPaginationOptions) {
     try {
-      logger.info('Obteniendo comentarios de sede', { filters, pagination });
       
       const where: any = {};
       if (filters) {
@@ -537,7 +511,6 @@ class PrismaService {
 
   async updateComentarioSede(id: string, data: PrismaInterfaces.IUpdateComentarioSede) {
     try {
-      logger.info('Actualizando comentario de sede', { id, data });
       return await this.prisma.comentario_sede.update({
         where: { id },
         data,
@@ -558,7 +531,6 @@ class PrismaService {
 
   async deleteComentarioSede(id: string) {
     try {
-      logger.info('Eliminando comentario de sede', { id });
       return await this.prisma.comentario_sede.delete({
         where: { id }
       });
@@ -572,7 +544,6 @@ class PrismaService {
 
   async createAsignacionEmpleado(data: PrismaInterfaces.ICreateAsignacionEmpleado) {
     try {
-      logger.info('Creando asignación empleado-sede', { data });
       return await this.prisma.asignacion_empleado.create({
         data,
         include: {
@@ -592,8 +563,6 @@ class PrismaService {
 
   async getAsignacionesEmpleado(filters?: PrismaInterfaces.IAsignacionEmpleadoFilters, pagination?: PrismaInterfaces.IPaginationOptions) {
     try {
-      logger.info('Obteniendo asignaciones empleado-sede', { filters, pagination });
-      
       const where: any = {};
       if (filters) {
         if (filters.empleado_id) where.empleado_id = filters.empleado_id;
@@ -645,7 +614,6 @@ class PrismaService {
 
   async updateAsignacionEmpleado(id: string, data: PrismaInterfaces.IUpdateAsignacionEmpleado) {
     try {
-      logger.info('Actualizando asignación empleado-sede', { id, data });
       return await this.prisma.asignacion_empleado.update({
         where: { id },
         data,
@@ -666,7 +634,6 @@ class PrismaService {
 
   async deleteAsignacionEmpleado(id: string) {
     try {
-      logger.info('Eliminando asignación empleado-sede', { id });
       return await this.prisma.asignacion_empleado.delete({
         where: { id }
       });
@@ -680,7 +647,6 @@ class PrismaService {
 
   async createInstitucionEducativa(data: PrismaInterfaces.ICreateInstitucionEducativa) {
     try {
-      logger.info('Creando institución educativa', { data });
       return await this.prisma.institucion_educativa.create({
         data,
         include: {
@@ -697,7 +663,6 @@ class PrismaService {
 
   async getInstitucionesEducativas(filters?: PrismaInterfaces.IInstitucionEducativaFilters, pagination?: PrismaInterfaces.IPaginationOptions) {
     try {
-      logger.info('Obteniendo instituciones educativas', { filters, pagination });
       
       const where: any = {};
       if (filters) {
@@ -754,7 +719,6 @@ class PrismaService {
 
   async getInstitucionEducativaById(id: string) {
     try {
-      logger.info('Obteniendo institución educativa por ID', { id });
       return await this.prisma.institucion_educativa.findUnique({
         where: { id },
         include: {
@@ -778,7 +742,6 @@ class PrismaService {
 
   async updateInstitucionEducativa(id: string, data: PrismaInterfaces.IUpdateInstitucionEducativa) {
     try {
-      logger.info('Actualizando institución educativa', { id, data });
       return await this.prisma.institucion_educativa.update({
         where: { id },
         data,
@@ -795,9 +758,7 @@ class PrismaService {
   }
 
   async deleteInstitucionEducativa(id: string) {
-    try {
-      logger.info('Eliminando institución educativa', { id });
-      
+    try {      
       // Verificar si tiene sedes asociadas
       const sedesAsociadas = await this.prisma.sede_ie.findFirst({
         where: { institucion_educativa_id: id }
@@ -818,7 +779,6 @@ class PrismaService {
 
   async asignarSedeInstitucionEducativa(data: PrismaInterfaces.ICreateSedeIE) {
     try {
-      logger.info('Asignando sede a institución educativa', { data });
       return await this.prisma.sede_ie.create({
         data,
         include: {
@@ -840,7 +800,6 @@ class PrismaService {
 
   async getJornadas() {
     try {
-      logger.info('Obteniendo todas las jornadas');
       return await this.prisma.jornada.findMany({
         orderBy: { nombre: 'asc' }
       });
@@ -852,7 +811,6 @@ class PrismaService {
 
   async asignarJornadaSede(data: PrismaInterfaces.ICreateSedeJornada) {
     try {
-      logger.info('Asignando jornada a sede', { data });
       return await this.prisma.sede_jornada.create({
         data,
         include: {
@@ -872,7 +830,6 @@ class PrismaService {
 
   async getJornadasBySede(sede_id: string) {
     try {
-      logger.info('Obteniendo jornadas por sede', { sede_id });
       return await this.prisma.sede_jornada.findMany({
         where: { sede_id },
         include: {
@@ -892,7 +849,6 @@ class PrismaService {
 
   async desasignarJornadaSede(sede_id: string, jornada_id: number) {
     try {
-      logger.info('Desasignando jornada de sede', { sede_id, jornada_id });
       return await this.prisma.sede_jornada.delete({
         where: {
           sede_id_jornada_id: {
@@ -911,7 +867,6 @@ class PrismaService {
 
   async createHorasExtra(data: PrismaInterfaces.ICreateHorasExtra) {
     try {
-      logger.info('Creando registro de horas extra', { data });
       return await this.prisma.horas_extra.create({
         data: data as any
       });
@@ -923,7 +878,6 @@ class PrismaService {
 
   async getHorasExtraByEmpleado(empleado_id: string) {
     try {
-      logger.info('Obteniendo horas extra por empleado', { empleado_id });
       return await this.prisma.horas_extra.findMany({
         where: { empleado_id },
         include: {
@@ -943,7 +897,6 @@ class PrismaService {
 
   async createSuplencia(data: PrismaInterfaces.ICreateSuplencia) {
     try {
-      logger.info('Creando suplencia', { data });
       return await this.prisma.suplencias.create({
         data
       });
@@ -955,7 +908,6 @@ class PrismaService {
 
   async getSuplenciasByEmpleado(empleado_id: string) {
     try {
-      logger.info('Obteniendo suplencias por empleado', { empleado_id });
       return await this.prisma.suplencias.findMany({
         where: {
           OR: [
@@ -981,7 +933,6 @@ class PrismaService {
 
   async createInformacionAcademica(data: PrismaInterfaces.ICreateInformacionAcademica) {
     try {
-      logger.info('Creando información académica', { data });
       return await this.prisma.informacion_academica.create({
         data
       });
@@ -1043,12 +994,6 @@ class PrismaService {
       ]);
 
       const totalPages = Math.ceil(total / limit);
-
-      logger.info(`Información académica obtenida: ${informacionAcademica.length} de ${total}`, {
-        filters,
-        pagination
-      });
-
       return {
         data: informacionAcademica,
         pagination: {
@@ -1068,7 +1013,6 @@ class PrismaService {
 
   async getInformacionAcademicaByEmpleado(empleado_id: string) {
     try {
-      logger.info('Obteniendo información académica por empleado', { empleado_id });
       return await this.prisma.informacion_academica.findMany({
         where: { empleado_id },
         include: { 
@@ -1094,7 +1038,6 @@ class PrismaService {
 
   async getInformacionAcademicaById(id: string) {
     try {
-      logger.info('Obteniendo información académica por ID', { id });
       return await this.prisma.informacion_academica.findUnique({
         where: { id },
         include: {
@@ -1119,7 +1062,6 @@ class PrismaService {
 
   async updateInformacionAcademica(id: string, data: PrismaInterfaces.IUpdateInformacionAcademica) {
     try {
-      logger.info('Actualizando información académica', { id, data });
       return await this.prisma.informacion_academica.update({
         where: { id },
         data,
@@ -1145,7 +1087,6 @@ class PrismaService {
 
   async deleteInformacionAcademica(id: string) {
     try {
-      logger.info('Eliminando información académica', { id });
       return await this.prisma.informacion_academica.delete({
         where: { id },
         include: {
@@ -1170,7 +1111,7 @@ class PrismaService {
 
   async getEstadisticasNivelesAcademicos() {
     try {
-      logger.info('Obteniendo estadísticas de niveles académicos');
+      ('Obteniendo estadísticas de niveles académicos');
       
       const [estadisticas, empleadosConInfo, totalEmpleadosActivos] = await Promise.all([
         this.prisma.informacion_academica.groupBy({
@@ -1218,7 +1159,6 @@ class PrismaService {
 
   async createComentarioEmpleado(data: PrismaInterfaces.ICreateComentarioEmpleado) {
     try {
-      logger.info('Creando comentario de empleado', { data });
       return await this.prisma.comentario_empleado.create({
         data,
         include: {
@@ -1234,7 +1174,6 @@ class PrismaService {
 
   async createComentarioSede(data: PrismaInterfaces.ICreateComentarioSede) {
     try {
-      logger.info('Creando comentario de sede', { data });
       return await this.prisma.comentario_sede.create({
         data,
         include: {
@@ -1252,7 +1191,6 @@ class PrismaService {
 
   async executeTransaction<T>(operations: (prisma: Omit<PrismaClient, '$on' | '$connect' | '$disconnect' | '$transaction' | '$extends'>) => Promise<T>): Promise<T> {
     try {
-      logger.info('Ejecutando transacción');
       return await this.prisma.$transaction(operations);
     } catch (error) {
       logger.error('Error en transacción', error);

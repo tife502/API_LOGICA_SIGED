@@ -98,15 +98,6 @@ export class HorasExtraController {
           documentos_horas_extra: true
         }
       });
-
-      logger.info(`Registro de horas extra creado exitosamente`, {
-        horasExtraId: nuevasHorasExtra.id,
-        empleadoId: horasExtraData.empleado_id,
-        sedeId: horasExtraData.sede_id,
-        cantidadHoras: horasExtraData.cantidad_horas,
-        usuarioId: usuario?.id
-      });
-
       return res.status(201).json({
         success: true,
         message: 'Registro de horas extra creado exitosamente',
@@ -393,11 +384,6 @@ export class HorasExtraController {
           },
           documentos_horas_extra: true
         }
-      });
-
-      logger.info(`Registro de horas extra actualizado exitosamente`, {
-        horasExtraId: id,
-        usuarioId: usuario?.id
       });
 
       return res.status(200).json({

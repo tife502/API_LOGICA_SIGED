@@ -108,15 +108,6 @@ export class DocumentoEmpleadoController {
         }
       });
 
-      logger.info(`Documento de empleado creado exitosamente`, {
-        documentoId: nuevoDocumento.id,
-        empleadoId: empleado_id,
-        tipoDocumento: tipo_documento,
-        nombre: nuevoDocumento.nombre,
-        empleado: `${empleadoExistente.nombre} ${empleadoExistente.apellido}`,
-        usuarioId: usuario?.id
-      });
-
       return res.status(201).json({
         success: true,
         message: 'Documento de empleado creado exitosamente',
@@ -469,11 +460,6 @@ export class DocumentoEmpleadoController {
         }
       });
 
-      logger.info(`Documento de empleado actualizado exitosamente`, {
-        documentoId: id,
-        cambios: Object.keys(updateData),
-        usuarioId: usuario?.id
-      });
 
       return res.status(200).json({
         success: true,

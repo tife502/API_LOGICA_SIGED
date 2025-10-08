@@ -88,12 +88,6 @@ export class UsuarioController {
 
       const nuevoUsuario = await this.prismaService.createUsuario(usuarioData);
 
-      logger.info('Usuario creado exitosamente', { 
-        id: nuevoUsuario.id, 
-        email: nuevoUsuario.email,
-        createdBy: req.usuario?.id 
-      });
-
       // Respuesta sin contraseña
       const { contrasena: _, ...usuarioResponse } = nuevoUsuario;
 
@@ -180,8 +174,6 @@ export class UsuarioController {
 
       const nuevoUsuario = await this.prismaService.createUsuario(userData);
 
-      logger.info(`Usuario inicial creado: ${email}`);
-
       res.status(201).json({
         success: true,
         message: 'Usuario inicial creado exitosamente',
@@ -253,11 +245,6 @@ export class UsuarioController {
       };
 
       const resultado = await this.prismaService.getUsuarios(filters, pagination);
-
-      logger.info(`Usuarios obtenidos: ${resultado.data.length}`, {
-        filters,
-        requestedBy: req.usuario?.id
-      });
 
       res.status(200).json({
         success: true,
@@ -344,12 +331,6 @@ export class UsuarioController {
           error: 'Not Found'
         });
       }
-
-      logger.info('Usuario obtenido por ID', { 
-        id, 
-        requestedBy: req.usuario?.id 
-      });
-
       res.status(200).json({
         success: true,
         message: 'Usuario obtenido exitosamente',
@@ -430,12 +411,6 @@ export class UsuarioController {
 
       const usuarioActualizado = await this.prismaService.updateUsuario(id, updateData);
 
-      logger.info('Usuario actualizado exitosamente', { 
-        id, 
-        updatedBy: req.usuario?.id,
-        fields: Object.keys(updateData)
-      });
-
       // Respuesta sin contraseña
       const { contrasena: _, ...usuarioResponse } = usuarioActualizado;
 
@@ -512,11 +487,6 @@ export class UsuarioController {
         estado: PrismaInterfaces.UsuarioEstado.inactivo
       });
 
-      logger.info('Usuario desactivado exitosamente', { 
-        id, 
-        deactivatedBy: req.usuario?.id 
-      });
-
       // Respuesta sin contraseña
       const { contrasena: _, ...usuarioResponse } = usuarioDesactivado;
 
@@ -572,11 +542,6 @@ export class UsuarioController {
       // Reactivar: cambiar estado a activo
       const usuarioReactivado = await this.prismaService.updateUsuario(id, {
         estado: PrismaInterfaces.UsuarioEstado.activo
-      });
-
-      logger.info('Usuario reactivado exitosamente', { 
-        id, 
-        reactivatedBy: req.usuario?.id 
       });
 
       // Respuesta sin contraseña
@@ -668,12 +633,6 @@ export class UsuarioController {
       await this.prismaService.updateUsuario(id, {
         contrasena: hashedNewPassword
       });
-
-      logger.info('Contraseña cambiada exitosamente', { 
-        id, 
-        changedBy: req.usuario?.id 
-      });
-
       res.status(200).json({
         success: true,
         message: 'Contraseña cambiada exitosamente'
@@ -706,8 +665,6 @@ export class UsuarioController {
           error: 'Validation Error'
         });
       }
-
-      logger.info('Solicitud de código de recuperación', { documento });
 
       // Buscar usuario por documento
       const usuarios = await this.prismaService.getUsuarios({ documento });
@@ -790,13 +747,6 @@ export class UsuarioController {
           error: 'SMS Service Error'
         });
       }
-
-      logger.info('Código de recuperación enviado exitosamente', { 
-        documento,
-        celular: `***${usuario.celular.slice(-4)}`,
-        expira: codigoExpiry 
-      });
-
       res.status(200).json({
         success: true,
         message: 'Código enviado por SMS',
@@ -850,9 +800,6 @@ export class UsuarioController {
           error: 'Validation Error'
         });
       }
-
-      logger.info('Verificando código de recuperación', { documento, codigo });
-
       // Buscar usuario por documento
       const usuarios = await this.prismaService.getUsuarios({ documento });
 
@@ -915,12 +862,6 @@ export class UsuarioController {
         );
       }
 
-      logger.info('Contraseña restablecida exitosamente por SMS', { 
-        documento,
-        userId: usuario.id,
-        email: usuario.email 
-      });
-
       res.status(200).json({
         success: true,
         message: 'Contraseña restablecida exitosamente',
@@ -955,8 +896,6 @@ export class UsuarioController {
           error: 'Validation Error'
         });
       }
-
-      logger.info('Reenvío de código de recuperación solicitado', { documento });
 
       // Buscar usuario por documento
       const usuarios = await this.prismaService.getUsuarios({ documento });
@@ -1016,11 +955,6 @@ export class UsuarioController {
           error: 'SMS Service Error'
         });
       }
-
-      logger.info('Código de recuperación reenviado exitosamente', { 
-        documento,
-        celular: `***${usuario.celular!.slice(-4)}` 
-      });
 
       res.status(200).json({
         success: true,

@@ -68,14 +68,6 @@ export class AsignacionEmpleadoController {
 
       const asignacion = await this.prismaService.createAsignacionEmpleado(asignacionData);
 
-      logger.info(`Asignación creada: empleado ${asignacionData.empleado_id} a sede ${sede_id} por usuario ${usuario?.id}`, {
-        action: 'CREATE_ASIGNACION_EMPLEADO',
-        userId: usuario?.id,
-        empleadoId: asignacionData.empleado_id,
-        sedeId: sede_id,
-        asignacionId: asignacion.id
-      });
-
       res.status(201).json({
         success: true,
         message: 'Asignación creada exitosamente',
@@ -182,13 +174,6 @@ export class AsignacionEmpleadoController {
 
       const updatedAsignacion = await this.prismaService.updateAsignacionEmpleado(id, updateData);
 
-      logger.info(`Asignación actualizada: ${id} por usuario ${usuario?.id}`, {
-        action: 'UPDATE_ASIGNACION_EMPLEADO',
-        userId: usuario?.id,
-        asignacionId: id,
-        changes: updateData
-      });
-
       res.status(200).json({
         success: true,
         message: 'Asignación actualizada exitosamente',
@@ -234,12 +219,6 @@ export class AsignacionEmpleadoController {
 
       const asignacionFinalizada = await this.prismaService.updateAsignacionEmpleado(id, updateData);
 
-      logger.info(`Asignación finalizada: ${id} por usuario ${usuario?.id}`, {
-        action: 'FINALIZAR_ASIGNACION_EMPLEADO',
-        userId: usuario?.id,
-        asignacionId: id
-      });
-
       res.status(200).json({
         success: true,
         message: 'Asignación finalizada exitosamente',
@@ -279,12 +258,6 @@ export class AsignacionEmpleadoController {
       }
 
       await this.prismaService.deleteAsignacionEmpleado(id);
-
-      logger.info(`Asignación eliminada: ${id} por usuario ${usuario?.id}`, {
-        action: 'DELETE_ASIGNACION_EMPLEADO',
-        userId: usuario?.id,
-        asignacionId: id
-      });
 
       res.status(200).json({
         success: true,

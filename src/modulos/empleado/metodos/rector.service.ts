@@ -20,11 +20,6 @@ export class RectorService {
    */
   async crearRectorCompleto(data: PrismaInterfaces.ICreateRectorCompletoRequest): Promise<PrismaInterfaces.ICreateRectorCompletoResponse> {
     return await this.prismaService.executeTransaction(async (prisma) => {
-      logger.info('Iniciando creación de rector completo', { 
-        empleado: data.empleado.nombre,
-        institucion: data.institucion.nombre 
-      });
-
       // 1. Validar datos antes de crear
       await this.validarDatosRector(data.empleado);
 
@@ -207,12 +202,6 @@ export class RectorService {
         }
       }
 
-      logger.info('Rector completo creado exitosamente', {
-        empleadoId: empleadoCreado.id,
-        institucionId: institucionCreada.id,
-        sedesAsignadas: asignacionesCreadas.length
-      });
-
     // 6. Retornar en el formato exacto que espera la interface
     const response: PrismaInterfaces.ICreateRectorCompletoResponse = {
       rector: empleadoCreado as PrismaInterfaces.IEmpleado,                    // ✅ IEmpleado
@@ -241,8 +230,6 @@ export class RectorService {
     sedesEspecificas?: string[];
   }) {
     return await this.prismaService.executeTransaction(async (prisma) => {
-      logger.info('Asignando rector existente a institución', data);
-
       // Verificar que el rector existe y tiene cargo correcto
       const rector = await prisma.empleado.findUnique({
         where: { id: data.rectorId }
@@ -307,12 +294,6 @@ export class RectorService {
         });
         asignaciones.push(asignacion);
       }
-
-      logger.info('Rector asignado exitosamente', {
-        rectorId: data.rectorId,
-        institucionId: data.institucionId,
-        sedesAsignadas: asignaciones.length
-      });
 
       return {
         rector,

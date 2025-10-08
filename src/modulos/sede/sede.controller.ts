@@ -74,16 +74,6 @@ export class SedeController {
         ...comentarioData,
         sede_id: sede.id
       });
-
-      logger.info(`Sede creada: ${sede.id} por usuario ${usuario?.id}, 
-        y con el comentario: ${comentarioSede.id} con el contenido: ${comentarioSede.observacion}`, {
-        action: 'CREATE_SEDE',
-        userId: usuario?.id,
-        sedeId: sede.id,
-        sede: sede,
-        comentarioSede: comentarioSede
-      });
-
       res.status(201).json({
         success: true,
         message: 'Sede creada exitosamente',
@@ -242,13 +232,6 @@ export class SedeController {
 
       const updatedSede = await this.prismaService.updateSede(id, updateData);
 
-      logger.info(`Sede actualizada: ${id} por usuario ${usuario?.id}`, {
-        action: 'UPDATE_SEDE',
-        userId: usuario?.id,
-        sedeId: id,
-        changes: updateData
-      });
-
       res.status(200).json({
         success: true,
         message: 'Sede actualizada exitosamente',
@@ -296,12 +279,6 @@ export class SedeController {
       }
 
       await this.prismaService.deleteSede(id);
-
-      logger.info(`Sede eliminada: ${id} por usuario ${usuario?.id}`, {
-        action: 'DELETE_SEDE',
-        userId: usuario?.id,
-        sedeId: id
-      });
 
       res.status(200).json({
         success: true,

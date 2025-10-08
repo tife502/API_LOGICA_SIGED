@@ -20,11 +20,6 @@ export class DocumentoSuplenciaController {
         ruta_relativa
       } = req.body;
 
-      logger.info('Iniciando creación de documento de suplencia', {
-        suplencia_id,
-        nombre
-      });
-
       // Validar datos requeridos
       if (!suplencia_id || !nombre || !ruta_relativa) {
         logger.warn('Faltan datos requeridos para crear documento de suplencia');
@@ -121,7 +116,6 @@ export class DocumentoSuplenciaController {
         data: nuevoDocumento
       });
 
-      logger.info('Documento de suplencia creado exitosamente', { id: nuevoDocumento.id });
     } catch (error) {
       logger.error('Error al crear documento de suplencia:', error);
       res.status(500).json({
@@ -145,13 +139,6 @@ export class DocumentoSuplenciaController {
       const pageNumber = Math.max(1, parseInt(page as string));
       const limitNumber = Math.min(50, Math.max(1, parseInt(limit as string)));
       const skip = (pageNumber - 1) * limitNumber;
-
-      logger.info('Obteniendo documentos de suplencia con filtros', {
-        page: pageNumber,
-        limit: limitNumber,
-        search,
-        suplencia_id
-      });
 
       // Construir filtros
       const where: any = {};
@@ -299,11 +286,6 @@ export class DocumentoSuplenciaController {
         }
       });
 
-      logger.info('Documentos de suplencia obtenidos exitosamente', {
-        count: documentos.length,
-        totalItems,
-        page: pageNumber
-      });
     } catch (error) {
       logger.error('Error al obtener documentos de suplencia:', error);
       res.status(500).json({
@@ -318,8 +300,6 @@ export class DocumentoSuplenciaController {
   public getDocumentosBySuplencia = async (req: Request, res: Response): Promise<void> => {
     try {
       const { suplencia_id } = req.params;
-
-      logger.info('Obteniendo documentos por suplencia', { suplencia_id });
 
       // Validar que la suplencia exista
       const suplencia = await this.prisma.suplencias.findUnique({
@@ -403,11 +383,6 @@ export class DocumentoSuplenciaController {
           }, {})
         }
       });
-
-      logger.info('Documentos por suplencia obtenidos exitosamente', {
-        suplencia_id,
-        total: documentos.length
-      });
     } catch (error) {
       logger.error('Error al obtener documentos por suplencia:', error);
       res.status(500).json({
@@ -423,7 +398,6 @@ export class DocumentoSuplenciaController {
     try {
       const { id } = req.params;
 
-      logger.info('Obteniendo documento de suplencia por ID:', id);
 
       const documento = await this.prisma.documentos_suplencia.findUnique({
         where: { id },
@@ -491,7 +465,6 @@ export class DocumentoSuplenciaController {
         data: documento
       });
 
-      logger.info('Documento de suplencia obtenido exitosamente:', id);
     } catch (error) {
       logger.error('Error al obtener documento de suplencia por ID:', error);
       res.status(500).json({
@@ -507,8 +480,6 @@ export class DocumentoSuplenciaController {
     try {
       const { id } = req.params;
       const { nombre, ruta_relativa } = req.body;
-
-      logger.info('Actualizando documento de suplencia', { id, nombre, ruta_relativa });
 
       // Verificar que el documento existe
       const documentoExistente = await this.prisma.documentos_suplencia.findUnique({
@@ -598,7 +569,6 @@ export class DocumentoSuplenciaController {
         data: documentoActualizado
       });
 
-      logger.info('Documento de suplencia actualizado exitosamente:', id);
     } catch (error) {
       logger.error('Error al actualizar documento de suplencia:', error);
       res.status(500).json({
@@ -614,7 +584,6 @@ export class DocumentoSuplenciaController {
     try {
       const { id } = req.params;
 
-      logger.info('Descargando documento de suplencia:', id);
 
       // Buscar el documento
       const documento = await this.prisma.documentos_suplencia.findUnique({
@@ -657,10 +626,6 @@ export class DocumentoSuplenciaController {
       const fileStream = fs.createReadStream(rutaCompleta);
       fileStream.pipe(res);
 
-      logger.info('Documento de suplencia descargado exitosamente:', {
-        id,
-        nombre: documento.nombre
-      });
     } catch (error) {
       logger.error('Error al descargar documento de suplencia:', error);
       res.status(500).json({
@@ -677,7 +642,6 @@ export class DocumentoSuplenciaController {
       const { id } = req.params;
       const userRole = (req as any).user?.rol;
 
-      logger.info('Eliminando documento de suplencia', { id, userRole });
 
       // Verificar permisos
       if (userRole !== 'super_admin') {
@@ -736,7 +700,6 @@ export class DocumentoSuplenciaController {
         }
       });
 
-      logger.info('Documento de suplencia eliminado exitosamente:', id);
     } catch (error) {
       logger.error('Error al eliminar documento de suplencia:', error);
       res.status(500).json({
@@ -752,7 +715,6 @@ export class DocumentoSuplenciaController {
     try {
       const { suplencia_id } = req.query;
 
-      logger.info('Obteniendo estadísticas de documentos de suplencia', { suplencia_id });
 
       // Construir filtros
       const where: any = {};
@@ -814,11 +776,6 @@ export class DocumentoSuplenciaController {
           documentos_recientes: documentosRecientes,
           suplencia_filtrada: !!suplencia_id
         }
-      });
-
-      logger.info('Estadísticas de documentos de suplencia obtenidas exitosamente', {
-        total: totalDocumentos,
-        filtros: { suplencia_id }
       });
     } catch (error) {
       logger.error('Error al obtener estadísticas de documentos de suplencia:', error);

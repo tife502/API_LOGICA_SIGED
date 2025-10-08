@@ -85,13 +85,6 @@ export class DocumentoActoAdministrativoController {
         }
       });
 
-      logger.info(`Documento de acto administrativo creado exitosamente`, {
-        documentoId: nuevoDocumento.id,
-        actoId: acto_administrativo_id,
-        nombre: nuevoDocumento.nombre,
-        usuarioId: usuario?.id
-      });
-
       return res.status(201).json({
         success: true,
         message: 'Documento de acto administrativo creado exitosamente',
@@ -353,10 +346,6 @@ export class DocumentoActoAdministrativoController {
         }
       });
 
-      logger.info(`Documento de acto administrativo actualizado exitosamente`, {
-        documentoId: id,
-        usuarioId: usuario?.id
-      });
 
       return res.status(200).json({
         success: true,

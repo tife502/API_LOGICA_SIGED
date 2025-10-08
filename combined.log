@@ -1795,3 +1795,39 @@ Invalid value for argument `jornada`. Expected horas_extra_jornada.
 2025-10-07T20:12:29.312Z info: Obteniendo usuario por email
 2025-10-07T20:12:30.076Z info: Login exitoso
 2025-10-07T20:17:57.045Z info: Obteniendo sedes
+2025-10-07T20:51:43.726Z warn: Error verificando token JWT
+2025-10-07T20:51:43.737Z warn: Error en middleware de autenticación
+2025-10-07T20:51:49.316Z info: Obteniendo usuario por email
+2025-10-07T20:51:50.127Z info: Login exitoso
+2025-10-07T20:52:02.298Z info: Acto administrativo creado exitosamente
+2025-10-07T21:06:09.245Z info: Obteniendo instituciones educativas
+2025-10-07T21:27:44.097Z info: Obteniendo instituciones educativas
+2025-10-07T21:27:44.264Z info: Obteniendo instituciones educativas
+2025-10-07T21:28:24.489Z info: Acto administrativo creado exitosamente
+2025-10-07T21:28:33.714Z info: Obteniendo instituciones educativas
+2025-10-07T21:28:33.771Z info: Obteniendo instituciones educativas
+2025-10-07T21:28:39.767Z info: Obteniendo instituciones educativas
+2025-10-07T21:28:39.826Z info: Obteniendo instituciones educativas
+2025-10-07T21:31:52.949Z info: Acto administrativo creado exitosamente
+2025-10-07T21:31:54.100Z info: Documento de acto administrativo creado exitosamente
+2025-10-07T21:31:57.328Z info: Obteniendo instituciones educativas
+2025-10-07T21:31:57.383Z info: Obteniendo instituciones educativas
+2025-10-07T22:16:48.627Z info: Token agregado a blacklist
+2025-10-07T22:16:48.636Z info: Token invalidado exitosamente
+2025-10-07T22:16:48.638Z info: Token de acceso invalidado
+2025-10-07T22:16:48.640Z info: 🚪 Logout exitoso - Sesión cerrada y tokens invalidados
+2025-10-07T22:25:04.093Z info: Solicitud de código de recuperación
+2025-10-07T22:25:04.096Z info: Obteniendo usuarios
+2025-10-07T22:25:04.287Z info: Actualizando usuario
+2025-10-07T22:25:05.026Z info: SMS de recuperación enviado exitosamente
+2025-10-07T22:25:05.028Z info: Código de recuperación enviado exitosamente
+2025-10-07T22:27:22.155Z info: Verificando código de recuperación
+2025-10-07T22:27:22.156Z info: Obteniendo usuarios
+2025-10-07T22:27:22.904Z info: Actualizando usuario
+2025-10-07T22:27:23.298Z info: Notificación de cambio enviada
+2025-10-07T22:27:23.299Z info: Contraseña restablecida exitosamente por SMS
+2025-10-07T22:47:12.984Z info: Solicitud de código de recuperación
+2025-10-07T22:47:12.986Z info: Obteniendo usuarios
+2025-10-07T22:47:13.106Z info: Actualizando usuario
+2025-10-07T22:47:13.600Z info: SMS de recuperación enviado exitosamente
+2025-10-07T22:47:13.600Z info: Código de recuperación enviado exitosamente

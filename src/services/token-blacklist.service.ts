@@ -33,11 +33,6 @@ export class TokenBlacklistService {
       if (expirationTime) {
         this.tokenExpirationMap.set(token, expirationTime);
       }
-      
-      logger.info('Token agregado a blacklist', { 
-        tokenPrefix: token.substring(0, 20) + '...',
-        expirationTime: expirationTime ? new Date(expirationTime * 1000).toISOString() : 'No definido'
-      });
     } catch (error) {
       logger.error('Error agregando token a blacklist', error);
     }
@@ -74,7 +69,6 @@ export class TokenBlacklistService {
     }
 
     if (cleanedCount > 0) {
-      logger.info(`Limpieza automática de tokens: ${cleanedCount} tokens expirados removidos de blacklist`);
     }
   }
 

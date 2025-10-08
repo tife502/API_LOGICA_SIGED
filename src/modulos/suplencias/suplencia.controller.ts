@@ -13,7 +13,6 @@ export class SuplenciaController {
   // Obtener tipos de jornada disponibles
   public getJornadasDisponibles = async (req: Request, res: Response): Promise<void> => {
     try {
-      logger.info('Obteniendo jornadas disponibles para suplencias');
 
       const jornadas = [
         {
@@ -39,7 +38,6 @@ export class SuplenciaController {
         data: jornadas
       });
 
-      logger.info('Jornadas de suplencias obtenidas exitosamente');
     } catch (error) {
       logger.error('Error al obtener jornadas de suplencias:', error);
       res.status(500).json({
@@ -66,13 +64,6 @@ export class SuplenciaController {
         jornada,
         observacion
       }: ICreateSuplencia = req.body;
-
-      logger.info('Iniciando creación de suplencia', {
-        docente_ausente_id,
-        docente_reemplazo_id,
-        sede_id,
-        jornada
-      });
 
       // Validar datos requeridos
       if (!docente_ausente_id || !causa_ausencia || !fecha_inicio_ausencia || 
@@ -240,7 +231,6 @@ export class SuplenciaController {
         data: nuevaSuplencia
       });
 
-      logger.info('Suplencia creada exitosamente', { id: nuevaSuplencia.id });
     } catch (error) {
       logger.error('Error al crear suplencia:', error);
       res.status(500).json({
@@ -270,16 +260,6 @@ export class SuplenciaController {
       const pageNumber = Math.max(1, parseInt(page as string));
       const limitNumber = Math.min(50, Math.max(1, parseInt(limit as string)));
       const skip = (pageNumber - 1) * limitNumber;
-
-      logger.info('Obteniendo suplencias con filtros', {
-        page: pageNumber,
-        limit: limitNumber,
-        search,
-        docente_ausente_id,
-        docente_reemplazo_id,
-        sede_id,
-        jornada
-      });
 
       // Construir filtros
       const where: any = {};
@@ -469,11 +449,6 @@ export class SuplenciaController {
         }
       });
 
-      logger.info('Suplencias obtenidas exitosamente', {
-        count: suplencias.length,
-        totalItems,
-        page: pageNumber
-      });
     } catch (error) {
       logger.error('Error al obtener suplencias:', error);
       res.status(500).json({
@@ -488,8 +463,6 @@ export class SuplenciaController {
   public getSuplenciaById = async (req: Request, res: Response): Promise<void> => {
     try {
       const { id } = req.params;
-
-      logger.info('Obteniendo suplencia por ID:', id);
 
       const suplencia = await this.prisma.suplencias.findUnique({
         where: { id },
@@ -555,7 +528,6 @@ export class SuplenciaController {
         data: suplencia
       });
 
-      logger.info('Suplencia obtenida exitosamente:', id);
     } catch (error) {
       logger.error('Error al obtener suplencia por ID:', error);
       res.status(500).json({
@@ -571,8 +543,6 @@ export class SuplenciaController {
     try {
       const { empleado_id } = req.params;
       const { tipo = 'todas', incluir_documentos = 'false' } = req.query;
-
-      logger.info('Obteniendo suplencias por docente', { empleado_id, tipo });
 
       // Validar que el empleado exista
       const empleado = await this.prisma.empleado.findUnique({
@@ -693,10 +663,6 @@ export class SuplenciaController {
         }
       });
 
-      logger.info('Suplencias por docente obtenidas exitosamente', {
-        empleado_id,
-        total: suplencias.length
-      });
     } catch (error) {
       logger.error('Error al obtener suplencias por docente:', error);
       res.status(500).json({
@@ -713,7 +679,6 @@ export class SuplenciaController {
       const { id } = req.params;
       const updateData: IUpdateSuplencia = req.body;
 
-      logger.info('Actualizando suplencia', { id, updateData });
 
       // Verificar que la suplencia existe
       const suplenciaExistente = await this.prisma.suplencias.findUnique({
@@ -850,8 +815,6 @@ export class SuplenciaController {
         message: 'Suplencia actualizada exitosamente',
         data: suplenciaActualizada
       });
-
-      logger.info('Suplencia actualizada exitosamente:', id);
     } catch (error) {
       logger.error('Error al actualizar suplencia:', error);
       res.status(500).json({
@@ -867,8 +830,6 @@ export class SuplenciaController {
     try {
       const { id } = req.params;
       const userRole = (req as any).user?.rol;
-
-      logger.info('Eliminando suplencia', { id, userRole });
 
       // Verificar permisos
       if (userRole !== 'super_admin') {
@@ -934,7 +895,6 @@ export class SuplenciaController {
         }
       });
 
-      logger.info('Suplencia eliminada exitosamente:', id);
     } catch (error) {
       logger.error('Error al eliminar suplencia:', error);
       res.status(500).json({
@@ -949,8 +909,6 @@ export class SuplenciaController {
   public getEstadisticasSuplencias = async (req: Request, res: Response): Promise<void> => {
     try {
       const { empleado_id, sede_id, año } = req.query;
-
-      logger.info('Obteniendo estadísticas de suplencias', { empleado_id, sede_id, año });
 
       // Construir filtros
       const where: any = {};
@@ -1046,11 +1004,6 @@ export class SuplenciaController {
           sede_filtrada: !!sede_id,
           año_filtrado: año || null
         }
-      });
-
-      logger.info('Estadísticas de suplencias obtenidas exitosamente', {
-        total: totalSuplencias,
-        filtros: { empleado_id, sede_id, año }
       });
     } catch (error) {
       logger.error('Error al obtener estadísticas de suplencias:', error);

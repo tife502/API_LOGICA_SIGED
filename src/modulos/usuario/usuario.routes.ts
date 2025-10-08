@@ -74,7 +74,7 @@ export class UsuarioRoutes {
       usuarioController.cambiarContrasena
     );
 
-    router.post('/create-initial-user', usuarioController.createInitialUser);
+    //router.post('/create-initial-user', usuarioController.createInitialUser);
 
     // ============= RUTAS DE RECUPERACIÓN DE CONTRASEÑA (PÚBLICAS) =============
     

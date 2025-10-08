@@ -31,11 +31,6 @@ export class EmpleadoNormalController {
         });
       }
 
-      logger.info('Creando empleado con sede', {
-        empleado: empleado.nombre,
-        sedeId
-      });
-
       const resultado = await this.empleadoService.crearEmpleadoConSede({
         usuarioId: usuario?.id || '',
         empleado,
@@ -78,11 +73,6 @@ export class EmpleadoNormalController {
         });
       }
 
-      logger.info('Asignando empleado a sede', {
-        empleadoId,
-        sedeId
-      });
-
       const resultado = await this.empleadoService.asignarEmpleadoASede({
         empleadoId,
         sedeId,
@@ -123,11 +113,6 @@ export class EmpleadoNormalController {
         });
       }
 
-      logger.info('Transfiriendo empleado a nueva sede', {
-        empleadoId,
-        nuevaSedeId
-      });
-
       const resultado = await this.empleadoService.transferirEmpleadoASede({
         empleadoId,
         nuevaSedeId,
@@ -159,10 +144,6 @@ export class EmpleadoNormalController {
     try {
       const { empleadoId } = req.params;
       const { fechaFin, motivo } = req.body;
-
-      logger.info('Finalizando asignación de empleado', {
-        empleadoId
-      });
 
       const resultado = await this.empleadoService.finalizarAsignacionEmpleado({
         empleadoId,
@@ -201,11 +182,6 @@ export class EmpleadoNormalController {
         soloAsignacionesActivas: solo_activos === 'true'
       };
 
-      logger.info('Obteniendo empleados por sede', {
-        sedeId,
-        filtros
-      });
-
       const empleados = await this.empleadoService.getEmpleadosPorSede(sedeId, filtros);
 
       return res.status(200).json({
@@ -242,10 +218,6 @@ export class EmpleadoNormalController {
         conCapacidad: con_capacidad === 'true'
       };
 
-      logger.info('Obteniendo sedes disponibles', {
-        filtros
-      });
-
       const sedes = await this.empleadoService.getSedesDisponibles(filtros);
 
       return res.status(200).json({
@@ -275,10 +247,6 @@ export class EmpleadoNormalController {
   public getHistorialAsignaciones = async (req: Request, res: Response): Promise<Response> => {
     try {
       const { empleadoId } = req.params;
-
-      logger.info('Obteniendo historial de asignaciones', {
-        empleadoId
-      });
 
       const historial = await this.empleadoService.getHistorialAsignacionesEmpleado(empleadoId);
 
@@ -313,12 +281,6 @@ export class EmpleadoNormalController {
           data: null
         });
       }
-
-      logger.info('Validando asignación empleado-sede', {
-        empleadoId,
-        sedeId
-      });
-
       // Verificar empleado
       const empleado = await this.empleadoService['prismaService'].executeTransaction(async (prisma) => {
         return await prisma.empleado.findUnique({

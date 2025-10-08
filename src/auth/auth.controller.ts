@@ -103,11 +103,6 @@ export class AuthController {
         refreshToken: tokens.refreshToken
       };
 
-      logger.info('Login exitoso', { 
-        usuarioId: usuario.id, 
-        email: usuario.email 
-      });
-
       res.status(200).json({
         ok: true,
         data: loginResult
@@ -162,7 +157,6 @@ export class AuthController {
         refreshToken: JwtService.generateRefreshToken(newPayload)
       };
 
-      logger.info('Token renovado', { usuarioId: usuario.id });
 
       res.status(200).json({
         ok: true,
@@ -258,31 +252,11 @@ export class AuthController {
       try {
         // Invalidar token de acceso
         JwtService.invalidateToken(token);
-        logger.info('Token de acceso invalidado', { 
-          usuarioId: usuario?.id,
-          tokenPrefix: token.substring(0, 20) + '...'
-        });
-
         // Invalidar refresh token si está presente
         if (refreshToken) {
           JwtService.invalidateRefreshToken(refreshToken);
-          logger.info('Refresh token invalidado', { 
-            usuarioId: usuario?.id,
-            refreshTokenPrefix: refreshToken.substring(0, 20) + '...'
-          });
         }
 
-        // Log de auditoría del logout
-        logger.info('🚪 Logout exitoso - Sesión cerrada y tokens invalidados', { 
-          usuarioId: usuario?.id,
-          email: usuario?.email,
-          rol: usuario?.rol,
-          timestamp: new Date().toISOString(),
-          tokensInvalidados: {
-            accessToken: true,
-            refreshToken: !!refreshToken
-          }
-        });
 
         res.status(200).json({
           ok: true,
@@ -479,10 +453,7 @@ export class AuthController {
       await AuthController.prismaService.updateUsuario(usuarioId, {
         contrasena: nuevaContrasenaHash
       });
-
-      logger.info('Contraseña cambiada exitosamente', { 
-        usuarioId: usuarioCompleto.id 
-      });      res.status(200).json({
+        res.status(200).json({
         ok: true,
         msg: 'Contraseña cambiada exitosamente'
       });
