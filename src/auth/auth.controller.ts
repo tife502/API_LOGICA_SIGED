@@ -457,6 +457,7 @@ export class AuthController {
         ok: true,
         msg: 'Contraseña cambiada exitosamente'
       });
+      
 
     } catch (error) {
       logger.error('Error cambiando contraseña', { 

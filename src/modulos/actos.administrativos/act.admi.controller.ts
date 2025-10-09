@@ -21,8 +21,6 @@ export class ActoAdministrativoController {
    * El nombre se genera automáticamente: "Resolución I.E [Nombre Institución]-[Consecutivo]"
    */
   createActoAdministrativo = async (req: Request, res: Response) => {
-    console.log('createActoAdministrativo called');
-    console.log('Request body:', req.body);
     try {
       const usuario = req.usuario;
       

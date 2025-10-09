@@ -581,6 +581,8 @@ export class DocumentoSuplenciaController {
 
   // Descargar documento
   public downloadDocumento = async (req: Request, res: Response): Promise<void> => {
+    console.log('Iniciando descarga de documento de suplencia...');
+    console.log('Parámetros recibidos:', req.params);
     try {
       const { id } = req.params;
 

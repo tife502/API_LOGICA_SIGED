@@ -13,6 +13,13 @@ const router = Router();
 const rectorController = new RectorController();
 
 /**
+ * @route GET /api/v1/empleados/rector
+ * @desc Listar todos los rectores
+ * @access Private (requiere autenticación, cualquier rol)
+ */
+router.get('/obtener', authMiddleware, rectorController.listarRectores);
+
+/**
  * @route POST /api/v1/empleados/rector/crear-completo
  * @desc Crear rector completo con institución y sedes en un solo flujo
  * @access Private (requiere autenticación)

@@ -19,6 +19,36 @@ export class RectorController {
     this.rectorService = new RectorService();
   }
 
+    /**
+     * GET /api/v1/empleados/rector
+     * Listar todos los rectores (acceso para todos los roles)
+     */
+    public listarRectores = async (req: Request, res: Response): Promise<Response> => {
+      try {
+        // Obtener todos los empleados con cargo 'Rector'
+        const rectores = await this.rectorService['prismaService'].executeTransaction(async (prisma) => {
+          return await prisma.empleado.findMany({
+            where: { cargo: 'Rector' },
+            orderBy: { nombre: 'asc' }
+          });
+        });
+
+        return res.status(200).json({
+          success: true,
+          message: 'Rectores listados exitosamente',
+          data: rectores,
+          total: rectores.length
+        });
+      } catch (error) {
+        logger.error('Error listando rectores', error);
+        return res.status(500).json({
+          success: false,
+          message: 'Error interno del servidor',
+          error: error instanceof Error ? error.message : 'Error desconocido'
+        });
+      }
+    };
+
   /**
    * POST /api/empleados/rector/crear-completo
    * Crear rector con institución y sedes en un solo flujo

@@ -75,7 +75,7 @@ export class EmpleadoRoutes {
     // Rutas especializadas para rectores - Admin y Super_admin
     router.use('/rector',
       authMiddleware, 
-      roleMiddleware(['admin', 'super_admin']),
+      roleMiddleware(['admin', 'super_admin', 'gestor']),
       rectorRoutes
     );
 

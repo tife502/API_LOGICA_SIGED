@@ -390,3 +390,363 @@ Invalid value for argument `jornada`. Expected horas_extra_jornada.
 2025-10-07T18:24:16.093Z error: Error enviando SMS de recuperación
 2025-10-07T18:27:00.846Z error: Error enviando SMS de recuperación:
 2025-10-07T18:27:00.849Z error: Error enviando SMS de recuperación
+2025-10-08T16:19:51.333Z error: Error: Ya existe un empleado activo con el documento 1088254968
+    at RectorService.<anonymous> (/home/node/app/src/modulos/empleado/metodos/rector.service.ts:373:11)
+    at Generator.next (<anonymous>)
+    at fulfilled (/home/node/app/src/modulos/empleado/metodos/rector.service.ts:5:58)
+2025-10-08T16:19:51.335Z error: Error: Ya existe un empleado activo con el documento 1088254968
+    at RectorService.<anonymous> (/home/node/app/src/modulos/empleado/metodos/rector.service.ts:373:11)
+    at Generator.next (<anonymous>)
+    at fulfilled (/home/node/app/src/modulos/empleado/metodos/rector.service.ts:5:58)
+2025-10-08T16:36:09.825Z error: PrismaClientValidationError: 
+Invalid `prisma.empleado.create()` invocation in
+/home/node/app/src/modulos/empleado/metodos/rector.service.ts:27:52
+
+  24 await this.validarDatosRector(data.empleado);
+  25 
+  26 // 2. Crear empleado rector
+→ 27 const empleadoCreado = await prisma.empleado.create({
+       data: {
+         tipo_documento: "CC",
+         documento: "1088261222",
+         nombre: "pepe",
+         apellido: "peralta",
+         email: "musica@musica.com",
+         telefono: "3205711428",
+         ~~~~~~~~
+         celular: "3205711428",
+         cargo: "Rector",
+         fecha_nacimiento: "2025-10-02",
+         genero: "Masculino",
+         estado_civil: "Soltero",
+         direccion: "calle falsa 123",
+         ciudad: "Pereira",
+         departamento: "risalarda",
+         id: "0cbb0414-65fd-41fa-a139-ccfc2eb271b1",
+         estado: "activo",
+         created_at: new Date("2025-10-08T16:36:09.520Z"),
+         updated_at: new Date("2025-10-08T16:36:09.520Z"),
+     ?   asignacion_empleado?: asignacion_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   comentario_empleado?: comentario_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   documentos_empleado?: documentos_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   horas_extra?: horas_extraCreateNestedManyWithoutEmpleadoInput,
+     ?   informacion_academica?: informacion_academicaCreateNestedManyWithoutEmpleadoInput,
+     ?   institucion_educativa?: institucion_educativaCreateNestedManyWithoutEmpleadoInput,
+     ?   suplencias_suplencias_docente_ausente_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_ausente_idToempleadoInput,
+     ?   suplencias_suplencias_docente_reemplazo_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_reemplazo_idToempleadoInput
+       }
+     })
+
+Unknown argument `telefono`. Available options are marked with ?.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-08T16:36:09.833Z error: PrismaClientValidationError: 
+Invalid `prisma.empleado.create()` invocation in
+/home/node/app/src/modulos/empleado/metodos/rector.service.ts:27:52
+
+  24 await this.validarDatosRector(data.empleado);
+  25 
+  26 // 2. Crear empleado rector
+→ 27 const empleadoCreado = await prisma.empleado.create({
+       data: {
+         tipo_documento: "CC",
+         documento: "1088261222",
+         nombre: "pepe",
+         apellido: "peralta",
+         email: "musica@musica.com",
+         telefono: "3205711428",
+         ~~~~~~~~
+         celular: "3205711428",
+         cargo: "Rector",
+         fecha_nacimiento: "2025-10-02",
+         genero: "Masculino",
+         estado_civil: "Soltero",
+         direccion: "calle falsa 123",
+         ciudad: "Pereira",
+         departamento: "risalarda",
+         id: "0cbb0414-65fd-41fa-a139-ccfc2eb271b1",
+         estado: "activo",
+         created_at: new Date("2025-10-08T16:36:09.520Z"),
+         updated_at: new Date("2025-10-08T16:36:09.520Z"),
+     ?   asignacion_empleado?: asignacion_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   comentario_empleado?: comentario_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   documentos_empleado?: documentos_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   horas_extra?: horas_extraCreateNestedManyWithoutEmpleadoInput,
+     ?   informacion_academica?: informacion_academicaCreateNestedManyWithoutEmpleadoInput,
+     ?   institucion_educativa?: institucion_educativaCreateNestedManyWithoutEmpleadoInput,
+     ?   suplencias_suplencias_docente_ausente_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_ausente_idToempleadoInput,
+     ?   suplencias_suplencias_docente_reemplazo_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_reemplazo_idToempleadoInput
+       }
+     })
+
+Unknown argument `telefono`. Available options are marked with ?.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-08T16:37:43.586Z error: PrismaClientValidationError: 
+Invalid `prisma.empleado.create()` invocation in
+/home/node/app/src/modulos/empleado/metodos/rector.service.ts:27:52
+
+  24 await this.validarDatosRector(data.empleado);
+  25 
+  26 // 2. Crear empleado rector
+→ 27 const empleadoCreado = await prisma.empleado.create({
+       data: {
+         tipo_documento: "CC",
+         documento: "1088261222",
+         nombre: "pepe",
+         apellido: "peralta",
+         email: "musica@musica.com",
+         telefono: "",
+         ~~~~~~~~
+         celular: "3205711428",
+         cargo: "Rector",
+         fecha_nacimiento: "2025-10-02",
+         genero: "Masculino",
+         estado_civil: "Soltero",
+         direccion: "calle falsa 123",
+         ciudad: "Pereira",
+         departamento: "risalarda",
+         id: "967750ae-44ab-4294-9972-637345926d9e",
+         estado: "activo",
+         created_at: new Date("2025-10-08T16:37:43.574Z"),
+         updated_at: new Date("2025-10-08T16:37:43.574Z"),
+     ?   asignacion_empleado?: asignacion_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   comentario_empleado?: comentario_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   documentos_empleado?: documentos_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   horas_extra?: horas_extraCreateNestedManyWithoutEmpleadoInput,
+     ?   informacion_academica?: informacion_academicaCreateNestedManyWithoutEmpleadoInput,
+     ?   institucion_educativa?: institucion_educativaCreateNestedManyWithoutEmpleadoInput,
+     ?   suplencias_suplencias_docente_ausente_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_ausente_idToempleadoInput,
+     ?   suplencias_suplencias_docente_reemplazo_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_reemplazo_idToempleadoInput
+       }
+     })
+
+Unknown argument `telefono`. Available options are marked with ?.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-08T16:37:43.589Z error: PrismaClientValidationError: 
+Invalid `prisma.empleado.create()` invocation in
+/home/node/app/src/modulos/empleado/metodos/rector.service.ts:27:52
+
+  24 await this.validarDatosRector(data.empleado);
+  25 
+  26 // 2. Crear empleado rector
+→ 27 const empleadoCreado = await prisma.empleado.create({
+       data: {
+         tipo_documento: "CC",
+         documento: "1088261222",
+         nombre: "pepe",
+         apellido: "peralta",
+         email: "musica@musica.com",
+         telefono: "",
+         ~~~~~~~~
+         celular: "3205711428",
+         cargo: "Rector",
+         fecha_nacimiento: "2025-10-02",
+         genero: "Masculino",
+         estado_civil: "Soltero",
+         direccion: "calle falsa 123",
+         ciudad: "Pereira",
+         departamento: "risalarda",
+         id: "967750ae-44ab-4294-9972-637345926d9e",
+         estado: "activo",
+         created_at: new Date("2025-10-08T16:37:43.574Z"),
+         updated_at: new Date("2025-10-08T16:37:43.574Z"),
+     ?   asignacion_empleado?: asignacion_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   comentario_empleado?: comentario_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   documentos_empleado?: documentos_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   horas_extra?: horas_extraCreateNestedManyWithoutEmpleadoInput,
+     ?   informacion_academica?: informacion_academicaCreateNestedManyWithoutEmpleadoInput,
+     ?   institucion_educativa?: institucion_educativaCreateNestedManyWithoutEmpleadoInput,
+     ?   suplencias_suplencias_docente_ausente_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_ausente_idToempleadoInput,
+     ?   suplencias_suplencias_docente_reemplazo_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_reemplazo_idToempleadoInput
+       }
+     })
+
+Unknown argument `telefono`. Available options are marked with ?.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-08T16:55:35.773Z error: PrismaClientValidationError: 
+Invalid `prisma.empleado.create()` invocation in
+/home/node/app/src/modulos/empleado/metodos/rector.service.ts:27:52
+
+  24 await this.validarDatosRector(data.empleado);
+  25 
+  26 // 2. Crear empleado rector
+→ 27 const empleadoCreado = await prisma.empleado.create({
+       data: {
+         tipo_documento: "CC",
+         documento: "1088261297",
+         nombre: "Pepe",
+         apellido: "Peralta",
+         email: "pepe@pepe.com",
+         celular: "320571429",
+         ~~~~~~~
+         cargo: "Rector",
+         fecha_nacimiento: "2025-10-10",
+         genero: "Masculino",
+         estado_civil: "Soltero",
+         direccion: "calle falsa 123",
+         ciudad: "pereira",
+         departamento: "risaralda",
+         id: "b844a2a7-0cbf-4784-912b-a1bc44c6b758",
+         estado: "activo",
+         created_at: new Date("2025-10-08T16:55:35.472Z"),
+         updated_at: new Date("2025-10-08T16:55:35.472Z"),
+     ?   asignacion_empleado?: asignacion_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   comentario_empleado?: comentario_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   documentos_empleado?: documentos_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   horas_extra?: horas_extraCreateNestedManyWithoutEmpleadoInput,
+     ?   informacion_academica?: informacion_academicaCreateNestedManyWithoutEmpleadoInput,
+     ?   institucion_educativa?: institucion_educativaCreateNestedManyWithoutEmpleadoInput,
+     ?   suplencias_suplencias_docente_ausente_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_ausente_idToempleadoInput,
+     ?   suplencias_suplencias_docente_reemplazo_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_reemplazo_idToempleadoInput
+       }
+     })
+
+Unknown argument `celular`. Available options are marked with ?.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-08T16:55:35.782Z error: PrismaClientValidationError: 
+Invalid `prisma.empleado.create()` invocation in
+/home/node/app/src/modulos/empleado/metodos/rector.service.ts:27:52
+
+  24 await this.validarDatosRector(data.empleado);
+  25 
+  26 // 2. Crear empleado rector
+→ 27 const empleadoCreado = await prisma.empleado.create({
+       data: {
+         tipo_documento: "CC",
+         documento: "1088261297",
+         nombre: "Pepe",
+         apellido: "Peralta",
+         email: "pepe@pepe.com",
+         celular: "320571429",
+         ~~~~~~~
+         cargo: "Rector",
+         fecha_nacimiento: "2025-10-10",
+         genero: "Masculino",
+         estado_civil: "Soltero",
+         direccion: "calle falsa 123",
+         ciudad: "pereira",
+         departamento: "risaralda",
+         id: "b844a2a7-0cbf-4784-912b-a1bc44c6b758",
+         estado: "activo",
+         created_at: new Date("2025-10-08T16:55:35.472Z"),
+         updated_at: new Date("2025-10-08T16:55:35.472Z"),
+     ?   asignacion_empleado?: asignacion_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   comentario_empleado?: comentario_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   documentos_empleado?: documentos_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   horas_extra?: horas_extraCreateNestedManyWithoutEmpleadoInput,
+     ?   informacion_academica?: informacion_academicaCreateNestedManyWithoutEmpleadoInput,
+     ?   institucion_educativa?: institucion_educativaCreateNestedManyWithoutEmpleadoInput,
+     ?   suplencias_suplencias_docente_ausente_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_ausente_idToempleadoInput,
+     ?   suplencias_suplencias_docente_reemplazo_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_reemplazo_idToempleadoInput
+       }
+     })
+
+Unknown argument `celular`. Available options are marked with ?.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-08T17:04:42.812Z error: PrismaClientValidationError: 
+Invalid `prisma.empleado.create()` invocation in
+/home/node/app/src/modulos/empleado/metodos/rector.service.ts:27:52
+
+  24 await this.validarDatosRector(data.empleado);
+  25 
+  26 // 2. Crear empleado rector
+→ 27 const empleadoCreado = await prisma.empleado.create({
+       data: {
+         tipo_documento: "CC",
+         documento: "1088261287",
+         nombre: "Mateus",
+         apellido: "Uribe",
+         email: "seleccion@comobia.com",
+         cargo: "Rector",
+         fecha_nacimiento: "2025-10-02",
+         ~~~~~~~~~~~~~~~~
+         genero: "Femenino",
+         direccion: "calle falsa 123",
+         ciudad: "pereira",
+         departamento: "risaralda",
+         id: "ea88f9a3-b3c5-477f-9c64-b4539d045ad8",
+         estado: "activo",
+         created_at: new Date("2025-10-08T17:04:42.792Z"),
+         updated_at: new Date("2025-10-08T17:04:42.792Z"),
+     ?   asignacion_empleado?: asignacion_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   comentario_empleado?: comentario_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   documentos_empleado?: documentos_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   horas_extra?: horas_extraCreateNestedManyWithoutEmpleadoInput,
+     ?   informacion_academica?: informacion_academicaCreateNestedManyWithoutEmpleadoInput,
+     ?   institucion_educativa?: institucion_educativaCreateNestedManyWithoutEmpleadoInput,
+     ?   suplencias_suplencias_docente_ausente_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_ausente_idToempleadoInput,
+     ?   suplencias_suplencias_docente_reemplazo_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_reemplazo_idToempleadoInput
+       }
+     })
+
+Unknown argument `fecha_nacimiento`. Available options are marked with ?.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+2025-10-08T17:04:42.817Z error: PrismaClientValidationError: 
+Invalid `prisma.empleado.create()` invocation in
+/home/node/app/src/modulos/empleado/metodos/rector.service.ts:27:52
+
+  24 await this.validarDatosRector(data.empleado);
+  25 
+  26 // 2. Crear empleado rector
+→ 27 const empleadoCreado = await prisma.empleado.create({
+       data: {
+         tipo_documento: "CC",
+         documento: "1088261287",
+         nombre: "Mateus",
+         apellido: "Uribe",
+         email: "seleccion@comobia.com",
+         cargo: "Rector",
+         fecha_nacimiento: "2025-10-02",
+         ~~~~~~~~~~~~~~~~
+         genero: "Femenino",
+         direccion: "calle falsa 123",
+         ciudad: "pereira",
+         departamento: "risaralda",
+         id: "ea88f9a3-b3c5-477f-9c64-b4539d045ad8",
+         estado: "activo",
+         created_at: new Date("2025-10-08T17:04:42.792Z"),
+         updated_at: new Date("2025-10-08T17:04:42.792Z"),
+     ?   asignacion_empleado?: asignacion_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   comentario_empleado?: comentario_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   documentos_empleado?: documentos_empleadoCreateNestedManyWithoutEmpleadoInput,
+     ?   horas_extra?: horas_extraCreateNestedManyWithoutEmpleadoInput,
+     ?   informacion_academica?: informacion_academicaCreateNestedManyWithoutEmpleadoInput,
+     ?   institucion_educativa?: institucion_educativaCreateNestedManyWithoutEmpleadoInput,
+     ?   suplencias_suplencias_docente_ausente_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_ausente_idToempleadoInput,
+     ?   suplencias_suplencias_docente_reemplazo_idToempleado?: suplenciasCreateNestedManyWithoutEmpleado_suplencias_docente_reemplazo_idToempleadoInput
+       }
+     })
+
+Unknown argument `fecha_nacimiento`. Available options are marked with ?.
+    at throwValidationException (/home/node/app/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/node/app/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at a (/home/node/app/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
